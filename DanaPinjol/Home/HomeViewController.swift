@@ -6,13 +6,38 @@
 //
 
 import UIKit
+import CombineCocoa
+import Combine
+import SnapKit
 
-class HomeViewController: UIViewController {
-
+class HomeViewController: BaseViewController {
+    
+    lazy var loginBtn: UIButton = {
+        let loginBtn = UIButton(type: .custom)
+        loginBtn.setTitle("Log in", for: .normal)
+        loginBtn.setTitleColor(.black, for: .normal)
+        loginBtn.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight(700))
+        return loginBtn
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        
+        view.addSubview(loginBtn)
+        loginBtn.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        loginBtn
+            .tapPublisher
+            .debounce(for: .seconds(0.25), scheduler: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.toLoginPage()
+            }.store(in: &cancellables)
+        
     }
-
+    
 }
+
+
