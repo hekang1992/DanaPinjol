@@ -72,8 +72,80 @@
 				734A46452F67AEB800455F6A /* DanaPinjol.entitlements */,
 				7341DEA82F67AE2F008D4C83 /* AppDelegate.swift */,
 				7341DEAC2F67AE2F008D4C83 /* LaunchScreen.storyboard */,
+				734A464E2F67B12B00455F6A /* Other */,
+				734A464D2F67B12B00455F6A /* Http */,
+				734A464C2F67B12A00455F6A /* Product */,
+				734A464B2F67B12A00455F6A /* Auth */,
+				734A464A2F67B12900455F6A /* Mine */,
+				734A46492F67B12800455F6A /* Order */,
+				734A46482F67B10E00455F6A /* Home */,
+				734A46472F67B10B00455F6A /* Login */,
+				734A46462F67B10400455F6A /* Base */,
 			);
 			path = DanaPinjol;
+			sourceTree = "<group>";
+		};
+		734A46462F67B10400455F6A /* Base */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		734A46472F67B10B00455F6A /* Login */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		734A46482F67B10E00455F6A /* Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		734A46492F67B12800455F6A /* Order */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Order;
+			sourceTree = "<group>";
+		};
+		734A464A2F67B12900455F6A /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
+		734A464B2F67B12A00455F6A /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		734A464C2F67B12A00455F6A /* Product */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Product;
+			sourceTree = "<group>";
+		};
+		734A464D2F67B12B00455F6A /* Http */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Http;
+			sourceTree = "<group>";
+		};
+		734A464E2F67B12B00455F6A /* Other */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Other;
 			sourceTree = "<group>";
 		};
 		758CC546547ADAD7FF5C4684 /* Frameworks */ = {
@@ -95,6 +167,7 @@
 				7341DE8C2F67AE28008D4C83 /* Sources */,
 				7341DE8D2F67AE28008D4C83 /* Frameworks */,
 				7341DE8E2F67AE28008D4C83 /* Resources */,
+				438DD3B8AB27408EB227F7D3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -152,6 +225,27 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		438DD3B8AB27408EB227F7D3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DanaPinjol/Pods-DanaPinjol-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DanaPinjol/Pods-DanaPinjol-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DanaPinjol/Pods-DanaPinjol-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		4E9D14681FF9F817457E6C66 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -209,11 +303,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 57MBH2272N;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DanaPinjol/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Dana Pinjol";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -248,11 +343,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 57MBH2272N;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DanaPinjol/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Dana Pinjol";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

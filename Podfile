@@ -6,5 +6,15 @@ target 'DanaPinjol' do
   use_frameworks!
 
   # Pods for DanaPinjol
-
+  pod 'SnapKit'
+  pod 'IQKeyboardManagerSwift'
+  pod 'TYAlertController'
+  pod 'FBSDKCoreKit'
+  pod 'DeviceKit'
+  pod 'MJRefresh'
+  pod 'RxSwift'
+  pod 'RxCocoa'
+  pod 'Kingfisher'
+  pod 'Alamofire'
+  
 end
