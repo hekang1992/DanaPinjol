@@ -12,9 +12,8 @@ target 'DanaPinjol' do
   pod 'FBSDKCoreKit'
   pod 'DeviceKit'
   pod 'MJRefresh'
-  pod 'RxSwift'
-  pod 'RxCocoa'
   pod 'Kingfisher'
   pod 'Alamofire'
+  pod 'CombineCocoa'
   
 end

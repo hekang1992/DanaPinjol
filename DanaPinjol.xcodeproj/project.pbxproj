@@ -10,6 +10,10 @@
 		7341DEB22F67AE2F008D4C83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7341DEA82F67AE2F008D4C83 /* AppDelegate.swift */; };
 		7341DEB52F67AE2F008D4C83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7341DEA92F67AE2F008D4C83 /* Assets.xcassets */; };
 		7341DEB72F67AE2F008D4C83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7341DEAC2F67AE2F008D4C83 /* LaunchScreen.storyboard */; };
+		734A46502F67B3F500455F6A /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A464F2F67B3F500455F6A /* BaseView.swift */; };
+		734A46522F67B40400455F6A /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A46512F67B40400455F6A /* BaseViewController.swift */; };
+		734A46542F67B41500455F6A /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A46532F67B41500455F6A /* BaseTabBarController.swift */; };
+		734A46562F67B42100455F6A /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A46552F67B42100455F6A /* BaseNavigationController.swift */; };
 		A6A664F8C16949DF087E8939 /* Pods_DanaPinjol.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC2F7CD723FF0644822093C /* Pods_DanaPinjol.framework */; };
 /* End PBXBuildFile section */
 
@@ -22,6 +26,10 @@
 		7341DEAA2F67AE2F008D4C83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7341DEAB2F67AE2F008D4C83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		734A46452F67AEB800455F6A /* DanaPinjol.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DanaPinjol.entitlements; sourceTree = "<group>"; };
+		734A464F2F67B3F500455F6A /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		734A46512F67B40400455F6A /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		734A46532F67B41500455F6A /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
+		734A46552F67B42100455F6A /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		7CC2F7CD723FF0644822093C /* Pods_DanaPinjol.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DanaPinjol.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -88,6 +96,10 @@
 		734A46462F67B10400455F6A /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				734A464F2F67B3F500455F6A /* BaseView.swift */,
+				734A46512F67B40400455F6A /* BaseViewController.swift */,
+				734A46532F67B41500455F6A /* BaseTabBarController.swift */,
+				734A46552F67B42100455F6A /* BaseNavigationController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -233,13 +245,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-DanaPinjol/Pods-DanaPinjol-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-DanaPinjol/Pods-DanaPinjol-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -275,7 +283,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				734A46542F67B41500455F6A /* BaseTabBarController.swift in Sources */,
 				7341DEB22F67AE2F008D4C83 /* AppDelegate.swift in Sources */,
+				734A46502F67B3F500455F6A /* BaseView.swift in Sources */,
+				734A46562F67B42100455F6A /* BaseNavigationController.swift in Sources */,
+				734A46522F67B40400455F6A /* BaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
