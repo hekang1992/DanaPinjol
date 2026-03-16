@@ -15,5 +15,6 @@ target 'DanaPinjol' do
   pod 'Kingfisher'
   pod 'Alamofire'
   pod 'CombineCocoa'
+  pod 'KeychainSwift'
   
 end

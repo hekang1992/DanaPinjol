@@ -14,6 +14,7 @@
 		734A46522F67B40400455F6A /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A46512F67B40400455F6A /* BaseViewController.swift */; };
 		734A46542F67B41500455F6A /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A46532F67B41500455F6A /* BaseTabBarController.swift */; };
 		734A46562F67B42100455F6A /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A46552F67B42100455F6A /* BaseNavigationController.swift */; };
+		734A46582F67B68900455F6A /* URLParameterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A46572F67B68900455F6A /* URLParameterHelper.swift */; };
 		A6A664F8C16949DF087E8939 /* Pods_DanaPinjol.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC2F7CD723FF0644822093C /* Pods_DanaPinjol.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +31,7 @@
 		734A46512F67B40400455F6A /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		734A46532F67B41500455F6A /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		734A46552F67B42100455F6A /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		734A46572F67B68900455F6A /* URLParameterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParameterHelper.swift; sourceTree = "<group>"; };
 		7CC2F7CD723FF0644822093C /* Pods_DanaPinjol.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DanaPinjol.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -149,6 +151,7 @@
 		734A464D2F67B12B00455F6A /* Http */ = {
 			isa = PBXGroup;
 			children = (
+				734A46572F67B68900455F6A /* URLParameterHelper.swift */,
 			);
 			path = Http;
 			sourceTree = "<group>";
@@ -245,9 +248,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-DanaPinjol/Pods-DanaPinjol-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-DanaPinjol/Pods-DanaPinjol-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -288,6 +295,7 @@
 				734A46502F67B3F500455F6A /* BaseView.swift in Sources */,
 				734A46562F67B42100455F6A /* BaseNavigationController.swift in Sources */,
 				734A46522F67B40400455F6A /* BaseViewController.swift in Sources */,
+				734A46582F67B68900455F6A /* URLParameterHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
