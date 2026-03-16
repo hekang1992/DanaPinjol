@@ -79,6 +79,11 @@ extension SplashViewController {
                     if let marketModel = model.cylind?.discussship {
                         self.uploadMarket(model: marketModel)
                     }
+                    
+                    let serverLanguageCode = model.cylind?.probablyar ?? ""
+                    
+                    LanguageManager.shared.setLanguageFromServerCode(serverLanguageCode)
+                    
                     NotificationCenter.default.post(name: CHANGE_ROOT_VC, object: nil)
                 }
             }
