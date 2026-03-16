@@ -9,6 +9,7 @@ import UIKit
 import Alamofire
 import Combine
 import FBSDKCoreKit
+import SnapKit
 
 let CHANGE_ROOT_VC = Notification.Name("CHANGE_ROOT_VC")
 
@@ -19,9 +20,20 @@ class SplashViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        monitorNetWorkInfo()
+        let bgImageView = UIImageView()
+        bgImageView.image = UIImage(named: "splash_image")
+        bgImageView.contentMode = .scaleAspectFill
+        view.addSubview(bgImageView)
+        bgImageView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
         
         bindViewModel()
+        
+        Task { [weak self] in
+            try? await Task.sleep(nanoseconds: 500_000_000)
+            self?.monitorNetWorkInfo()
+        }
         
     }
     
