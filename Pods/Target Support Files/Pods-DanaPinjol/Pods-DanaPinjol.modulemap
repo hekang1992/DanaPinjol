@@ -1,0 +1,6 @@
+framework module Pods_DanaPinjol {
+  umbrella header "Pods-DanaPinjol-umbrella.h"
+
+  export *
+  module * { export * }
+}
