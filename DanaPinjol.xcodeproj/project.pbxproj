@@ -36,6 +36,7 @@
 		734A46882F67F4D700455F6A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A46872F67F4D700455F6A /* LoginView.swift */; };
 		734A468A2F67F99D00455F6A /* Untitled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A46892F67F99D00455F6A /* Untitled.swift */; };
 		734A468C2F67FBD700455F6A /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A468B2F67FBD700455F6A /* LoginManager.swift */; };
+		734A468E2F67FEAB00455F6A /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A468D2F67FEAB00455F6A /* LanguageManager.swift */; };
 		A6A664F8C16949DF087E8939 /* Pods_DanaPinjol.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC2F7CD723FF0644822093C /* Pods_DanaPinjol.framework */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +75,7 @@
 		734A46872F67F4D700455F6A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		734A46892F67F99D00455F6A /* Untitled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Untitled.swift; sourceTree = "<group>"; };
 		734A468B2F67FBD700455F6A /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
+		734A468D2F67FEAB00455F6A /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
 		7CC2F7CD723FF0644822093C /* Pods_DanaPinjol.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DanaPinjol.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -231,6 +233,7 @@
 			children = (
 				734A46662F67CF8100455F6A /* SplashService.swift */,
 				734A46642F67CF4000455F6A /* SplashViewModel.swift */,
+				734A468D2F67FEAB00455F6A /* LanguageManager.swift */,
 				734A465F2F67CC6500455F6A /* SplashViewController.swift */,
 				734A46682F67D30A00455F6A /* NetworkProxyChecker.swift */,
 			);
@@ -424,6 +427,7 @@
 				734A465C2F67C77E00455F6A /* NetworkManager.swift in Sources */,
 				734A46692F67D30A00455F6A /* NetworkProxyChecker.swift in Sources */,
 				734A46862F67F4C900455F6A /* LoginViewController.swift in Sources */,
+				734A468E2F67FEAB00455F6A /* LanguageManager.swift in Sources */,
 				734A46882F67F4D700455F6A /* LoginView.swift in Sources */,
 				734A46842F67D8F400455F6A /* FaceService.swift in Sources */,
 				734A46562F67B42100455F6A /* BaseNavigationController.swift in Sources */,

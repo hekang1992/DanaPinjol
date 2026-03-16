@@ -46,3 +46,9 @@ extension Int {
         return CGFloat(self) / 375.0 * UIScreen.main.bounds.width
     }
 }
+
+extension String {
+    var localized: String {
+        return LanguageManager.shared.localizedString(for: self)
+    }
+}
