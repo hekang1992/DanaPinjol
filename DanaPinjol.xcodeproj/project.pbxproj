@@ -34,6 +34,8 @@
 		734A46842F67D8F400455F6A /* FaceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A46832F67D8EE00455F6A /* FaceService.swift */; };
 		734A46862F67F4C900455F6A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A46852F67F4C900455F6A /* LoginViewController.swift */; };
 		734A46882F67F4D700455F6A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A46872F67F4D700455F6A /* LoginView.swift */; };
+		734A468A2F67F99D00455F6A /* Untitled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A46892F67F99D00455F6A /* Untitled.swift */; };
+		734A468C2F67FBD700455F6A /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A468B2F67FBD700455F6A /* LoginManager.swift */; };
 		A6A664F8C16949DF087E8939 /* Pods_DanaPinjol.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC2F7CD723FF0644822093C /* Pods_DanaPinjol.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +72,8 @@
 		734A46832F67D8EE00455F6A /* FaceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceService.swift; sourceTree = "<group>"; };
 		734A46852F67F4C900455F6A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		734A46872F67F4D700455F6A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		734A46892F67F99D00455F6A /* Untitled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Untitled.swift; sourceTree = "<group>"; };
+		734A468B2F67FBD700455F6A /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		7CC2F7CD723FF0644822093C /* Pods_DanaPinjol.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DanaPinjol.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -148,6 +152,7 @@
 		734A46472F67B10B00455F6A /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				734A468B2F67FBD700455F6A /* LoginManager.swift */,
 				734A46872F67F4D700455F6A /* LoginView.swift */,
 				734A46852F67F4C900455F6A /* LoginViewController.swift */,
 			);
@@ -216,6 +221,7 @@
 		734A464E2F67B12B00455F6A /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				734A46892F67F99D00455F6A /* Untitled.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -408,11 +414,13 @@
 				7341DEB22F67AE2F008D4C83 /* AppDelegate.swift in Sources */,
 				734A46652F67CF4800455F6A /* SplashViewModel.swift in Sources */,
 				734A465A2F67C70500455F6A /* BaseModel.swift in Sources */,
+				734A468C2F67FBD700455F6A /* LoginManager.swift in Sources */,
 				734A467C2F67D8C100455F6A /* ProductViewModel.swift in Sources */,
 				734A466B2F67D81D00455F6A /* HomeViewController.swift in Sources */,
 				734A46712F67D83500455F6A /* ProductViewController.swift in Sources */,
 				734A46502F67B3F500455F6A /* BaseView.swift in Sources */,
 				734A467E2F67D8D300455F6A /* ProductService.swift in Sources */,
+				734A468A2F67F99D00455F6A /* Untitled.swift in Sources */,
 				734A465C2F67C77E00455F6A /* NetworkManager.swift in Sources */,
 				734A46692F67D30A00455F6A /* NetworkProxyChecker.swift in Sources */,
 				734A46862F67F4C900455F6A /* LoginViewController.swift in Sources */,
