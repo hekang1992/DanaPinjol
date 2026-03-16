@@ -33,7 +33,7 @@ class URLParameterHelper {
         ]
     }
     
-    func getURLQueryString(sessionId: String = "") -> String {
+    func getURLQueryString() -> String {
         let params = getAllParameters()
         return params.map { "\($0.key)=\($0.value.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")" }
             .joined(separator: "&")
