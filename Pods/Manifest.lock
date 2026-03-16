@@ -13,6 +13,7 @@ PODS:
   - Kingfisher (8.6.2)
   - MJRefresh (3.7.9)
   - SnapKit (5.7.1)
+  - Toast-Swift (5.1.1)
   - TYAlertController (1.2.0)
 
 DEPENDENCIES:
@@ -25,6 +26,7 @@ DEPENDENCIES:
   - Kingfisher
   - MJRefresh
   - SnapKit
+  - Toast-Swift
   - TYAlertController
 
 SPEC REPOS:
@@ -40,6 +42,7 @@ SPEC REPOS:
     - Kingfisher
     - MJRefresh
     - SnapKit
+    - Toast-Swift
     - TYAlertController
 
 SPEC CHECKSUMS:
@@ -54,8 +57,9 @@ SPEC CHECKSUMS:
   Kingfisher: 23d18f54677d973b713e54ce6a8f5eef6e7056ba
   MJRefresh: ff9e531227924c84ce459338414550a05d2aea78
   SnapKit: d612e99e678a2d3b95bf60b0705ed0a35c03484a
+  Toast-Swift: 7a03a532afe3a560d4044bc7c237e2864d295173
   TYAlertController: c121090edb0bea7426f987da94cdddd81eef4231
 
-PODFILE CHECKSUM: 59dc56c1624540323d42f69ddc5b0844f1e87a6f
+PODFILE CHECKSUM: 72f9a9036c7160f2ae6570320afd314735b631e0
 
 COCOAPODS: 1.16.2

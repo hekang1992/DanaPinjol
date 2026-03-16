@@ -10,9 +10,18 @@ import SnapKit
 import Combine
 import CombineCocoa
 
+enum LoginClickType: String {
+    case back_info = "1"
+    case policy_info
+    case code_info
+    case login_info
+}
+
 class LoginView: BaseView {
     
-    var backBlock: (() -> Void)?
+    var clickBtnBlock: ((LoginClickType) -> Void)?
+    
+    @Published var isGrand: Bool = true
     
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
@@ -117,6 +126,7 @@ class LoginView: BaseView {
         clickCycleBtn.setImage(UIImage(named: "po_nor_image"), for: .normal)
         clickCycleBtn.setImage(UIImage(named: "po_sel_image"), for: .selected)
         clickCycleBtn.isSelected = true
+        clickCycleBtn.adjustsImageWhenHighlighted = false
         return clickCycleBtn
     }()
     
@@ -158,7 +168,7 @@ class LoginView: BaseView {
         }
         
         oneImageView.snp.makeConstraints { make in
-            make.top.equalTo(backBtn.snp.bottom).offset(80)
+            make.top.equalTo(backBtn.snp.bottom).offset(110.pix())
             make.left.equalToSuperview().offset(30)
             make.height.equalTo(44)
         }
@@ -224,11 +234,8 @@ class LoginView: BaseView {
         }
         
         policyBtn.snp.makeConstraints { make in
-            make.top.equalTo(loginBtn.snp.bottom).offset(30)
-        }
-        
-        policyBtn.snp.makeConstraints { make in
-            
+            make.centerY.equalTo(clickCycleBtn)
+            make.left.equalTo(clickCycleBtn.snp.right).offset(6)
         }
         
         bindTap()
@@ -247,10 +254,42 @@ extension LoginView {
             .tapPublisher
             .debounce(for: .seconds(0.25), scheduler: DispatchQueue.main)
             .sink { [weak self] _ in
-                self?.backBlock?()
+                self?.clickBtnBlock?(.back_info)
             }
             .store(in: &cancellables)
         
+        policyBtn
+            .tapPublisher
+            .debounce(for: .seconds(0.25), scheduler: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.clickBtnBlock?(.policy_info)
+            }
+            .store(in: &cancellables)
+        
+        clickCycleBtn
+            .tapPublisher
+            .debounce(for: .seconds(0.25), scheduler: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.clickCycleBtn.isSelected.toggle()
+                self?.isGrand = self?.clickCycleBtn.isSelected ?? true
+            }
+            .store(in: &cancellables)
+        
+        codeBtn
+            .tapPublisher
+            .debounce(for: .seconds(0.25), scheduler: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.clickBtnBlock?(.code_info)
+            }
+            .store(in: &cancellables)
+        
+        loginBtn
+            .tapPublisher
+            .debounce(for: .seconds(0.25), scheduler: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.clickBtnBlock?(.login_info)
+            }
+            .store(in: &cancellables)
     }
     
 }

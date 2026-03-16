@@ -14,6 +14,7 @@ target 'DanaPinjol' do
   pod 'MJRefresh'
   pod 'Kingfisher'
   pod 'Alamofire'
+  pod 'Toast-Swift'
   pod 'CombineCocoa'
   pod 'KeychainSwift'
   

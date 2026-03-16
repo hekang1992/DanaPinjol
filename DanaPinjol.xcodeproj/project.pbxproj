@@ -38,6 +38,9 @@
 		734A468C2F67FBD700455F6A /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A468B2F67FBD700455F6A /* LoginManager.swift */; };
 		734A468E2F67FEAB00455F6A /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A468D2F67FEAB00455F6A /* LanguageManager.swift */; };
 		734A46912F68032200455F6A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 734A468F2F68032200455F6A /* Localizable.strings */; };
+		734A46942F68447400455F6A /* ToastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A46932F68447400455F6A /* ToastManager.swift */; };
+		734A46962F68459C00455F6A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A46952F68459600455F6A /* LoginViewModel.swift */; };
+		734A46982F6845A900455F6A /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A46972F68459F00455F6A /* LoginService.swift */; };
 		A6A664F8C16949DF087E8939 /* Pods_DanaPinjol.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC2F7CD723FF0644822093C /* Pods_DanaPinjol.framework */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +82,9 @@
 		734A468D2F67FEAB00455F6A /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
 		734A46902F68032200455F6A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		734A46922F68033F00455F6A /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
+		734A46932F68447400455F6A /* ToastManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastManager.swift; sourceTree = "<group>"; };
+		734A46952F68459600455F6A /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		734A46972F68459F00455F6A /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		7CC2F7CD723FF0644822093C /* Pods_DanaPinjol.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DanaPinjol.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -158,6 +164,8 @@
 		734A46472F67B10B00455F6A /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				734A46972F68459F00455F6A /* LoginService.swift */,
+				734A46952F68459600455F6A /* LoginViewModel.swift */,
 				734A468B2F67FBD700455F6A /* LoginManager.swift */,
 				734A46872F67F4D700455F6A /* LoginView.swift */,
 				734A46852F67F4C900455F6A /* LoginViewController.swift */,
@@ -227,6 +235,7 @@
 		734A464E2F67B12B00455F6A /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				734A46932F68447400455F6A /* ToastManager.swift */,
 				734A46892F67F99D00455F6A /* Untitled.swift */,
 			);
 			path = Other;
@@ -426,6 +435,8 @@
 				734A468C2F67FBD700455F6A /* LoginManager.swift in Sources */,
 				734A467C2F67D8C100455F6A /* ProductViewModel.swift in Sources */,
 				734A466B2F67D81D00455F6A /* HomeViewController.swift in Sources */,
+				734A46962F68459C00455F6A /* LoginViewModel.swift in Sources */,
+				734A46982F6845A900455F6A /* LoginService.swift in Sources */,
 				734A46712F67D83500455F6A /* ProductViewController.swift in Sources */,
 				734A46502F67B3F500455F6A /* BaseView.swift in Sources */,
 				734A467E2F67D8D300455F6A /* ProductService.swift in Sources */,
@@ -439,6 +450,7 @@
 				734A46562F67B42100455F6A /* BaseNavigationController.swift in Sources */,
 				734A46522F67B40400455F6A /* BaseViewController.swift in Sources */,
 				734A46582F67B68900455F6A /* URLParameterHelper.swift in Sources */,
+				734A46942F68447400455F6A /* ToastManager.swift in Sources */,
 				734A46822F67D8EB00455F6A /* FaceViewModel.swift in Sources */,
 				734A46802F67D8E300455F6A /* FaceViewController.swift in Sources */,
 				734A466F2F67D82B00455F6A /* MineViewController.swift in Sources */,
