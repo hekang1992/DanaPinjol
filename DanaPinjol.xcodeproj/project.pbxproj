@@ -23,6 +23,15 @@
 		734A46652F67CF4800455F6A /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A46642F67CF4000455F6A /* SplashViewModel.swift */; };
 		734A46672F67CF8B00455F6A /* SplashService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A46662F67CF8100455F6A /* SplashService.swift */; };
 		734A46692F67D30A00455F6A /* NetworkProxyChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A46682F67D30A00455F6A /* NetworkProxyChecker.swift */; };
+		734A466B2F67D81D00455F6A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A466A2F67D81D00455F6A /* HomeViewController.swift */; };
+		734A466D2F67D82500455F6A /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A466C2F67D82500455F6A /* OrderViewController.swift */; };
+		734A466F2F67D82B00455F6A /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A466E2F67D82B00455F6A /* MineViewController.swift */; };
+		734A46712F67D83500455F6A /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A46702F67D83500455F6A /* ProductViewController.swift */; };
+		734A467C2F67D8C100455F6A /* ProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A467B2F67D8B900455F6A /* ProductViewModel.swift */; };
+		734A467E2F67D8D300455F6A /* ProductService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A467D2F67D8CB00455F6A /* ProductService.swift */; };
+		734A46802F67D8E300455F6A /* FaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A467F2F67D8E300455F6A /* FaceViewController.swift */; };
+		734A46822F67D8EB00455F6A /* FaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A46812F67D8E600455F6A /* FaceViewModel.swift */; };
+		734A46842F67D8F400455F6A /* FaceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A46832F67D8EE00455F6A /* FaceService.swift */; };
 		A6A664F8C16949DF087E8939 /* Pods_DanaPinjol.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC2F7CD723FF0644822093C /* Pods_DanaPinjol.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +57,15 @@
 		734A46642F67CF4000455F6A /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		734A46662F67CF8100455F6A /* SplashService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashService.swift; sourceTree = "<group>"; };
 		734A46682F67D30A00455F6A /* NetworkProxyChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProxyChecker.swift; sourceTree = "<group>"; };
+		734A466A2F67D81D00455F6A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		734A466C2F67D82500455F6A /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
+		734A466E2F67D82B00455F6A /* MineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineViewController.swift; sourceTree = "<group>"; };
+		734A46702F67D83500455F6A /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
+		734A467B2F67D8B900455F6A /* ProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewModel.swift; sourceTree = "<group>"; };
+		734A467D2F67D8CB00455F6A /* ProductService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductService.swift; sourceTree = "<group>"; };
+		734A467F2F67D8E300455F6A /* FaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceViewController.swift; sourceTree = "<group>"; };
+		734A46812F67D8E600455F6A /* FaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceViewModel.swift; sourceTree = "<group>"; };
+		734A46832F67D8EE00455F6A /* FaceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceService.swift; sourceTree = "<group>"; };
 		7CC2F7CD723FF0644822093C /* Pods_DanaPinjol.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DanaPinjol.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -133,6 +151,7 @@
 		734A46482F67B10E00455F6A /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				734A466A2F67D81D00455F6A /* HomeViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -140,6 +159,7 @@
 		734A46492F67B12800455F6A /* Order */ = {
 			isa = PBXGroup;
 			children = (
+				734A466C2F67D82500455F6A /* OrderViewController.swift */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -147,6 +167,7 @@
 		734A464A2F67B12900455F6A /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				734A466E2F67D82B00455F6A /* MineViewController.swift */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -154,6 +175,12 @@
 		734A464B2F67B12A00455F6A /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				734A46722F67D83B00455F6A /* Face */,
+				734A46732F67D84300455F6A /* Personal */,
+				734A46742F67D84700455F6A /* Work */,
+				734A46772F67D84B00455F6A /* Contact */,
+				734A46782F67D84C00455F6A /* Bank */,
+				734A467A2F67D85100455F6A /* H5Web */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -161,6 +188,9 @@
 		734A464C2F67B12A00455F6A /* Product */ = {
 			isa = PBXGroup;
 			children = (
+				734A467D2F67D8CB00455F6A /* ProductService.swift */,
+				734A467B2F67D8B900455F6A /* ProductViewModel.swift */,
+				734A46702F67D83500455F6A /* ProductViewController.swift */,
 			);
 			path = Product;
 			sourceTree = "<group>";
@@ -193,6 +223,51 @@
 				734A46682F67D30A00455F6A /* NetworkProxyChecker.swift */,
 			);
 			path = Splash;
+			sourceTree = "<group>";
+		};
+		734A46722F67D83B00455F6A /* Face */ = {
+			isa = PBXGroup;
+			children = (
+				734A46832F67D8EE00455F6A /* FaceService.swift */,
+				734A46812F67D8E600455F6A /* FaceViewModel.swift */,
+				734A467F2F67D8E300455F6A /* FaceViewController.swift */,
+			);
+			path = Face;
+			sourceTree = "<group>";
+		};
+		734A46732F67D84300455F6A /* Personal */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Personal;
+			sourceTree = "<group>";
+		};
+		734A46742F67D84700455F6A /* Work */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Work;
+			sourceTree = "<group>";
+		};
+		734A46772F67D84B00455F6A /* Contact */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Contact;
+			sourceTree = "<group>";
+		};
+		734A46782F67D84C00455F6A /* Bank */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Bank;
+			sourceTree = "<group>";
+		};
+		734A467A2F67D85100455F6A /* H5Web */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = H5Web;
 			sourceTree = "<group>";
 		};
 		758CC546547ADAD7FF5C4684 /* Frameworks */ = {
@@ -327,15 +402,24 @@
 				7341DEB22F67AE2F008D4C83 /* AppDelegate.swift in Sources */,
 				734A46652F67CF4800455F6A /* SplashViewModel.swift in Sources */,
 				734A465A2F67C70500455F6A /* BaseModel.swift in Sources */,
+				734A467C2F67D8C100455F6A /* ProductViewModel.swift in Sources */,
+				734A466B2F67D81D00455F6A /* HomeViewController.swift in Sources */,
+				734A46712F67D83500455F6A /* ProductViewController.swift in Sources */,
 				734A46502F67B3F500455F6A /* BaseView.swift in Sources */,
+				734A467E2F67D8D300455F6A /* ProductService.swift in Sources */,
 				734A465C2F67C77E00455F6A /* NetworkManager.swift in Sources */,
 				734A46692F67D30A00455F6A /* NetworkProxyChecker.swift in Sources */,
+				734A46842F67D8F400455F6A /* FaceService.swift in Sources */,
 				734A46562F67B42100455F6A /* BaseNavigationController.swift in Sources */,
 				734A46522F67B40400455F6A /* BaseViewController.swift in Sources */,
 				734A46582F67B68900455F6A /* URLParameterHelper.swift in Sources */,
+				734A46822F67D8EB00455F6A /* FaceViewModel.swift in Sources */,
+				734A46802F67D8E300455F6A /* FaceViewController.swift in Sources */,
+				734A466F2F67D82B00455F6A /* MineViewController.swift in Sources */,
 				734A465E2F67CBF600455F6A /* LoadingView.swift in Sources */,
 				734A46672F67CF8B00455F6A /* SplashService.swift in Sources */,
 				734A46602F67CC6500455F6A /* SplashViewController.swift in Sources */,
+				734A466D2F67D82500455F6A /* OrderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -62,6 +62,20 @@ extension SplashViewController {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] model in
                 guard let self, let model else { return }
+                let lentfier = model.lentfier ?? ""
+                if lentfier == "0" || lentfier == "00" {
+                    if let marketModel = model.cylind?.discussship {
+                        self.uploadMarket(model: marketModel)
+                    }
+                    NotificationCenter.default.post(name: CHANGE_ROOT_VC, object: nil)
+                }
+            }
+            .store(in: &cancellables)
+        
+        viewModel.$errorMsg
+            .receive(on: DispatchQueue.main)
+            .sink { _ in
+                
             }
             .store(in: &cancellables)
         
@@ -82,6 +96,16 @@ extension SplashViewController {
 extension SplashViewController {
     
     private func uploadMarket(model: discussshipModel) {
+        
+        Settings.shared.displayName = model.naturalably ?? ""
+        Settings.shared.appURLSchemeSuffix = model.toughture ?? ""
+        Settings.shared.appID = model.myee ?? ""
+        Settings.shared.clientToken = model.trialition ?? ""
+        
+        ApplicationDelegate.shared.application(
+            UIApplication.shared,
+            didFinishLaunchingWithOptions: nil
+        )
         
     }
     
