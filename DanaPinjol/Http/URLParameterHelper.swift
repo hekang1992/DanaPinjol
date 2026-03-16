@@ -33,10 +33,24 @@ class URLParameterHelper {
         ]
     }
     
-    func getURLQueryString() -> String {
+    func getFullURL(baseURL: String) -> String {
+        
+        guard var components = URLComponents(string: baseURL) else {
+            return baseURL
+        }
+        
         let params = getAllParameters()
-        return params.map { "\($0.key)=\($0.value.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")" }
-            .joined(separator: "&")
+        
+        var queryItems = components.queryItems ?? []
+        
+        for (key, value) in params {
+            let item = URLQueryItem(name: key, value: "\(value)")
+            queryItems.append(item)
+        }
+        
+        components.queryItems = queryItems
+        
+        return components.url?.absoluteString ?? baseURL
     }
     
     private func getAppVersion() -> String {

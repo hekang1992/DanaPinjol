@@ -17,6 +17,12 @@
 		734A46582F67B68900455F6A /* URLParameterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A46572F67B68900455F6A /* URLParameterHelper.swift */; };
 		734A465A2F67C70500455F6A /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A46592F67C70300455F6A /* BaseModel.swift */; };
 		734A465C2F67C77E00455F6A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A465B2F67C77E00455F6A /* NetworkManager.swift */; };
+		734A465E2F67CBF600455F6A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A465D2F67CBF600455F6A /* LoadingView.swift */; };
+		734A46602F67CC6500455F6A /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A465F2F67CC6500455F6A /* SplashViewController.swift */; };
+		734A46622F67CCBB00455F6A /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A46612F67CCBB00455F6A /* NetworkMonitor.swift */; };
+		734A46652F67CF4800455F6A /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A46642F67CF4000455F6A /* SplashViewModel.swift */; };
+		734A46672F67CF8B00455F6A /* SplashService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A46662F67CF8100455F6A /* SplashService.swift */; };
+		734A46692F67D30A00455F6A /* NetworkProxyChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A46682F67D30A00455F6A /* NetworkProxyChecker.swift */; };
 		A6A664F8C16949DF087E8939 /* Pods_DanaPinjol.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC2F7CD723FF0644822093C /* Pods_DanaPinjol.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +42,12 @@
 		734A46572F67B68900455F6A /* URLParameterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParameterHelper.swift; sourceTree = "<group>"; };
 		734A46592F67C70300455F6A /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		734A465B2F67C77E00455F6A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		734A465D2F67CBF600455F6A /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		734A465F2F67CC6500455F6A /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		734A46612F67CCBB00455F6A /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		734A46642F67CF4000455F6A /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
+		734A46662F67CF8100455F6A /* SplashService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashService.swift; sourceTree = "<group>"; };
+		734A46682F67D30A00455F6A /* NetworkProxyChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProxyChecker.swift; sourceTree = "<group>"; };
 		7CC2F7CD723FF0644822093C /* Pods_DanaPinjol.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DanaPinjol.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -94,6 +106,7 @@
 				734A46492F67B12800455F6A /* Order */,
 				734A46482F67B10E00455F6A /* Home */,
 				734A46472F67B10B00455F6A /* Login */,
+				734A46632F67CF3100455F6A /* Splash */,
 				734A46462F67B10400455F6A /* Base */,
 			);
 			path = DanaPinjol;
@@ -155,8 +168,10 @@
 		734A464D2F67B12B00455F6A /* Http */ = {
 			isa = PBXGroup;
 			children = (
-				734A465B2F67C77E00455F6A /* NetworkManager.swift */,
+				734A46612F67CCBB00455F6A /* NetworkMonitor.swift */,
+				734A465D2F67CBF600455F6A /* LoadingView.swift */,
 				734A46592F67C70300455F6A /* BaseModel.swift */,
+				734A465B2F67C77E00455F6A /* NetworkManager.swift */,
 				734A46572F67B68900455F6A /* URLParameterHelper.swift */,
 			);
 			path = Http;
@@ -167,6 +182,17 @@
 			children = (
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		734A46632F67CF3100455F6A /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				734A46662F67CF8100455F6A /* SplashService.swift */,
+				734A46642F67CF4000455F6A /* SplashViewModel.swift */,
+				734A465F2F67CC6500455F6A /* SplashViewController.swift */,
+				734A46682F67D30A00455F6A /* NetworkProxyChecker.swift */,
+			);
+			path = Splash;
 			sourceTree = "<group>";
 		};
 		758CC546547ADAD7FF5C4684 /* Frameworks */ = {
@@ -296,14 +322,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				734A46622F67CCBB00455F6A /* NetworkMonitor.swift in Sources */,
 				734A46542F67B41500455F6A /* BaseTabBarController.swift in Sources */,
 				7341DEB22F67AE2F008D4C83 /* AppDelegate.swift in Sources */,
+				734A46652F67CF4800455F6A /* SplashViewModel.swift in Sources */,
 				734A465A2F67C70500455F6A /* BaseModel.swift in Sources */,
 				734A46502F67B3F500455F6A /* BaseView.swift in Sources */,
 				734A465C2F67C77E00455F6A /* NetworkManager.swift in Sources */,
+				734A46692F67D30A00455F6A /* NetworkProxyChecker.swift in Sources */,
 				734A46562F67B42100455F6A /* BaseNavigationController.swift in Sources */,
 				734A46522F67B40400455F6A /* BaseViewController.swift in Sources */,
 				734A46582F67B68900455F6A /* URLParameterHelper.swift in Sources */,
+				734A465E2F67CBF600455F6A /* LoadingView.swift in Sources */,
+				734A46672F67CF8B00455F6A /* SplashService.swift in Sources */,
+				734A46602F67CC6500455F6A /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,9 @@
 
 import Alamofire
 
+let h5_url = "http://8.215.5.252:11303"
+let base_url = "http://8.215.5.252:11303/aah"
+
 final class NetworkManager {
     
     static let shared = NetworkManager()
@@ -35,9 +38,11 @@ extension NetworkManager {
         parameters: [String: Any]? = nil
     ) async throws -> T {
         
+        let apiUrl = URLParameterHelper.shared.getFullURL(baseURL: base_url + url)
+        
         let data = try await getSession
             .request(
-                url,
+                apiUrl,
                 method: .get,
                 parameters: parameters
             )
@@ -57,6 +62,8 @@ extension NetworkManager {
         parameters: [String: Any]
     ) async throws -> T {
         
+        let apiUrl = URLParameterHelper.shared.getFullURL(baseURL: base_url + url)
+        
         let data = try await postSession
             .upload(
                 multipartFormData: { multipart in
@@ -67,7 +74,7 @@ extension NetworkManager {
                     }
                     
                 },
-                to: url
+                to: apiUrl
             )
             .validate()
             .serializingData()
@@ -86,6 +93,8 @@ extension NetworkManager {
         parameters: [String: Any]? = nil
     ) async throws -> T {
         
+        let apiUrl = URLParameterHelper.shared.getFullURL(baseURL: base_url + url)
+        
         let data = try await postSession
             .upload(
                 multipartFormData: { multipart in
@@ -99,13 +108,13 @@ extension NetworkManager {
                     
                     multipart.append(
                         imageData,
-                        withName: "file",
+                        withName: "senhimture",
                         fileName: "image.jpg",
                         mimeType: "image/jpeg"
                     )
                     
                 },
-                to: url
+                to: apiUrl
             )
             .validate()
             .serializingData()
