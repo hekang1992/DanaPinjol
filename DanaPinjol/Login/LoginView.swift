@@ -252,7 +252,7 @@ extension LoginView {
         
         backBtn
             .tapPublisher
-            .debounce(for: .seconds(0.25), scheduler: DispatchQueue.main)
+            .debounce(for: .seconds(0.2), scheduler: DispatchQueue.main)
             .sink { [weak self] _ in
                 self?.clickBtnBlock?(.back_info)
             }
@@ -260,7 +260,7 @@ extension LoginView {
         
         policyBtn
             .tapPublisher
-            .debounce(for: .seconds(0.25), scheduler: DispatchQueue.main)
+            .debounce(for: .seconds(0.2), scheduler: DispatchQueue.main)
             .sink { [weak self] _ in
                 self?.clickBtnBlock?(.policy_info)
             }
@@ -268,7 +268,7 @@ extension LoginView {
         
         clickCycleBtn
             .tapPublisher
-            .debounce(for: .seconds(0.25), scheduler: DispatchQueue.main)
+            .debounce(for: .seconds(0.2), scheduler: DispatchQueue.main)
             .sink { [weak self] _ in
                 self?.clickCycleBtn.isSelected.toggle()
                 self?.isGrand = self?.clickCycleBtn.isSelected ?? true
@@ -277,7 +277,7 @@ extension LoginView {
         
         codeBtn
             .tapPublisher
-            .debounce(for: .seconds(0.25), scheduler: DispatchQueue.main)
+            .debounce(for: .seconds(0.2), scheduler: DispatchQueue.main)
             .sink { [weak self] _ in
                 self?.clickBtnBlock?(.code_info)
             }
@@ -285,7 +285,7 @@ extension LoginView {
         
         loginBtn
             .tapPublisher
-            .debounce(for: .seconds(0.25), scheduler: DispatchQueue.main)
+            .debounce(for: .seconds(0.2), scheduler: DispatchQueue.main)
             .sink { [weak self] _ in
                 self?.clickBtnBlock?(.login_info)
             }

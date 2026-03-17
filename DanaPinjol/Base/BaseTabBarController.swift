@@ -12,6 +12,7 @@ class BaseTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
+//        tabBar.backgroundColor = .systemBackground
         setupViewControllers()
     }
     

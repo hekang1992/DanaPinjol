@@ -26,7 +26,7 @@ class URLParameterHelper {
             "oedern": getDeviceName(),
             "ethmsure": IDFVHelper.getStoredIDFV(),
             "sponsparentful": getOSVersion(),
-            "howfier": "",
+            "howfier": LoginManager.shared.getToken() ?? "",
             "rogfication": IDFVHelper.getStoredIDFV(),
             "probablyar": getCurrentLanguage(),
             "lucidite": IDFVHelper.getIDFA()
@@ -66,7 +66,7 @@ class URLParameterHelper {
     }
     
     private func getCurrentLanguage() -> String {
-        return ""
+        return LanguageManager.shared.getCurrentLanguageCode()
     }
     
 }

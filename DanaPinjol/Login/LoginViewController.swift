@@ -25,10 +25,20 @@ class LoginViewController: BaseViewController {
         return loginView
     }()
     
+    lazy var bgImageView: UIImageView = {
+        let bgImageView = UIImageView()
+        bgImageView.image = UIImage(named: "app_bg_image")
+        bgImageView.contentMode = .scaleAspectFill
+        return bgImageView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = UIColor.init(hexString: "#F9F9F9")
+                
+        view.addSubview(bgImageView)
+        bgImageView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
         
         view.addSubview(loginView)
         
@@ -41,6 +51,8 @@ class LoginViewController: BaseViewController {
             switch type {
             case .back_info:
                 self.dismiss(animated: true)
+                self.loginView.phoneTextFiled.resignFirstResponder()
+                self.loginView.codeTextFiled.resignFirstResponder()
                 
             case .policy_info:
                 ToastWindowManager.showMessage("policy_info")

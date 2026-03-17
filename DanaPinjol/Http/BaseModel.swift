@@ -35,6 +35,7 @@ class cylindModel: Codable {
     var howfier: String?
     var relatesion: String?
     var discussship: discussshipModel?
+    var stinguence: [stinguenceModel]?
 }
 
 class discussshipModel: Codable {
@@ -42,4 +43,10 @@ class discussshipModel: Codable {
     var trialition: String?
     var naturalably: String?
     var toughture: String?
+}
+
+class stinguenceModel: Codable {
+    var hetercarryar: String?
+    var silvi: String?
+    var norster: String?
 }
