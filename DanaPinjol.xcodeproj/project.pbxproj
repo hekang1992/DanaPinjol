@@ -53,6 +53,11 @@
 		73671D692F691AE700160E3B /* AppHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73671D682F691AE700160E3B /* AppHeadView.swift */; };
 		73671D6B2F692B1200160E3B /* MineLogoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73671D6A2F692B1200160E3B /* MineLogoutView.swift */; };
 		73671D6D2F692B1D00160E3B /* MineDeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73671D6C2F692B1D00160E3B /* MineDeleteView.swift */; };
+		73671D6F2F693B0000160E3B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73671D6E2F693B0000160E3B /* HomeView.swift */; };
+		73671D712F693B0900160E3B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73671D702F693B0900160E3B /* MainView.swift */; };
+		73671D732F693D4F00160E3B /* HomeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73671D722F693D4F00160E3B /* HomeCardView.swift */; };
+		73671D792F69419B00160E3B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73671D782F69419700160E3B /* HomeViewModel.swift */; };
+		73671D7B2F6941A300160E3B /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73671D7A2F69419F00160E3B /* HomeService.swift */; };
 		A6A664F8C16949DF087E8939 /* Pods_DanaPinjol.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC2F7CD723FF0644822093C /* Pods_DanaPinjol.framework */; };
 /* End PBXBuildFile section */
 
@@ -109,6 +114,11 @@
 		73671D682F691AE700160E3B /* AppHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHeadView.swift; sourceTree = "<group>"; };
 		73671D6A2F692B1200160E3B /* MineLogoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineLogoutView.swift; sourceTree = "<group>"; };
 		73671D6C2F692B1D00160E3B /* MineDeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineDeleteView.swift; sourceTree = "<group>"; };
+		73671D6E2F693B0000160E3B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		73671D702F693B0900160E3B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		73671D722F693D4F00160E3B /* HomeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCardView.swift; sourceTree = "<group>"; };
+		73671D782F69419700160E3B /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		73671D7A2F69419F00160E3B /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
 		7CC2F7CD723FF0644822093C /* Pods_DanaPinjol.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DanaPinjol.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -200,7 +210,9 @@
 		734A46482F67B10E00455F6A /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				734A466A2F67D81D00455F6A /* HomeViewController.swift */,
+				73671D742F693FA900160E3B /* ViewModel */,
+				73671D762F693FCD00160E3B /* HomeView */,
+				73671D772F693FD100160E3B /* Controller */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -358,6 +370,33 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		73671D742F693FA900160E3B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				73671D7A2F69419F00160E3B /* HomeService.swift */,
+				73671D782F69419700160E3B /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		73671D762F693FCD00160E3B /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				73671D702F693B0900160E3B /* MainView.swift */,
+				73671D6E2F693B0000160E3B /* HomeView.swift */,
+				73671D722F693D4F00160E3B /* HomeCardView.swift */,
+			);
+			path = HomeView;
+			sourceTree = "<group>";
+		};
+		73671D772F693FD100160E3B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				734A466A2F67D81D00455F6A /* HomeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		758CC546547ADAD7FF5C4684 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -492,6 +531,8 @@
 				7341DEB22F67AE2F008D4C83 /* AppDelegate.swift in Sources */,
 				734A46652F67CF4800455F6A /* SplashViewModel.swift in Sources */,
 				734A465A2F67C70500455F6A /* BaseModel.swift in Sources */,
+				73671D6F2F693B0000160E3B /* HomeView.swift in Sources */,
+				73671D7B2F6941A300160E3B /* HomeService.swift in Sources */,
 				734A468C2F67FBD700455F6A /* LoginManager.swift in Sources */,
 				73671D6D2F692B1D00160E3B /* MineDeleteView.swift in Sources */,
 				73671D652F6919E000160E3B /* H5WebViewController.swift in Sources */,
@@ -514,18 +555,21 @@
 				734A46842F67D8F400455F6A /* FaceService.swift in Sources */,
 				73671D562F68E0AF00160E3B /* MineService.swift in Sources */,
 				73671D632F69192200160E3B /* SettingsViewController.swift in Sources */,
+				73671D712F693B0900160E3B /* MainView.swift in Sources */,
 				734A46562F67B42100455F6A /* BaseNavigationController.swift in Sources */,
 				734A46522F67B40400455F6A /* BaseViewController.swift in Sources */,
 				73671D5D2F68EE9D00160E3B /* MineListView.swift in Sources */,
 				734A46582F67B68900455F6A /* URLParameterHelper.swift in Sources */,
 				73671D612F6918CF00160E3B /* MorningyRouter.swift in Sources */,
 				734A46942F68447400455F6A /* ToastManager.swift in Sources */,
+				73671D732F693D4F00160E3B /* HomeCardView.swift in Sources */,
 				73671D692F691AE700160E3B /* AppHeadView.swift in Sources */,
 				734A46822F67D8EB00455F6A /* FaceViewModel.swift in Sources */,
 				73671D582F68E8D600160E3B /* MineOrderView.swift in Sources */,
 				734A46802F67D8E300455F6A /* FaceViewController.swift in Sources */,
 				734A466F2F67D82B00455F6A /* MineViewController.swift in Sources */,
 				73671D5F2F68F01F00160E3B /* MineToolsView.swift in Sources */,
+				73671D792F69419B00160E3B /* HomeViewModel.swift in Sources */,
 				734A465E2F67CBF600455F6A /* LoadingView.swift in Sources */,
 				734A46672F67CF8B00455F6A /* SplashService.swift in Sources */,
 				734A46602F67CC6500455F6A /* SplashViewController.swift in Sources */,
