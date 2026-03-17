@@ -17,11 +17,13 @@ class HomeViewController: BaseViewController {
     
     lazy var homeView: HomeView = {
         let homeView = HomeView(frame: .zero)
+        homeView.isHidden = true
         return homeView
     }()
     
     lazy var mainView: MainView = {
         let mainView = MainView(frame: .zero)
+        mainView.isHidden = true
         return mainView
     }()
     
@@ -30,6 +32,11 @@ class HomeViewController: BaseViewController {
         view.addSubview(homeView)
         
         homeView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        view.addSubview(mainView)
+        mainView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
         
@@ -59,6 +66,17 @@ extension HomeViewController {
                 let lentfier = model.lentfier ?? ""
                 if lentfier == "0" || lentfier == "00" {
                     
+                    if let listArray = model.cylind?.actuallyify {
+                        if let targetItem = listArray.first(where: { $0.pathyish == "ficiy" }) {
+                            if let oesophaglessArray = targetItem.oesophagless {
+                                self.homeView.isHidden = false
+                                self.mainView.isHidden = true
+                            }
+                        } else {
+                            self.homeView.isHidden = true
+                            self.mainView.isHidden = false
+                        }
+                    }
                 }
                 self.homeView.scrollView.mj_header?.endRefreshing()
             }

@@ -30,7 +30,7 @@ class HomeCardView: BaseView {
         let logoImageView = UIImageView()
         logoImageView.layer.cornerRadius = 5
         logoImageView.layer.masksToBounds = true
-        return bgImageView
+        return logoImageView
     }()
     
     lazy var nameLabel: UILabel = {
@@ -44,16 +44,21 @@ class HomeCardView: BaseView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(bgImageView)
+        
         bgImageView.addSubview(logoImageView)
+        
         bgImageView.addSubview(nameLabel)
+        
         bgImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        
         logoImageView.snp.makeConstraints { make in
             make.width.height.equalTo(28.pix())
             make.top.equalToSuperview().offset(16.pix())
             make.left.equalToSuperview().offset(19)
         }
+        
         nameLabel.snp.makeConstraints { make in
             make.centerY.equalTo(logoImageView)
             make.left.equalTo(logoImageView.snp.right).offset(5)
