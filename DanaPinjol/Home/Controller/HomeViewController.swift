@@ -71,6 +71,7 @@ extension HomeViewController {
                             if let oesophaglessArray = targetItem.oesophagless {
                                 self.homeView.isHidden = false
                                 self.mainView.isHidden = true
+                                self.homeView.cardModel = oesophaglessArray.first
                             }
                         } else {
                             self.homeView.isHidden = true

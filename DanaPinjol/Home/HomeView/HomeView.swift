@@ -10,6 +10,13 @@ import SnapKit
 
 class HomeView: BaseView {
     
+    var cardModel: oesophaglessModel? {
+        didSet {
+            guard let cardModel = cardModel else { return }
+            cardView.model = cardModel
+        }
+    }
+    
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
         bgImageView.image = UIImage(named: "app_bg_image")

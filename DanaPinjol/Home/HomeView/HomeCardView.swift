@@ -17,6 +17,15 @@ class HomeCardView: BaseView {
             let logoUrl = model.octaneous ?? ""
             logoImageView.kf.setImage(with: URL(string: logoUrl))
             nameLabel.text = model.cofilman ?? ""
+            descLabel.text = model.institutionance ?? ""
+            moneyLabel.text = model.economyical ?? ""
+            applyBtn.setTitle(model.termitmarketative ?? "", for: .normal)
+            
+            oneView.nameLabel.text = model.histriule ?? ""
+            oneView.numLabel.text = model.emeticad ?? ""
+            
+            twoView.nameLabel.text = model.figmost ?? ""
+            twoView.numLabel.text = model.themselveseur ?? ""
         }
     }
     
@@ -41,13 +50,51 @@ class HomeCardView: BaseView {
         return nameLabel
     }()
     
+    lazy var descLabel: UILabel = {
+        let descLabel = UILabel()
+        descLabel.textAlignment = .center
+        descLabel.textColor = UIColor.init(hexString: "#FFFFFF")
+        descLabel.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+        return descLabel
+    }()
+    
+    lazy var moneyLabel: UILabel = {
+        let moneyLabel = UILabel()
+        moneyLabel.textAlignment = .center
+        moneyLabel.textColor = UIColor.init(hexString: "#FFFFFF")
+        moneyLabel.font = UIFont.systemFont(ofSize: 48, weight: .bold)
+        return moneyLabel
+    }()
+    
+    lazy var applyBtn: UIButton = {
+        let applyBtn = UIButton(type: .custom)
+        applyBtn.setTitleColor(UIColor.init(hexString: "#082217"), for: .normal)
+        applyBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        applyBtn.setBackgroundImage(UIImage(named: "apply_click_image"), for: .normal)
+        return applyBtn
+    }()
+    
+    lazy var oneView: HomeListView = {
+        let oneView = HomeListView(frame: .zero)
+        return oneView
+    }()
+    
+    lazy var twoView: HomeListView = {
+        let twoView = HomeListView(frame: .zero)
+        return twoView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(bgImageView)
         
         bgImageView.addSubview(logoImageView)
-        
         bgImageView.addSubview(nameLabel)
+        bgImageView.addSubview(descLabel)
+        bgImageView.addSubview(moneyLabel)
+        bgImageView.addSubview(applyBtn)
+        bgImageView.addSubview(oneView)
+        bgImageView.addSubview(twoView)
         
         bgImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -63,6 +110,38 @@ class HomeCardView: BaseView {
             make.centerY.equalTo(logoImageView)
             make.left.equalTo(logoImageView.snp.right).offset(5)
             make.height.equalTo(20)
+        }
+        
+        descLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(60.pix())
+            make.centerX.equalToSuperview()
+            make.height.equalTo(14)
+        }
+        
+        moneyLabel.snp.makeConstraints { make in
+            make.top.equalTo(descLabel.snp.bottom).offset(14.pix())
+            make.centerX.equalToSuperview()
+            make.height.equalTo(40.pix())
+        }
+        
+        applyBtn.snp.makeConstraints { make in
+            make.top.equalTo(moneyLabel.snp.bottom).offset(35.pix())
+            make.size.equalTo(CGSize(width: 295.pix(), height: 48.pix()))
+            make.centerX.equalToSuperview()
+        }
+        
+        oneView.snp.makeConstraints { make in
+            make.top.equalTo(applyBtn.snp.bottom).offset(30)
+            make.height.equalTo(16.pix())
+            make.centerX.equalToSuperview()
+            make.left.equalToSuperview()
+        }
+        
+        twoView.snp.makeConstraints { make in
+            make.top.equalTo(oneView.snp.bottom).offset(10)
+            make.height.equalTo(16.pix())
+            make.centerX.equalToSuperview()
+            make.left.equalToSuperview()
         }
     }
     

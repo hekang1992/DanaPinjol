@@ -58,6 +58,7 @@
 		73671D732F693D4F00160E3B /* HomeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73671D722F693D4F00160E3B /* HomeCardView.swift */; };
 		73671D792F69419B00160E3B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73671D782F69419700160E3B /* HomeViewModel.swift */; };
 		73671D7B2F6941A300160E3B /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73671D7A2F69419F00160E3B /* HomeService.swift */; };
+		73671D7D2F69527800160E3B /* HomeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73671D7C2F69527800160E3B /* HomeListView.swift */; };
 		A6A664F8C16949DF087E8939 /* Pods_DanaPinjol.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC2F7CD723FF0644822093C /* Pods_DanaPinjol.framework */; };
 /* End PBXBuildFile section */
 
@@ -119,6 +120,7 @@
 		73671D722F693D4F00160E3B /* HomeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCardView.swift; sourceTree = "<group>"; };
 		73671D782F69419700160E3B /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		73671D7A2F69419F00160E3B /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
+		73671D7C2F69527800160E3B /* HomeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListView.swift; sourceTree = "<group>"; };
 		7CC2F7CD723FF0644822093C /* Pods_DanaPinjol.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DanaPinjol.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -385,6 +387,7 @@
 				73671D702F693B0900160E3B /* MainView.swift */,
 				73671D6E2F693B0000160E3B /* HomeView.swift */,
 				73671D722F693D4F00160E3B /* HomeCardView.swift */,
+				73671D7C2F69527800160E3B /* HomeListView.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -541,6 +544,7 @@
 				734A46962F68459C00455F6A /* LoginViewModel.swift in Sources */,
 				73671D542F68E0A500160E3B /* MineViewModel.swift in Sources */,
 				734A46982F6845A900455F6A /* LoginService.swift in Sources */,
+				73671D7D2F69527800160E3B /* HomeListView.swift in Sources */,
 				734A46712F67D83500455F6A /* ProductViewController.swift in Sources */,
 				734A46502F67B3F500455F6A /* BaseView.swift in Sources */,
 				734A467E2F67D8D300455F6A /* ProductService.swift in Sources */,
