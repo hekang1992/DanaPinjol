@@ -125,6 +125,7 @@ class SettingsViewController: BaseViewController {
         
         bindViewModel()
         
+        deleteBtn.isHidden = LanguageManager.shared.getCurrentLanguage() == .indonesian ? true : false
     }
     
 }
