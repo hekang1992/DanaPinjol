@@ -135,7 +135,7 @@ class MineView: BaseView {
         }
         
         orderListView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(15)
+            make.top.equalToSuperview().offset(20)
             make.left.right.equalToSuperview().inset(15)
             make.height.equalTo(202.pix())
         }

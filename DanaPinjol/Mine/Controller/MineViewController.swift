@@ -33,7 +33,8 @@ class MineViewController: BaseViewController {
         }
         
         mineView.tapBlock = { [weak self] pageUrl in
-            ToastWindowManager.showMessage(pageUrl)
+            guard let self = self else { return }
+            self.juduePageToVc(pageUrl)
         }
         
         bindViewModel()

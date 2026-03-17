@@ -31,7 +31,7 @@ class SplashViewController: BaseViewController {
         bindViewModel()
         
         Task { [weak self] in
-            try? await Task.sleep(nanoseconds: 500_000_000)
+            try? await Task.sleep(nanoseconds: 250_000_000)
             self?.monitorNetWorkInfo()
         }
         

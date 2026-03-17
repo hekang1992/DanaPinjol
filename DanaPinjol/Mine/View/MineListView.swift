@@ -44,6 +44,7 @@ class MineListView: BaseView {
         let iconImageView = UIImageView()
         iconImageView.layer.cornerRadius = 5
         iconImageView.layer.masksToBounds = true
+        iconImageView.contentMode = .scaleAspectFill
         return iconImageView
     }()
     
@@ -91,7 +92,6 @@ class MineListView: BaseView {
             make.edges.equalToSuperview()
         }
         
-        
         bindTap()
     }
     
@@ -107,8 +107,8 @@ extension MineListView {
         tapBtn
             .tapPublisher
             .sink { [weak self] _ in
-                guard let self, let model else { return }
-                let pageUrl = model.norster ?? ""
+                guard let self else { return }
+                let pageUrl = model?.norster ?? ""
                 self.tapBlock?(pageUrl)
             }
             .store(in: &cancellables)

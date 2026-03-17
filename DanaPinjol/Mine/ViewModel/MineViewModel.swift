@@ -28,5 +28,33 @@ class MineViewModel: ObservableObject {
         }
     }
     
+    func logoutInfo(parameters: [String: Any]) {
+        
+        Task {
+            do {
+                model = try await MineService.logoutInfo(parameters: parameters)
+                
+            } catch {
+                
+                errorMsg = error.localizedDescription
+                
+            }
+        }
+    }
+    
+    func deleteInfo(parameters: [String: Any]) {
+        
+        Task {
+            do {
+                model = try await MineService.deleteInfo(parameters: parameters)
+                
+            } catch {
+                
+                errorMsg = error.localizedDescription
+                
+            }
+        }
+    }
+    
     
 }

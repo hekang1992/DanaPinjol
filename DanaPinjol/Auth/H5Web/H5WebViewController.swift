@@ -1,15 +1,15 @@
 //
-//  ProductViewController.swift
+//  H5WebViewController.swift
 //  DanaPinjol
 //
-//  Created by hekang on 2026/3/16.
+//  Created by hekang on 2026/3/17.
 //
 
 import UIKit
 
-class ProductViewController: UIViewController {
+class H5WebViewController: BaseViewController {
     
-    var productId: String = ""
+    var pageUrl: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
