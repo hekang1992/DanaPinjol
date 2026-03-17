@@ -7,8 +7,12 @@
 
 import UIKit
 import SnapKit
+import Combine
+import CombineCocoa
 
 class HomeView: BaseView {
+    
+    var tapProductBlock: ((String) -> Void)?
     
     var cardModel: oesophaglessModel? {
         didSet {
@@ -78,6 +82,11 @@ class HomeView: BaseView {
         return indImageView
     }()
     
+    lazy var applyClickBtn: UIButton = {
+        let applyClickBtn = UIButton(type: .custom)
+        return applyClickBtn
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(bgImageView)
@@ -104,6 +113,7 @@ class HomeView: BaseView {
         
         contentView.addSubview(oneImageView)
         contentView.addSubview(cardView)
+        cardView.addSubview(applyClickBtn)
         
         oneImageView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
@@ -114,6 +124,9 @@ class HomeView: BaseView {
             make.top.equalTo(oneImageView.snp.bottom)
             make.centerX.equalToSuperview()
             make.size.equalTo(CGSize(width: 335.pix(), height: 295.pix()))
+        }
+        applyClickBtn.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
         
         if LanguageManager.shared.getCurrentLanguage() == .indonesian {
@@ -149,10 +162,26 @@ class HomeView: BaseView {
             }
         }
         
+        bindClickTap()
     }
     
     @MainActor required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+}
+
+extension HomeView {
+    
+    private func bindClickTap() {
+        applyClickBtn
+            .tapPublisher
+            .sink { [weak self] _ in
+                guard let self, let cardModel else { return }
+                let productId = String(cardModel.side ?? 0)
+                self.tapProductBlock?(productId)
+            }
+            .store(in: &cancellables)
     }
     
 }

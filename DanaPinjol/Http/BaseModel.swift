@@ -37,6 +37,7 @@ class cylindModel: Codable {
     var discussship: discussshipModel?
     var stinguence: [stinguenceModel]?
     var actuallyify: [actuallyifyModel]?
+    var thero: String?
 }
 
 class discussshipModel: Codable {

@@ -45,6 +45,11 @@ class HomeViewController: BaseViewController {
             self.homeInfo()
         })
         
+        homeView.tapProductBlock = { [weak self] productId in
+            guard let self = self else { return }
+            self.clickProductInfo(with: productId)
+        }
+        
         bindViewModel()
         
     }
@@ -65,18 +70,22 @@ extension HomeViewController {
                 guard let self, let model else { return }
                 let lentfier = model.lentfier ?? ""
                 if lentfier == "0" || lentfier == "00" {
-                    
-                    if let listArray = model.cylind?.actuallyify {
-                        if let targetItem = listArray.first(where: { $0.pathyish == "ficiy" }) {
-                            if let oesophaglessArray = targetItem.oesophagless {
-                                self.homeView.isHidden = false
-                                self.mainView.isHidden = true
-                                self.homeView.cardModel = oesophaglessArray.first
+                    if viewModel.action == .home_info {
+                        if let listArray = model.cylind?.actuallyify {
+                            if let targetItem = listArray.first(where: { $0.pathyish == "ficiy" }) {
+                                if let oesophaglessArray = targetItem.oesophagless {
+                                    self.homeView.isHidden = false
+                                    self.mainView.isHidden = true
+                                    self.homeView.cardModel = oesophaglessArray.first
+                                }
+                            } else {
+                                self.homeView.isHidden = true
+                                self.mainView.isHidden = false
                             }
-                        } else {
-                            self.homeView.isHidden = true
-                            self.mainView.isHidden = false
                         }
+                    }else {
+                        let pageUrl = model.cylind?.thero ?? ""
+                        self.juduePageToVc(pageUrl)
                     }
                 }
                 self.homeView.scrollView.mj_header?.endRefreshing()
@@ -97,4 +106,12 @@ extension HomeViewController {
         viewModel.homeInfo()
     }
     
+}
+
+extension HomeViewController {
+    
+    private func clickProductInfo(with productId: String) {
+        let parameters = ["allate": productId]
+        viewModel.homeClickInfo(parameters: parameters)
+    }
 }
