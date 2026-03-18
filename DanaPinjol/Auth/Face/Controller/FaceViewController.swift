@@ -10,6 +10,7 @@ import SnapKit
 import Combine
 import CombineCocoa
 import TYAlertController
+import MJRefresh
 
 class FaceViewController: BaseViewController {
     
@@ -20,7 +21,7 @@ class FaceViewController: BaseViewController {
         }
     }
     
-    private let viewModel = MineViewModel()
+    private let viewModel = FaceViewModel()
     
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
@@ -133,6 +134,15 @@ class FaceViewController: BaseViewController {
             .store(in: &cancellables)
         
         bindClickTap()
+        
+        findFaceinfo()
+        
+        bindViewModel()
+        
+        self.scrollView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
+            guard let self = self else { return }
+            findFaceinfo()
+        })
     }
     
 }
@@ -157,11 +167,149 @@ extension FaceViewController {
         
         oneListView.tapBlock = { [weak self] in
             guard let self = self else { return }
+            
+            let oneStr = viewModel.model?.cylind?.terraetic?.thero ?? ""
+            
+            let twoStr = viewModel.model?.cylind?.rockeur?.thero ?? ""
+            
+            if oneStr.isEmpty {
+                if LanguageManager.shared.getCurrentLanguage() == .indonesian {
+                    self.alertPopCardView()
+                }else {
+                    self.clickCamera()
+                }
+                return
+            }
+            
+            if twoStr.isEmpty {
+                if LanguageManager.shared.getCurrentLanguage() == .indonesian {
+                    self.alertPopFaceView()
+                }else {
+                    self.clickCamera()
+                }
+                return
+            }
+            
         }
         
         twoListView.tapBlock = { [weak self] in
             guard let self = self else { return }
+            
+            let oneStr = viewModel.model?.cylind?.terraetic?.thero ?? ""
+            
+            let twoStr = viewModel.model?.cylind?.rockeur?.thero ?? ""
+            
+            if oneStr.isEmpty {
+                if LanguageManager.shared.getCurrentLanguage() == .indonesian {
+                    self.alertPopCardView()
+                }else {
+                    self.clickCamera()
+                }
+                return
+            }
+            
+            if twoStr.isEmpty {
+                if LanguageManager.shared.getCurrentLanguage() == .indonesian {
+                    self.alertPopFaceView()
+                }else {
+                    self.clickCamera()
+                }
+                return
+            }
+            
         }
         
     }
+}
+
+extension FaceViewController {
+    
+    private func alertPopCardView() {
+        let popView = PopAlertCardView(frame: self.view.bounds)
+        popView.bgImageView.image = UIImage(named: "pop_ceard_image")
+        let alertVc = TYAlertController(alert: popView, preferredStyle: .alert)
+        self.present(alertVc!, animated: true)
+        
+        popView.cancelBlock = { [weak self] in
+            self?.dismiss(animated: true)
+        }
+        
+        popView.sureBlock = { [weak self] in
+            guard let self = self else { return }
+            self.dismiss(animated: true) {
+                self.clickCamera()
+            }
+        }
+    }
+    
+    private func alertPopFaceView() {
+        let popView = PopAlertCardView(frame: self.view.bounds)
+        popView.bgImageView.image = UIImage(named: "pop_cfd_image")
+        let alertVc = TYAlertController(alert: popView, preferredStyle: .alert)
+        self.present(alertVc!, animated: true)
+        
+        popView.cancelBlock = { [weak self] in
+            self?.dismiss(animated: true)
+        }
+        
+        popView.sureBlock = { [weak self] in
+            guard let self = self else { return }
+            self.dismiss(animated: true) {
+                self.clickCamera()
+            }
+        }
+    }
+    
+    private func clickCamera() {
+        CameraManager.shared.showCamera(from: self) { [weak self] imageData in
+            guard let self = self else { return }
+            if let imageData = imageData {
+                
+            } else {
+                
+            }
+        }
+    }
+    
+}
+
+extension FaceViewController {
+    
+    private func bindViewModel() {
+        viewModel.$model
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] model in
+                guard let self, let model else { return }
+                let lentfier = model.lentfier ?? ""
+                if lentfier == "0" || lentfier == "00" {
+                    let oneStr = model.cylind?.terraetic?.thero ?? ""
+                    let twoStr = model.cylind?.rockeur?.thero ?? ""
+                    
+                    if !oneStr.isEmpty {
+                        self.oneListView.logoImageView.image = UIImage(named: "scq_icon_image")
+                    }
+                    
+                    if !twoStr.isEmpty {
+                        self.twoListView.logoImageView.image = UIImage(named: "scq_icon_image")
+                    }
+                    
+                }
+                self.scrollView.mj_header?.endRefreshing()
+            }
+            .store(in: &cancellables)
+        
+        viewModel.$errorMsg
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                guard let self else { return }
+                self.scrollView.mj_header?.endRefreshing()
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func findFaceinfo() {
+        let parameters = ["allate": cylindModel?.seish?.side ?? ""]
+        viewModel.faceInfo(parameters: parameters)
+    }
+    
 }

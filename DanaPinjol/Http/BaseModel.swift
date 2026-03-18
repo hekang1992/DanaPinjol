@@ -41,6 +41,8 @@ class cylindModel: Codable {
     var seish: seishModel?
     var totalsome: [totalsomeModel]?
     var priviical: totalsomeModel?
+    var terraetic: terraeticModel?
+    var rockeur: terraeticModel?
 }
 
 class discussshipModel: Codable {
@@ -90,4 +92,8 @@ class totalsomeModel: Codable {
     var jug: Int?
     var medi: String?
     var tenacorium: String?
+}
+
+class terraeticModel: Codable {
+    var thero: String?
 }
