@@ -129,7 +129,7 @@ class FaceViewController: BaseViewController {
             .tapPublisher
             .sink { [weak self] _ in
                 guard let self else { return }
-                
+                self.chooseView()
             }
             .store(in: &cancellables)
         
@@ -167,62 +167,43 @@ extension FaceViewController {
         
         oneListView.tapBlock = { [weak self] in
             guard let self = self else { return }
-            
-            let oneStr = viewModel.model?.cylind?.terraetic?.thero ?? ""
-            
-            let twoStr = viewModel.model?.cylind?.rockeur?.thero ?? ""
-            
-            if oneStr.isEmpty {
-                if LanguageManager.shared.getCurrentLanguage() == .indonesian {
-                    self.alertPopCardView()
-                }else {
-                    self.clickCamera()
-                }
-                return
-            }
-            
-            if twoStr.isEmpty {
-                if LanguageManager.shared.getCurrentLanguage() == .indonesian {
-                    self.alertPopFaceView()
-                }else {
-                    self.clickCamera()
-                }
-                return
-            }
-            
+            self.chooseView()
         }
         
         twoListView.tapBlock = { [weak self] in
             guard let self = self else { return }
-            
-            let oneStr = viewModel.model?.cylind?.terraetic?.thero ?? ""
-            
-            let twoStr = viewModel.model?.cylind?.rockeur?.thero ?? ""
-            
-            if oneStr.isEmpty {
-                if LanguageManager.shared.getCurrentLanguage() == .indonesian {
-                    self.alertPopCardView()
-                }else {
-                    self.clickCamera()
-                }
-                return
-            }
-            
-            if twoStr.isEmpty {
-                if LanguageManager.shared.getCurrentLanguage() == .indonesian {
-                    self.alertPopFaceView()
-                }else {
-                    self.clickCamera()
-                }
-                return
-            }
-            
+            self.chooseView()
         }
         
     }
 }
 
 extension FaceViewController {
+    
+    private func chooseView() {
+        
+        let oneStr = viewModel.model?.cylind?.terraetic?.thero ?? ""
+        
+        let twoStr = viewModel.model?.cylind?.rockeur?.thero ?? ""
+        
+        if oneStr.isEmpty {
+            if LanguageManager.shared.getCurrentLanguage() == .indonesian {
+                self.alertPopCardView()
+            }else {
+                self.clickCamera()
+            }
+            return
+        }
+        
+        if twoStr.isEmpty {
+            if LanguageManager.shared.getCurrentLanguage() == .indonesian {
+                self.alertPopFaceView()
+            }else {
+                self.clickCamera()
+            }
+            return
+        }
+    }
     
     private func alertPopCardView() {
         let popView = PopAlertCardView(frame: self.view.bounds)

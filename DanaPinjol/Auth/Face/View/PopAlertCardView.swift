@@ -44,7 +44,7 @@ class PopAlertCardView: BaseView {
         cancelBtn.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview()
-            make.width.height.equalTo(15.pix())
+            make.width.height.equalTo(18.pix())
         }
         sureBtn.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
