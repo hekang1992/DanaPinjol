@@ -70,7 +70,6 @@ class CameraManager: NSObject {
     
     private func presentCamera() {
         guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
-            showSimulatorAlert()
             completionHandler?(nil)
             return
         }
@@ -124,24 +123,11 @@ class CameraManager: NSObject {
         presentingViewController?.present(alert, animated: true)
     }
     
-    private func showSimulatorAlert() {
-        let alert = UIAlertController(
-            title: "提示",
-            message: "当前设备不支持相机",
-            preferredStyle: .alert
-        )
-        
-        let okAction = UIAlertAction(title: "确定", style: .default)
-        alert.addAction(okAction)
-        
-        presentingViewController?.present(alert, animated: true)
-    }
-    
-    private func compressImageToData(_ image: UIImage, maxSizeKB: Int = 700) -> Data? {
+    private func compressImageToData(_ image: UIImage, maxSizeKB: Int = 500) -> Data? {
         let maxSizeBytes = maxSizeKB * 1024
         
         var compression: CGFloat = 0.8
-        guard var imageData = image.jpegData(compressionQuality: compression) else {
+        guard let imageData = image.jpegData(compressionQuality: compression) else {
             return nil
         }
         
@@ -153,7 +139,7 @@ class CameraManager: NSObject {
         var upperBound: CGFloat = compression
         var bestImageData = imageData
         
-        for i in 0..<10 {
+        for _ in 0..<10 {
             compression = (lowerBound + upperBound) / 2
             if let compressedData = image.jpegData(compressionQuality: compression) {
                 if compressedData.count <= maxSizeBytes {
@@ -171,7 +157,6 @@ class CameraManager: NSObject {
     }
     
     private func compressWithSizeReduction(_ image: UIImage, maxSizeKB: Int = 700) -> Data? {
-        let maxSizeBytes = maxSizeKB * 1024
         
         if let compressedData = compressImageToData(image, maxSizeKB: maxSizeKB) {
             return compressedData
