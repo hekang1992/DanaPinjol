@@ -60,6 +60,7 @@
 		73671D7B2F6941A300160E3B /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73671D7A2F69419F00160E3B /* HomeService.swift */; };
 		73671D7D2F69527800160E3B /* HomeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73671D7C2F69527800160E3B /* HomeListView.swift */; };
 		736DD1032F6A8F20002E1B50 /* FaceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736DD1022F6A8F20002E1B50 /* FaceListView.swift */; };
+		736DD1052F6A9310002E1B50 /* PopAlertCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736DD1042F6A9310002E1B50 /* PopAlertCardView.swift */; };
 		73CA3F762F6A38DF0037C057 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CA3F752F6A38DF0037C057 /* ProductView.swift */; };
 		73CA3F782F6A3B130037C057 /* ProductCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CA3F772F6A3B130037C057 /* ProductCardView.swift */; };
 		73CA3F7A2F6A54F70037C057 /* ProductListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CA3F792F6A54F70037C057 /* ProductListView.swift */; };
@@ -126,6 +127,7 @@
 		73671D7A2F69419F00160E3B /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
 		73671D7C2F69527800160E3B /* HomeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListView.swift; sourceTree = "<group>"; };
 		736DD1022F6A8F20002E1B50 /* FaceListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceListView.swift; sourceTree = "<group>"; };
+		736DD1042F6A9310002E1B50 /* PopAlertCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopAlertCardView.swift; sourceTree = "<group>"; };
 		73CA3F752F6A38DF0037C057 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
 		73CA3F772F6A3B130037C057 /* ProductCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCardView.swift; sourceTree = "<group>"; };
 		73CA3F792F6A54F70037C057 /* ProductListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListView.swift; sourceTree = "<group>"; };
@@ -429,6 +431,7 @@
 			isa = PBXGroup;
 			children = (
 				736DD1022F6A8F20002E1B50 /* FaceListView.swift */,
+				736DD1042F6A9310002E1B50 /* PopAlertCardView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -640,6 +643,7 @@
 				734A465E2F67CBF600455F6A /* LoadingView.swift in Sources */,
 				73CA3F7A2F6A54F70037C057 /* ProductListView.swift in Sources */,
 				734A46672F67CF8B00455F6A /* SplashService.swift in Sources */,
+				736DD1052F6A9310002E1B50 /* PopAlertCardView.swift in Sources */,
 				734A46602F67CC6500455F6A /* SplashViewController.swift in Sources */,
 				734A466D2F67D82500455F6A /* OrderViewController.swift in Sources */,
 			);

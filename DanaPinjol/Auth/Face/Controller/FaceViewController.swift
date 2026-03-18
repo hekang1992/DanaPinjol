@@ -123,6 +123,16 @@ class FaceViewController: BaseViewController {
             make.height.equalTo(272.pix())
             make.bottom.equalToSuperview().offset(-20)
         }
+        
+        nextBtn
+            .tapPublisher
+            .sink { [weak self] _ in
+                guard let self else { return }
+                
+            }
+            .store(in: &cancellables)
+        
+        bindClickTap()
     }
     
 }
@@ -141,5 +151,17 @@ extension FaceViewController {
         headView.onBackButtonTapped = { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
+    }
+    
+    private func bindClickTap() {
+        
+        oneListView.tapBlock = { [weak self] in
+            guard let self = self else { return }
+        }
+        
+        twoListView.tapBlock = { [weak self] in
+            guard let self = self else { return }
+        }
+        
     }
 }
