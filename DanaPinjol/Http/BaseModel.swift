@@ -38,6 +38,9 @@ class cylindModel: Codable {
     var stinguence: [stinguenceModel]?
     var actuallyify: [actuallyifyModel]?
     var thero: String?
+    var seish: seishModel?
+    var totalsome: [totalsomeModel]?
+    var priviical: totalsomeModel?
 }
 
 class discussshipModel: Codable {
@@ -69,4 +72,22 @@ class oesophaglessModel: Codable {
     var histriule: String?
     var themselveseur: String?
     var figmost: String?
+}
+
+class seishModel: Codable {
+    var onomasify: String?
+    var acutorium: String?
+    var side: String?
+    var cofilman: String?
+    var octaneous: String?
+    var cultural: String?
+    var termitmarketative: String?
+}
+
+class totalsomeModel: Codable {
+    var hetercarryar: String?
+    var scal: String?
+    var jug: Int?
+    var medi: String?
+    var tenacorium: String?
 }

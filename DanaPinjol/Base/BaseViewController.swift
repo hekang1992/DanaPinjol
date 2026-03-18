@@ -45,3 +45,34 @@ extension BaseViewController {
     }
     
 }
+
+extension BaseViewController {
+    
+    func toNextVC(with cylindModel: cylindModel) {
+        let type = cylindModel.priviical?.medi ?? ""
+        
+        switch type {
+        case "dur":
+            let faceVc = FaceViewController()
+            faceVc.cylindModel = cylindModel
+            self.navigationController?.pushViewController(faceVc, animated: true)
+            
+        case "project":
+            break
+            
+        case "job":
+            break
+            
+        case "diseasead":
+            break
+            
+        case "dudom":
+            break
+            
+        default:
+            break
+        }
+        
+    }
+    
+}
