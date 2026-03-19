@@ -111,6 +111,10 @@ extension HomeViewController {
 extension HomeViewController {
     
     private func clickProductInfo(with productId: String) {
+        guard LoginManager.shared.isLoggedIn() else {
+            toLoginPage()
+            return
+        }
         let parameters = ["allate": productId]
         viewModel.homeClickInfo(parameters: parameters)
     }

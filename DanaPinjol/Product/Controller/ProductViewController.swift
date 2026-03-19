@@ -123,7 +123,6 @@ extension ProductViewController {
             }
             .store(in: &cancellables)
         
-        
     }
     
     private func productDetailInfo() {
@@ -148,7 +147,9 @@ extension ProductViewController {
             self.navigationController?.pushViewController(faceVc, animated: true)
             
         case "project":
-            break
+            let personalVc = PersonalViewController()
+            personalVc.cylindModel = cylindModel
+            self.navigationController?.pushViewController(personalVc, animated: true)
             
         case "job":
             break

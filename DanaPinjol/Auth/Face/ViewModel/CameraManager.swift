@@ -156,7 +156,7 @@ class CameraManager: NSObject {
         return bestImageData
     }
     
-    private func compressWithSizeReduction(_ image: UIImage, maxSizeKB: Int = 700) -> Data? {
+    private func compressWithSizeReduction(_ image: UIImage, maxSizeKB: Int = 500) -> Data? {
         
         if let compressedData = compressImageToData(image, maxSizeKB: maxSizeKB) {
             return compressedData
@@ -222,7 +222,7 @@ extension CameraManager: UIImagePickerControllerDelegate, UINavigationController
             }
             
             if let image = selectedImage {
-                let compressedData = self.compressWithSizeReduction(image, maxSizeKB: 700)
+                let compressedData = self.compressWithSizeReduction(image, maxSizeKB: 500)
                 self.completionHandler?(compressedData)
             } else {
                 self.completionHandler?(nil)

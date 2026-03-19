@@ -43,6 +43,10 @@ class cylindModel: Codable {
     var priviical: totalsomeModel?
     var terraetic: terraeticModel?
     var rockeur: terraeticModel?
+    var tele: String?
+    var hab: String?
+    var trueacle: String?
+    var fodment: Int?
 }
 
 class discussshipModel: Codable {

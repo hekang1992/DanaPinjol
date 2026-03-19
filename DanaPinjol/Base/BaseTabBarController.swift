@@ -58,8 +58,8 @@ class BaseTabBarController: UITabBarController {
 extension BaseTabBarController: UITabBarControllerDelegate {
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        if !LoginManager.shared.isLoggedIn() {
-            self.toLoginPage()
+        guard LoginManager.shared.isLoggedIn() else {
+            toLoginPage()
             return false
         }
         return true

@@ -32,6 +32,16 @@ extension BaseViewController {
         self.present(loginVc, animated: true)
     }
     
+    func toProductStepPage() {
+        guard let nav = navigationController else { return }
+
+        if let productVC = nav.viewControllers.first(where: { $0 is ProductViewController }) {
+            nav.popToViewController(productVC, animated: true)
+        } else {
+            nav.popToRootViewController(animated: true)
+        }
+    }
+    
     func juduePageToVc(_ pageUrl: String) {
         if pageUrl.contains(MorningyRouter.shared.scheme_url) {
             if let navigationController = self.navigationController, let url = URL(string: pageUrl) {
@@ -58,7 +68,9 @@ extension BaseViewController {
             self.navigationController?.pushViewController(faceVc, animated: true)
             
         case "project":
-            break
+            let personalVc = PersonalViewController()
+            personalVc.cylindModel = cylindModel
+            self.navigationController?.pushViewController(personalVc, animated: true)
             
         case "job":
             break

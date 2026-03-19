@@ -12,6 +12,11 @@ import CombineCocoa
 import TYAlertController
 import MJRefresh
 
+enum UploadClickType {
+    case cardorface
+    case next
+}
+
 class FaceViewController: BaseViewController {
     
     var cylindModel: cylindModel? {
@@ -22,6 +27,8 @@ class FaceViewController: BaseViewController {
     }
     
     private let viewModel = FaceViewModel()
+    
+    private let productViewModel = ProductViewModel()
     
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
@@ -71,6 +78,8 @@ class FaceViewController: BaseViewController {
         headImageView.image = UIImage(named: "sct_head_image".localized)
         return headImageView
     }()
+    
+    private var uploadType: String = "card"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -129,7 +138,7 @@ class FaceViewController: BaseViewController {
             .tapPublisher
             .sink { [weak self] _ in
                 guard let self else { return }
-                self.chooseView()
+                self.chooseView(type: .next)
             }
             .store(in: &cancellables)
         
@@ -159,7 +168,8 @@ extension FaceViewController {
         }
         
         headView.onBackButtonTapped = { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
+            guard let self = self else { return }
+            self.toProductStepPage()
         }
     }
     
@@ -167,12 +177,12 @@ extension FaceViewController {
         
         oneListView.tapBlock = { [weak self] in
             guard let self = self else { return }
-            self.chooseView()
+            self.chooseView(type: .cardorface)
         }
         
         twoListView.tapBlock = { [weak self] in
             guard let self = self else { return }
-            self.chooseView()
+            self.chooseView(type: .cardorface)
         }
         
     }
@@ -180,7 +190,7 @@ extension FaceViewController {
 
 extension FaceViewController {
     
-    private func chooseView() {
+    private func chooseView(type: UploadClickType) {
         
         let oneStr = viewModel.model?.cylind?.terraetic?.thero ?? ""
         
@@ -190,7 +200,7 @@ extension FaceViewController {
             if LanguageManager.shared.getCurrentLanguage() == .indonesian {
                 self.alertPopCardView()
             }else {
-                self.clickCamera()
+                self.clickCamera(type: "11")
             }
             return
         }
@@ -199,10 +209,15 @@ extension FaceViewController {
             if LanguageManager.shared.getCurrentLanguage() == .indonesian {
                 self.alertPopFaceView()
             }else {
-                self.clickCamera()
+                self.clickCamera(type: "10")
             }
             return
         }
+        
+        if type == .next {
+            self.productDetailInfo()
+        }
+        
     }
     
     private func alertPopCardView() {
@@ -218,7 +233,7 @@ extension FaceViewController {
         popView.sureBlock = { [weak self] in
             guard let self = self else { return }
             self.dismiss(animated: true) {
-                self.clickCamera()
+                self.clickCamera(type: "11")
             }
         }
     }
@@ -236,18 +251,26 @@ extension FaceViewController {
         popView.sureBlock = { [weak self] in
             guard let self = self else { return }
             self.dismiss(animated: true) {
-                self.clickCamera()
+                self.clickCamera(type: "10")
             }
         }
     }
     
-    private func clickCamera() {
+    private func clickCamera(type: String) {
+        if type == "10" {
+            self.uploadType = "face"
+            CameraManager.shared.toggleCamera()
+        }else {
+            self.uploadType = "card"
+        }
         CameraManager.shared.showCamera(from: self) { [weak self] imageData in
             guard let self = self else { return }
             if let imageData = imageData {
-                
-            } else {
-                
+                let parameters = ["pathyish": type,
+                                  "meteractuallyable": "2",
+                                  "agriature": "",
+                                  "hom": "1"]
+                viewModel.uploadFaceInfo(parameters: parameters, imageData: imageData)
             }
         }
     }
@@ -286,11 +309,82 @@ extension FaceViewController {
                 self.scrollView.mj_header?.endRefreshing()
             }
             .store(in: &cancellables)
+        
+        
+        viewModel.$uploadmodel
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] model in
+                guard let self, let model else { return }
+                let lentfier = model.lentfier ?? ""
+                if lentfier == "0" || lentfier == "00" {
+                    if self.uploadType == "face" {
+                        self.productDetailInfo()
+                    }else {
+                        let fodment = model.cylind?.fodment ?? 1
+                        if fodment == 0 {
+                            self.findFaceinfo()
+                        }else {
+                            if let cylindModel = model.cylind {
+                                self.alertPopSureView(with: cylindModel)
+                            }
+                        }
+                    }
+                }else {
+                    ToastWindowManager.showMessage(model.plurimon ?? "")
+                }
+            }
+            .store(in: &cancellables)
+        
+        
+        productViewModel.$model
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] model in
+                guard let self, let model else { return }
+                let lentfier = model.lentfier ?? ""
+                if lentfier == "0" || lentfier == "00" {
+                    if let cylindModel = model.cylind {
+                        self.toNextVC(with: cylindModel)
+                    }
+                }
+                
+            }
+            .store(in: &cancellables)
+        
     }
     
     private func findFaceinfo() {
         let parameters = ["allate": cylindModel?.seish?.side ?? ""]
         viewModel.faceInfo(parameters: parameters)
+    }
+    
+}
+
+extension FaceViewController {
+    
+    private func productDetailInfo() {
+        let parameters = ["allate": cylindModel?.seish?.side ?? "", "fell": "1"]
+        productViewModel.detailInfo(parameters: parameters)
+    }
+    
+}
+
+extension FaceViewController {
+    
+    private func alertPopSureView(with model: cylindModel) {
+        let popView = PopSureCardMessageView(frame: self.view.bounds)
+        let alertVc = TYAlertController(alert: popView, preferredStyle: .actionSheet)
+        self.present(alertVc!, animated: true)
+        
+        popView.cancelBlock = { [weak self] in
+            guard let self = self else { return }
+            self.dismiss(animated: true)
+        }
+        
+        popView.sureBlock = { [weak self] in
+            guard let self = self else { return }
+            self.dismiss(animated: true)
+        }
+        
     }
     
 }

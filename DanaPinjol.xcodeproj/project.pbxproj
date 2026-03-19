@@ -62,6 +62,8 @@
 		736DD1032F6A8F20002E1B50 /* FaceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736DD1022F6A8F20002E1B50 /* FaceListView.swift */; };
 		736DD1052F6A9310002E1B50 /* PopAlertCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736DD1042F6A9310002E1B50 /* PopAlertCardView.swift */; };
 		736DD1072F6AA3D2002E1B50 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736DD1062F6AA3D2002E1B50 /* CameraManager.swift */; };
+		738AEF422F6B8DFA004DDB0D /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738AEF412F6B8DFA004DDB0D /* PersonalViewController.swift */; };
+		738AEF442F6B92E5004DDB0D /* PopSureCardMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738AEF432F6B92E5004DDB0D /* PopSureCardMessageView.swift */; };
 		73CA3F762F6A38DF0037C057 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CA3F752F6A38DF0037C057 /* ProductView.swift */; };
 		73CA3F782F6A3B130037C057 /* ProductCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CA3F772F6A3B130037C057 /* ProductCardView.swift */; };
 		73CA3F7A2F6A54F70037C057 /* ProductListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CA3F792F6A54F70037C057 /* ProductListView.swift */; };
@@ -130,6 +132,8 @@
 		736DD1022F6A8F20002E1B50 /* FaceListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceListView.swift; sourceTree = "<group>"; };
 		736DD1042F6A9310002E1B50 /* PopAlertCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopAlertCardView.swift; sourceTree = "<group>"; };
 		736DD1062F6AA3D2002E1B50 /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
+		738AEF412F6B8DFA004DDB0D /* PersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
+		738AEF432F6B92E5004DDB0D /* PopSureCardMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopSureCardMessageView.swift; sourceTree = "<group>"; };
 		73CA3F752F6A38DF0037C057 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
 		73CA3F772F6A3B130037C057 /* ProductCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCardView.swift; sourceTree = "<group>"; };
 		73CA3F792F6A54F70037C057 /* ProductListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListView.swift; sourceTree = "<group>"; };
@@ -319,6 +323,7 @@
 		734A46732F67D84300455F6A /* Personal */ = {
 			isa = PBXGroup;
 			children = (
+				738AEF412F6B8DFA004DDB0D /* PersonalViewController.swift */,
 			);
 			path = Personal;
 			sourceTree = "<group>";
@@ -423,9 +428,9 @@
 		736DD1002F6A8EFC002E1B50 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				736DD1062F6AA3D2002E1B50 /* CameraManager.swift */,
 				734A46832F67D8EE00455F6A /* FaceService.swift */,
 				734A46812F67D8E600455F6A /* FaceViewModel.swift */,
+				736DD1062F6AA3D2002E1B50 /* CameraManager.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -435,6 +440,7 @@
 			children = (
 				736DD1022F6A8F20002E1B50 /* FaceListView.swift */,
 				736DD1042F6A9310002E1B50 /* PopAlertCardView.swift */,
+				738AEF432F6B92E5004DDB0D /* PopSureCardMessageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -596,6 +602,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				73CA3F762F6A38DF0037C057 /* ProductView.swift in Sources */,
+				738AEF422F6B8DFA004DDB0D /* PersonalViewController.swift in Sources */,
 				734A46622F67CCBB00455F6A /* NetworkMonitor.swift in Sources */,
 				734A46542F67B41500455F6A /* BaseTabBarController.swift in Sources */,
 				7341DEB22F67AE2F008D4C83 /* AppDelegate.swift in Sources */,
@@ -605,6 +612,7 @@
 				73671D7B2F6941A300160E3B /* HomeService.swift in Sources */,
 				734A468C2F67FBD700455F6A /* LoginManager.swift in Sources */,
 				73671D6D2F692B1D00160E3B /* MineDeleteView.swift in Sources */,
+				738AEF442F6B92E5004DDB0D /* PopSureCardMessageView.swift in Sources */,
 				73671D652F6919E000160E3B /* H5WebViewController.swift in Sources */,
 				734A467C2F67D8C100455F6A /* ProductViewModel.swift in Sources */,
 				734A466B2F67D81D00455F6A /* HomeViewController.swift in Sources */,
