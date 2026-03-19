@@ -372,7 +372,11 @@ extension FaceViewController {
     
     private func alertPopSureView(with model: cylindModel) {
         let popView = PopSureCardMessageView(frame: self.view.bounds)
+        
+        popView.model = model
+        
         let alertVc = TYAlertController(alert: popView, preferredStyle: .actionSheet)
+        
         self.present(alertVc!, animated: true)
         
         popView.cancelBlock = { [weak self] in
@@ -384,6 +388,15 @@ extension FaceViewController {
             guard let self = self else { return }
             self.dismiss(animated: true)
         }
+        
+        popView.tapTimeBlock = { [weak self] time in
+            guard let self = self else { return }
+            self.popTimeView(with: time)
+        }
+        
+    }
+    
+    private func popTimeView(with time: String) {
         
     }
     

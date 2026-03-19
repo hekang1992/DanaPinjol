@@ -16,6 +16,17 @@ class PopSureCardMessageView: BaseView {
     
     var sureBlock: (() -> Void)?
     
+    var tapTimeBlock: ((String) -> Void)?
+    
+    var model: cylindModel? {
+        didSet {
+            guard let model = model else { return }
+            oneView.phoneTextFiled.text = model.trueacle ?? ""
+            twoView.phoneTextFiled.text = model.hab ?? ""
+            threeView.phoneTextFiled.text = model.tele ?? ""
+        }
+    }
+    
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
         bgImageView.image = UIImage(named: "alc_info_a_image")
@@ -39,11 +50,57 @@ class PopSureCardMessageView: BaseView {
         return cancelBtn
     }()
     
+    lazy var nameLabel: UILabel = {
+        let nameLabel = UILabel()
+        nameLabel.textAlignment = .left
+        nameLabel.numberOfLines = 0
+        nameLabel.text = "Confirm Identity Information".localized
+        nameLabel.textColor = UIColor.init(hexString: "#FFFFFF")
+        nameLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        return nameLabel
+    }()
+    
+    lazy var descLabel: UILabel = {
+        let descLabel = UILabel()
+        descLabel.textAlignment = .center
+        descLabel.text = "Please double-check your ID card information carefully, as it cannot be changed once submitted".localized
+        descLabel.numberOfLines = 0
+        descLabel.textColor = UIColor.init(hexString: "#D91C29")
+        descLabel.font = UIFont.systemFont(ofSize: 11, weight: .regular)
+        return descLabel
+    }()
+    
+    lazy var oneView: AppInputView = {
+        let oneView = AppInputView(frame: .zero)
+        oneView.bgImageView.image = UIImage(named: "name_cp_ic_image")
+        oneView.nameLabel.text = "Real name".localized
+        oneView.phoneTextFiled.placeholder = "Real name".localized
+        return oneView
+    }()
+    
+    lazy var twoView: AppInputView = {
+        let twoView = AppInputView(frame: .zero)
+        twoView.bgImageView.image = UIImage(named: "snu_cp_ic")
+        twoView.nameLabel.text = "PAN number".localized
+        twoView.phoneTextFiled.placeholder = "PAN number".localized
+        return twoView
+    }()
+    
+    lazy var threeView: AppTapView = {
+        let threeView = AppTapView(frame: .zero)
+        threeView.bgImageView.image = UIImage(named: "sjt_cp_ic")
+        threeView.nameLabel.text = "Date of birth".localized
+        threeView.phoneTextFiled.placeholder = "Date of birth".localized
+        return threeView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(bgImageView)
         bgImageView.addSubview(cancelBtn)
         bgImageView.addSubview(nextBtn)
+        bgImageView.addSubview(nameLabel)
+        bgImageView.addSubview(descLabel)
         
         bgImageView.snp.makeConstraints { make in
             make.center.equalToSuperview()
@@ -60,6 +117,40 @@ class PopSureCardMessageView: BaseView {
             make.centerX.equalToSuperview()
             make.size.equalTo(CGSize(width: 274.pix(), height: 48.pix()))
             make.bottom.equalTo(cancelBtn.snp.top).offset(-41.pix())
+        }
+        
+        descLabel.snp.makeConstraints { make in
+            make.bottom.equalTo(nextBtn.snp.top).offset(-10)
+            make.centerX.equalToSuperview()
+            make.left.right.equalToSuperview().inset(20)
+        }
+        
+        nameLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(38.pix())
+            make.left.equalToSuperview().offset(16.pix())
+            make.right.equalToSuperview().offset(-130.pix())
+        }
+        
+        bgImageView.addSubview(oneView)
+        bgImageView.addSubview(twoView)
+        bgImageView.addSubview(threeView)
+        
+        oneView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(104.pix())
+            make.left.right.equalToSuperview()
+            make.height.equalTo(66.pix())
+        }
+        
+        twoView.snp.makeConstraints { make in
+            make.top.equalTo(oneView.snp.bottom).offset(20.pix())
+            make.left.right.equalToSuperview()
+            make.height.equalTo(66.pix())
+        }
+        
+        threeView.snp.makeConstraints { make in
+            make.top.equalTo(twoView.snp.bottom).offset(20.pix())
+            make.left.right.equalToSuperview()
+            make.height.equalTo(66.pix())
         }
         
         bindClickTap()
@@ -91,6 +182,9 @@ extension PopSureCardMessageView {
             }
             .store(in: &cancellables)
         
+        threeView.tapTimeBlock = { [weak self] time in
+            self?.tapTimeBlock?(time)
+        }
     }
     
 }

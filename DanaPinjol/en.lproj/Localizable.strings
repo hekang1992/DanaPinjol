@@ -32,3 +32,9 @@
 "Next" = "Next";
 "sct_head_image" = "sct_head_image";
 "Confirm" = "Confirm";
+"Confirm Identity Information" = "Confirm Identity Information";
+"Please double-check your ID card information carefully, as it cannot be changed once submitted" = "Please double-check your ID card information carefully, as it cannot be changed once submitted";
+"Real name" = "Real name";
+"PAN number" = "PAN number";
+"Date of birth" = "Date of birth";
+"Date Selection" = "Date Selection";

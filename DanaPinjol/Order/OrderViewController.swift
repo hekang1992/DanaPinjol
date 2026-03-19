@@ -6,24 +6,54 @@
 //
 
 import UIKit
+import SnapKit
+import Combine
+import CombineCocoa
 
-class OrderViewController: UIViewController {
-
+class OrderViewController: BaseViewController {
+    
+    lazy var loginBtn: UIButton = {
+        let loginBtn = UIButton(type: .custom)
+        loginBtn.setTitle("Log in to Zoom Loan", for: .normal)
+        loginBtn.setTitleColor(.white, for: .normal)
+        loginBtn.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight(700))
+        loginBtn.setBackgroundImage(UIImage(named: "login_btn_image"), for: .normal)
+        return loginBtn
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        view.addSubview(loginBtn)
+        loginBtn.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        loginBtn.tapPublisher.sink { _ in
+            self.showDatePicker()
+        }.store(in: &cancellables)
+        
     }
     
+    
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension OrderViewController {
+    
+    @objc private func showDatePicker() {
+        
+        let datePicker = DatePickerView(dateString: "23/08/1985")
+        
+        datePicker.onDateSelected = { [weak self] dateString in
+            
+            print("选择的日期：\(dateString)")
+        }
+        
+        datePicker.onDismiss = {
+            print("日期选择器已关闭")
+        }
+        
+        datePicker.show()
     }
-    */
-
+    
 }

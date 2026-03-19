@@ -64,6 +64,9 @@
 		736DD1072F6AA3D2002E1B50 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736DD1062F6AA3D2002E1B50 /* CameraManager.swift */; };
 		738AEF422F6B8DFA004DDB0D /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738AEF412F6B8DFA004DDB0D /* PersonalViewController.swift */; };
 		738AEF442F6B92E5004DDB0D /* PopSureCardMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738AEF432F6B92E5004DDB0D /* PopSureCardMessageView.swift */; };
+		738AEF462F6B9754004DDB0D /* AppInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738AEF452F6B9754004DDB0D /* AppInputView.swift */; };
+		738AEF482F6B9769004DDB0D /* AppTapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738AEF472F6B9769004DDB0D /* AppTapView.swift */; };
+		738AEF4A2F6B9D8A004DDB0D /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738AEF492F6B9D8A004DDB0D /* DatePickerView.swift */; };
 		73CA3F762F6A38DF0037C057 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CA3F752F6A38DF0037C057 /* ProductView.swift */; };
 		73CA3F782F6A3B130037C057 /* ProductCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CA3F772F6A3B130037C057 /* ProductCardView.swift */; };
 		73CA3F7A2F6A54F70037C057 /* ProductListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CA3F792F6A54F70037C057 /* ProductListView.swift */; };
@@ -134,6 +137,9 @@
 		736DD1062F6AA3D2002E1B50 /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
 		738AEF412F6B8DFA004DDB0D /* PersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
 		738AEF432F6B92E5004DDB0D /* PopSureCardMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopSureCardMessageView.swift; sourceTree = "<group>"; };
+		738AEF452F6B9754004DDB0D /* AppInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInputView.swift; sourceTree = "<group>"; };
+		738AEF472F6B9769004DDB0D /* AppTapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTapView.swift; sourceTree = "<group>"; };
+		738AEF492F6B9D8A004DDB0D /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		73CA3F752F6A38DF0037C057 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
 		73CA3F772F6A3B130037C057 /* ProductCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCardView.swift; sourceTree = "<group>"; };
 		73CA3F792F6A54F70037C057 /* ProductListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListView.swift; sourceTree = "<group>"; };
@@ -438,9 +444,12 @@
 		736DD1012F6A8EFD002E1B50 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				738AEF492F6B9D8A004DDB0D /* DatePickerView.swift */,
 				736DD1022F6A8F20002E1B50 /* FaceListView.swift */,
 				736DD1042F6A9310002E1B50 /* PopAlertCardView.swift */,
 				738AEF432F6B92E5004DDB0D /* PopSureCardMessageView.swift */,
+				738AEF452F6B9754004DDB0D /* AppInputView.swift */,
+				738AEF472F6B9769004DDB0D /* AppTapView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -612,6 +621,7 @@
 				73671D7B2F6941A300160E3B /* HomeService.swift in Sources */,
 				734A468C2F67FBD700455F6A /* LoginManager.swift in Sources */,
 				73671D6D2F692B1D00160E3B /* MineDeleteView.swift in Sources */,
+				738AEF462F6B9754004DDB0D /* AppInputView.swift in Sources */,
 				738AEF442F6B92E5004DDB0D /* PopSureCardMessageView.swift in Sources */,
 				73671D652F6919E000160E3B /* H5WebViewController.swift in Sources */,
 				734A467C2F67D8C100455F6A /* ProductViewModel.swift in Sources */,
@@ -641,6 +651,7 @@
 				734A46582F67B68900455F6A /* URLParameterHelper.swift in Sources */,
 				73671D612F6918CF00160E3B /* MorningyRouter.swift in Sources */,
 				734A46942F68447400455F6A /* ToastManager.swift in Sources */,
+				738AEF482F6B9769004DDB0D /* AppTapView.swift in Sources */,
 				73671D732F693D4F00160E3B /* HomeCardView.swift in Sources */,
 				73671D692F691AE700160E3B /* AppHeadView.swift in Sources */,
 				734A46822F67D8EB00455F6A /* FaceViewModel.swift in Sources */,
@@ -656,6 +667,7 @@
 				734A46672F67CF8B00455F6A /* SplashService.swift in Sources */,
 				736DD1052F6A9310002E1B50 /* PopAlertCardView.swift in Sources */,
 				734A46602F67CC6500455F6A /* SplashViewController.swift in Sources */,
+				738AEF4A2F6B9D8A004DDB0D /* DatePickerView.swift in Sources */,
 				734A466D2F67D82500455F6A /* OrderViewController.swift in Sources */,
 				736DD1072F6AA3D2002E1B50 /* CameraManager.swift in Sources */,
 			);

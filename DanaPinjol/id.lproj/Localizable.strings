@@ -32,3 +32,9 @@
 "Next" = "Berikutnya";
 "sct_head_image" = "sctd_head_image";
 "Confirm" = "Mengonfirmasi";
+"Confirm Identity Information" = "Konfirmasikan Informasi Identitas";
+"Please double-check your ID card information carefully, as it cannot be changed once submitted" = "Mohon periksa kembali informasi KTP Anda dengan benar, jika sudah terkirim tidak akan diubah lagi";
+"Real name" = "Nama sesuai KTP";
+"PAN number" = "Nomor KTP";
+"Date of birth" = "Tanggal lahir";
+"Date Selection" = "Pemilihan Tanggal";
