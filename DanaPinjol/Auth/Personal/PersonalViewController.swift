@@ -45,6 +45,11 @@ class PersonalViewController: BaseViewController {
         return headImageView
     }()
     
+    lazy var listView: PersonalView = {
+        let listView = PersonalView()
+        return listView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -69,6 +74,12 @@ class PersonalViewController: BaseViewController {
             make.size.equalTo(CGSize(width: 335.pix(), height: 64.pix()))
         }
         
+        view.addSubview(listView)
+        listView.snp.makeConstraints { make in
+            make.top.equalTo(headImageView.snp.bottom).offset(10)
+            make.left.right.equalToSuperview()
+            make.bottom.equalTo(nextBtn.snp.top).offset(-5)
+        }
         
     }
     

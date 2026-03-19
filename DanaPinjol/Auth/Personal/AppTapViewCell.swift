@@ -1,5 +1,5 @@
 //
-//  AppTapView.swift
+//  AppTapViewCell.swift
 //  DanaPinjol
 //
 //  Created by hekang on 2026/3/19.
@@ -10,7 +10,9 @@ import SnapKit
 import Combine
 import CombineCocoa
 
-class AppTapView: BaseView {
+class AppTapViewCell: UITableViewCell {
+    
+    var cancellables = Set<AnyCancellable>()
     
     var tapTimeBlock: ((String) -> Void)?
     
@@ -56,11 +58,11 @@ class AppTapView: BaseView {
         return tapBtn
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        addSubview(bgImageView)
-        addSubview(nameLabel)
-        addSubview(bgView)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        contentView.addSubview(bgImageView)
+        contentView.addSubview(nameLabel)
+        contentView.addSubview(bgView)
         bgView.addSubview(iconImageView)
         bgView.addSubview(phoneTextFiled)
         
@@ -79,6 +81,7 @@ class AppTapView: BaseView {
             make.centerX.equalToSuperview()
             make.left.equalToSuperview().inset(25)
             make.height.equalTo(40.pix())
+            make.bottom.equalToSuperview().offset(-20)
         }
         iconImageView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
@@ -99,13 +102,13 @@ class AppTapView: BaseView {
         bindTap()
     }
     
-    @MainActor required init?(coder: NSCoder) {
+    required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
 }
 
-extension AppTapView {
+extension AppTapViewCell {
     
     private func bindTap() {
         

@@ -1,5 +1,5 @@
 //
-//  AppTapView.swift
+//  AppInputViewCell.swift
 //  DanaPinjol
 //
 //  Created by hekang on 2026/3/19.
@@ -8,11 +8,10 @@
 import UIKit
 import SnapKit
 import Combine
-import CombineCocoa
 
-class AppTapView: BaseView {
+class AppInputViewCell: UITableViewCell {
     
-    var tapTimeBlock: ((String) -> Void)?
+    var cancellables = Set<AnyCancellable>()
     
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
@@ -29,7 +28,6 @@ class AppTapView: BaseView {
     
     lazy var phoneTextFiled: UITextField = {
         let phoneTextFiled = UITextField()
-        phoneTextFiled.isEnabled = false
         phoneTextFiled.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         phoneTextFiled.textColor = UIColor.init(hexString: "#082217")
         return phoneTextFiled
@@ -45,25 +43,14 @@ class AppTapView: BaseView {
         return bgView
     }()
     
-    lazy var iconImageView: UIImageView = {
-        let iconImageView = UIImageView()
-        iconImageView.image = UIImage(named: "right_b_c_image")
-        return iconImageView
-    }()
-    
-    lazy var tapBtn: UIButton = {
-        let tapBtn = UIButton(type: .custom)
-        return tapBtn
-    }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        addSubview(bgImageView)
-        addSubview(nameLabel)
-        addSubview(bgView)
-        bgView.addSubview(iconImageView)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        contentView.addSubview(bgImageView)
+        contentView.addSubview(nameLabel)
+        contentView.addSubview(bgView)
         bgView.addSubview(phoneTextFiled)
         
+        addSubview(bgImageView)
         bgImageView.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.left.equalToSuperview().offset(25)
@@ -79,44 +66,16 @@ class AppTapView: BaseView {
             make.centerX.equalToSuperview()
             make.left.equalToSuperview().inset(25)
             make.height.equalTo(40.pix())
-        }
-        iconImageView.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.right.equalToSuperview().offset(-14)
-            make.size.equalTo(CGSize(width: 7, height: 12))
+            make.bottom.equalToSuperview().offset(-20)
         }
         phoneTextFiled.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()
-            make.left.equalToSuperview().offset(10)
-            make.right.equalTo(iconImageView.snp.left).offset(-10)
+            make.left.right.equalToSuperview().inset(10)
         }
-        
-        addSubview(tapBtn)
-        tapBtn.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        
-        bindTap()
     }
     
-    @MainActor required init?(coder: NSCoder) {
+    required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-}
-
-extension AppTapView {
-    
-    private func bindTap() {
-        
-        tapBtn
-            .tapPublisher
-            .debounce(for: .seconds(0.2), scheduler: DispatchQueue.main)
-            .sink { [weak self] _ in
-                guard let self else { return }
-                self.tapTimeBlock?(self.phoneTextFiled.text ?? "")
-            }
-            .store(in: &cancellables)
     }
     
 }
