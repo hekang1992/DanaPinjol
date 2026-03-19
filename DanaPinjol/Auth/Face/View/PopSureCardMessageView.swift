@@ -16,7 +16,7 @@ class PopSureCardMessageView: BaseView {
     
     var sureBlock: (() -> Void)?
     
-    var tapTimeBlock: ((String) -> Void)?
+    var tapTimeBlock: ((String, UITextField) -> Void)?
     
     var model: cylindModel? {
         didSet {
@@ -183,7 +183,10 @@ extension PopSureCardMessageView {
             .store(in: &cancellables)
         
         threeView.tapTimeBlock = { [weak self] time in
-            self?.tapTimeBlock?(time)
+            guard let self = self else { return }
+            self.oneView.phoneTextFiled.resignFirstResponder()
+            self.twoView.phoneTextFiled.resignFirstResponder()
+            self.tapTimeBlock?(time, threeView.phoneTextFiled)
         }
     }
     

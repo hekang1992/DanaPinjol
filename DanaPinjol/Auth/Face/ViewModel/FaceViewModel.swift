@@ -15,6 +15,8 @@ class FaceViewModel: ObservableObject {
     @Published var errorMsg: String?
     
     @Published var uploadmodel: BaseModel?
+    
+    @Published var savemodel: BaseModel?
         
     func faceInfo(parameters: [String: Any]) {
         
@@ -36,6 +38,20 @@ class FaceViewModel: ObservableObject {
             do {
                 uploadmodel = try await FaceService.uploadFaceInfo(parameters: parameters,
                                                              imageData: imageData)
+                
+            } catch {
+                
+                errorMsg = error.localizedDescription
+                
+            }
+        }
+    }
+    
+    func saveInfo(parameters: [String: Any]) {
+        
+        Task {
+            do {
+                savemodel = try await FaceService.saveInfo(parameters: parameters)
                 
             } catch {
                 

@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 class FaceService {
     
     static func faceInfo(parameters: [String: Any]) async throws -> BaseModel? {
@@ -38,6 +36,22 @@ class FaceService {
         let result: BaseModel = try await NetworkManager.shared.uploadImage(
             url: "/prim/anthodog",
             imageData: imageData,
+            parameters: parameters
+        )
+        
+        return result
+    }
+    
+    static func saveInfo(parameters: [String: Any]) async throws -> BaseModel? {
+        
+        LoadingView.show()
+        
+        defer {
+            LoadingView.hide()
+        }
+        
+        let result: BaseModel = try await NetworkManager.shared.postRequest(
+            url: "/prim/nullstyleitious",
             parameters: parameters
         )
         

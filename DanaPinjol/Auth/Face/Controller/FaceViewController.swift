@@ -335,6 +335,19 @@ extension FaceViewController {
             }
             .store(in: &cancellables)
         
+        viewModel.$savemodel
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] model in
+                guard let self, let model else { return }
+                let lentfier = model.lentfier ?? ""
+                if lentfier == "0" || lentfier == "00" {
+                    self.dismiss(animated: true)
+                    self.findFaceinfo()
+                }else {
+                    ToastWindowManager.showMessage(model.plurimon ?? "")
+                }
+            }
+            .store(in: &cancellables)
         
         productViewModel.$model
             .receive(on: DispatchQueue.main)
@@ -350,6 +363,7 @@ extension FaceViewController {
             }
             .store(in: &cancellables)
         
+        
     }
     
     private func findFaceinfo() {
@@ -364,6 +378,18 @@ extension FaceViewController {
     private func productDetailInfo() {
         let parameters = ["allate": cylindModel?.seish?.side ?? "", "fell": "1"]
         productViewModel.detailInfo(parameters: parameters)
+    }
+    
+    private func saveInfo(name: String, number: String, time: String) {
+        let reportard = cylindModel?.seish?.cultural ?? ""
+        let allate = cylindModel?.seish?.side ?? ""
+        let parameters = ["tele": time,
+                          "hab": number,
+                          "trueacle": name,
+                          "misoile": LoginManager.shared.getPhone() ?? "",
+                          "reportard": reportard,
+                          "allate": allate]
+        viewModel.saveInfo(parameters: parameters)
     }
     
 }
@@ -386,18 +412,26 @@ extension FaceViewController {
         
         popView.sureBlock = { [weak self] in
             guard let self = self else { return }
-            self.dismiss(animated: true)
+            let name = popView.oneView.phoneTextFiled.text ?? ""
+            let number = popView.twoView.phoneTextFiled.text ?? ""
+            let time = popView.threeView.phoneTextFiled.text ?? ""
+            self.saveInfo(name: name, number: number, time: time)
         }
         
-        popView.tapTimeBlock = { [weak self] time in
+        popView.tapTimeBlock = { [weak self] time, timeTx in
             guard let self = self else { return }
-            self.popTimeView(with: time)
+            self.popTimeView(with: time, timeTx: timeTx)
         }
         
     }
     
-    private func popTimeView(with time: String) {
-        
+    private func popTimeView(with time: String, timeTx: UITextField) {
+        let datePicker = DatePickerView(dateString: time)
+        datePicker.onDateSelected = { dateString in
+            timeTx.text = dateString
+        }
+        datePicker.onDismiss = {}
+        datePicker.show()
     }
     
 }
