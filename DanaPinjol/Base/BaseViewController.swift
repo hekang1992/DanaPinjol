@@ -34,7 +34,7 @@ extension BaseViewController {
     
     func toProductStepPage() {
         guard let nav = navigationController else { return }
-
+        
         if let productVC = nav.viewControllers.first(where: { $0 is ProductViewController }) {
             nav.popToViewController(productVC, animated: true)
         } else {
@@ -73,13 +73,19 @@ extension BaseViewController {
             self.navigationController?.pushViewController(personalVc, animated: true)
             
         case "job":
-            break
+            let hardVc = HardWorkViewController()
+            hardVc.cylindModel = cylindModel
+            self.navigationController?.pushViewController(hardVc, animated: true)
             
         case "diseasead":
-            break
+            let findVc = FineMeViewController()
+            findVc.cylindModel = cylindModel
+            self.navigationController?.pushViewController(findVc, animated: true)
             
         case "dudom":
-            break
+            let poorVc = PoorViewController()
+            poorVc.cylindModel = cylindModel
+            self.navigationController?.pushViewController(poorVc, animated: true)
             
         default:
             break

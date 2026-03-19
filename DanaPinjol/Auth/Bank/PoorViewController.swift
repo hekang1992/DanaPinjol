@@ -1,13 +1,5 @@
 //
-//  FineMeViewController.swift
-//  DanaPinjol
-//
-//  Created by hekang on 2026/3/19.
-//
-
-
-//
-//  FineMeViewController.swift
+//  PoorViewController.swift
 //  DanaPinjol
 //
 //  Created by hekang on 2026/3/19.
@@ -20,7 +12,7 @@ import CombineCocoa
 import TYAlertController
 import MJRefresh
 
-class FineMeViewController: BaseViewController {
+class PoorViewController: BaseViewController {
     
     var cylindModel: cylindModel? {
         didSet {
@@ -82,7 +74,7 @@ class FineMeViewController: BaseViewController {
     
 }
 
-extension FineMeViewController {
+extension PoorViewController {
     
     private func setupHeadUI() {
         

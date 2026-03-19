@@ -51,7 +51,7 @@ class FaceService {
         }
         
         let result: BaseModel = try await NetworkManager.shared.postRequest(
-            url: "/prim/nullstyleitious",
+            url: LanguageManager.shared.getCurrentLanguage() == .indonesian ? "/prim/nullstyleitious" : "/prim/onomasify",
             parameters: parameters
         )
         

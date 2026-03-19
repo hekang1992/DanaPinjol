@@ -383,12 +383,15 @@ extension FaceViewController {
     private func saveInfo(name: String, number: String, time: String) {
         let reportard = cylindModel?.seish?.cultural ?? ""
         let allate = cylindModel?.seish?.side ?? ""
-        let parameters = ["tele": time,
+        var parameters = ["tele": time,
                           "hab": number,
                           "trueacle": name,
                           "misoile": LoginManager.shared.getPhone() ?? "",
                           "reportard": reportard,
                           "allate": allate]
+        if LanguageManager.shared.getCurrentLanguage() == .english {
+            parameters["pathyish"] = "11"
+        }
         viewModel.saveInfo(parameters: parameters)
     }
     
