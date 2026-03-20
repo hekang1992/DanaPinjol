@@ -41,6 +41,8 @@
 		734A46942F68447400455F6A /* ToastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A46932F68447400455F6A /* ToastManager.swift */; };
 		734A46962F68459C00455F6A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A46952F68459600455F6A /* LoginViewModel.swift */; };
 		734A46982F6845A900455F6A /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A46972F68459F00455F6A /* LoginService.swift */; };
+		735BAB4A2F6CDA0700F31CDE /* PersonalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735BAB492F6CD9FE00F31CDE /* PersonalViewModel.swift */; };
+		735BAB4C2F6CDA1000F31CDE /* PersonalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735BAB4B2F6CDA0A00F31CDE /* PersonalService.swift */; };
 		73671D522F68E06100160E3B /* MineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73671D512F68E06100160E3B /* MineView.swift */; };
 		73671D542F68E0A500160E3B /* MineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73671D532F68E09F00160E3B /* MineViewModel.swift */; };
 		73671D562F68E0AF00160E3B /* MineService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73671D552F68E0AB00160E3B /* MineService.swift */; };
@@ -120,6 +122,8 @@
 		734A46932F68447400455F6A /* ToastManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastManager.swift; sourceTree = "<group>"; };
 		734A46952F68459600455F6A /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		734A46972F68459F00455F6A /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		735BAB492F6CD9FE00F31CDE /* PersonalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewModel.swift; sourceTree = "<group>"; };
+		735BAB4B2F6CDA0A00F31CDE /* PersonalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalService.swift; sourceTree = "<group>"; };
 		73671D512F68E06100160E3B /* MineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineView.swift; sourceTree = "<group>"; };
 		73671D532F68E09F00160E3B /* MineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineViewModel.swift; sourceTree = "<group>"; };
 		73671D552F68E0AB00160E3B /* MineService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineService.swift; sourceTree = "<group>"; };
@@ -341,10 +345,9 @@
 		734A46732F67D84300455F6A /* Personal */ = {
 			isa = PBXGroup;
 			children = (
-				738AEF512F6BBD0D004DDB0D /* PersonalView.swift */,
-				738AEF412F6B8DFA004DDB0D /* PersonalViewController.swift */,
-				737E46462F6C4C7700C730F9 /* AppInputViewCell.swift */,
-				737E46482F6C4C8A00C730F9 /* AppTapViewCell.swift */,
+				735BAB482F6CD9D800F31CDE /* View */,
+				735BAB472F6CD9D700F31CDE /* ViewModel */,
+				735BAB462F6CD9D500F31CDE /* Controller */,
 			);
 			path = Personal;
 			sourceTree = "<group>";
@@ -379,6 +382,33 @@
 				73671D642F6919E000160E3B /* H5WebViewController.swift */,
 			);
 			path = H5Web;
+			sourceTree = "<group>";
+		};
+		735BAB462F6CD9D500F31CDE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				738AEF412F6B8DFA004DDB0D /* PersonalViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		735BAB472F6CD9D700F31CDE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				735BAB4B2F6CDA0A00F31CDE /* PersonalService.swift */,
+				735BAB492F6CD9FE00F31CDE /* PersonalViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		735BAB482F6CD9D800F31CDE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				738AEF512F6BBD0D004DDB0D /* PersonalView.swift */,
+				737E46462F6C4C7700C730F9 /* AppInputViewCell.swift */,
+				737E46482F6C4C8A00C730F9 /* AppTapViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		73671D592F68EE7600160E3B /* View */ = {
@@ -655,6 +685,7 @@
 				734A46712F67D83500455F6A /* ProductViewController.swift in Sources */,
 				734A46502F67B3F500455F6A /* BaseView.swift in Sources */,
 				734A467E2F67D8D300455F6A /* ProductService.swift in Sources */,
+				735BAB4A2F6CDA0700F31CDE /* PersonalViewModel.swift in Sources */,
 				73671D522F68E06100160E3B /* MineView.swift in Sources */,
 				734A468A2F67F99D00455F6A /* Untitled.swift in Sources */,
 				734A465C2F67C77E00455F6A /* NetworkManager.swift in Sources */,
@@ -676,6 +707,7 @@
 				738AEF482F6B9769004DDB0D /* AppTapView.swift in Sources */,
 				737E46492F6C4C8A00C730F9 /* AppTapViewCell.swift in Sources */,
 				73671D732F693D4F00160E3B /* HomeCardView.swift in Sources */,
+				735BAB4C2F6CDA1000F31CDE /* PersonalService.swift in Sources */,
 				73671D692F691AE700160E3B /* AppHeadView.swift in Sources */,
 				734A46822F67D8EB00455F6A /* FaceViewModel.swift in Sources */,
 				73671D582F68E8D600160E3B /* MineOrderView.swift in Sources */,

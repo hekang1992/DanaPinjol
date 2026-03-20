@@ -14,6 +14,8 @@ import MJRefresh
 
 class PersonalViewController: BaseViewController {
     
+    private var viewModel = PersonalViewModel()
+    
     var cylindModel: cylindModel? {
         didSet {
             guard let cylindModel = cylindModel else { return }
@@ -100,6 +102,51 @@ extension PersonalViewController {
             guard let self = self else { return }
             self.toProductStepPage()
         }
+        
+        bindViewModel()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        listInfo()
+    }
+    
+}
+
+extension PersonalViewController {
+    
+    private func bindViewModel() {
+        
+        viewModel.$model
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] model in
+                guard let self, let model else { return }
+                let lentfier = model.lentfier ?? ""
+                if lentfier == "0" || lentfier == "00" {
+                    if viewModel.action == .list_Info {
+                        
+                    }else {
+                        
+                    }
+                }else {
+                    ToastWindowManager.showMessage(model.plurimon ?? "")
+                }
+            }
+            .store(in: &cancellables)
+        
+        viewModel.$errorMsg
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                guard let self else { return }
+            }
+            .store(in: &cancellables)
+        
+    }
+    
+    private func listInfo() {
+        let productId = cylindModel?.seish?.side ?? ""
+        let parameters = ["allate": productId]
+        viewModel.personalInfo(parameters: parameters)
     }
     
 }
