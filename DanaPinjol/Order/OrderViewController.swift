@@ -12,26 +12,31 @@ import CombineCocoa
 
 class OrderViewController: BaseViewController {
     
-    lazy var loginBtn: UIButton = {
-        let loginBtn = UIButton(type: .custom)
-        loginBtn.setTitle("Log in to Zoom Loan", for: .normal)
-        loginBtn.setTitleColor(.white, for: .normal)
-        loginBtn.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight(700))
-        loginBtn.setBackgroundImage(UIImage(named: "login_btn_image"), for: .normal)
-        return loginBtn
+    lazy var bgImageView: UIImageView = {
+        let bgImageView = UIImageView()
+        bgImageView.image = UIImage(named: "app_bg_image")
+        return bgImageView
+    }()
+    
+    lazy var desImageView: UIImageView = {
+        let desImageView = UIImageView()
+        desImageView.image = UIImage(named: "occ_ad_image")
+        return desImageView
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.addSubview(loginBtn)
-        loginBtn.snp.makeConstraints { make in
+        view.addSubview(bgImageView)
+        bgImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
         
-        loginBtn.tapPublisher.sink { _ in
-            self.showDatePicker()
-        }.store(in: &cancellables)
+        view.addSubview(desImageView)
+        desImageView.snp.makeConstraints { make in
+            make.top.left.right.equalToSuperview()
+            make.height.equalTo(142.pix())
+        }
         
     }
     
@@ -40,20 +45,6 @@ class OrderViewController: BaseViewController {
 
 extension OrderViewController {
     
-    @objc private func showDatePicker() {
-        
-        let datePicker = DatePickerView(dateString: "23/08/1985")
-        
-        datePicker.onDateSelected = { [weak self] dateString in
-            
-            print("选择的日期：\(dateString)")
-        }
-        
-        datePicker.onDismiss = {
-            print("日期选择器已关闭")
-        }
-        
-        datePicker.show()
-    }
+    
     
 }

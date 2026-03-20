@@ -48,6 +48,7 @@ class cylindModel: Codable {
     var trueacle: String?
     var fodment: Int?
     var lud: [ludModel]?
+    var college: collegeModel?
 }
 
 class discussshipModel: Codable {
@@ -66,6 +67,16 @@ class stinguenceModel: Codable {
 class actuallyifyModel: Codable {
     var pathyish: String?
     var oesophagless: [oesophaglessModel]?
+    var ovilawose: String?
+    var trueacle: String?
+    var misoile: String?
+    var tendivity: String?
+    var sitlike: String?
+    var matririseious: String?
+    var ofial: String?
+    var polyosity: String?
+    var manuality: String?
+    var clysally: [graphodomModel]?
 }
 
 class oesophaglessModel: Codable {
@@ -158,4 +169,8 @@ class graphodomModel: Codable {
         trueacle = try? container.decode(String.self, forKey: .trueacle)
         
     }
+}
+
+class collegeModel: Codable {
+    var actuallyify: [actuallyifyModel]?
 }

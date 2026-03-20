@@ -61,7 +61,7 @@ class AppInputView: BaseView {
         bgView.snp.makeConstraints { make in
             make.top.equalTo(nameLabel.snp.bottom).offset(12.pix())
             make.centerX.equalToSuperview()
-            make.left.equalToSuperview().inset(25)
+            make.left.equalToSuperview().inset(20)
             make.height.equalTo(40.pix())
         }
         phoneTextFiled.snp.makeConstraints { make in
