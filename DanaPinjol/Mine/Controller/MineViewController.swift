@@ -55,7 +55,9 @@ class MineViewController: BaseViewController {
                 self?.navigationController?.pushViewController(orderListVc, animated: true)
                 
             case .policy:
-                break
+                let pageUrl = h5_url + "/ably"
+                self?.juduePageToVc(pageUrl)
+                
             }
             
         }
