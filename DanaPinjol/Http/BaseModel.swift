@@ -49,6 +49,7 @@ class cylindModel: Codable {
     var fodment: Int?
     var lud: [ludModel]?
     var college: collegeModel?
+    var emulable: String?
 }
 
 class discussshipModel: Codable {
@@ -77,6 +78,11 @@ class actuallyifyModel: Codable {
     var polyosity: String?
     var manuality: String?
     var clysally: [graphodomModel]?
+    var cofilman: String?
+    var octaneous: String?
+    var military: militaryModel?
+    var cladworry: [cladworryModel]?
+    var emulable: String?
 }
 
 class oesophaglessModel: Codable {
@@ -173,4 +179,13 @@ class graphodomModel: Codable {
 
 class collegeModel: Codable {
     var actuallyify: [actuallyifyModel]?
+}
+
+class militaryModel: Codable {
+    var mulsule: String?
+}
+
+class cladworryModel: Codable {
+    var sitlike: String?
+    var irasc: String?
 }

@@ -180,7 +180,7 @@ extension HomeCardViewCell {
         
         tapBtn
             .tapPublisher
-            .debounce(for: .seconds(0.2), scheduler: DispatchQueue.main)
+            .debounce(for: .seconds(0.1), scheduler: DispatchQueue.main)
             .sink { [weak self] _ in
                 guard let self, let model else { return }
                 self.tapProductBlock?(String(model.side ?? 0))

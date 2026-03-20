@@ -116,7 +116,7 @@ extension MineOrderView {
         
         oneBtn
             .tapPublisher
-            .debounce(for: .seconds(0.2), scheduler: DispatchQueue.main)
+            .debounce(for: .seconds(0.1), scheduler: DispatchQueue.main)
             .sink { [weak self] _ in
                 self?.clickBtnBlock?(.all)
             }
@@ -124,7 +124,7 @@ extension MineOrderView {
         
         twoBtn
             .tapPublisher
-            .debounce(for: .seconds(0.2), scheduler: DispatchQueue.main)
+            .debounce(for: .seconds(0.1), scheduler: DispatchQueue.main)
             .sink { [weak self] _ in
                 self?.clickBtnBlock?(.progress)
             }
@@ -132,7 +132,7 @@ extension MineOrderView {
         
         threeBtn
             .tapPublisher
-            .debounce(for: .seconds(0.2), scheduler: DispatchQueue.main)
+            .debounce(for: .seconds(0.1), scheduler: DispatchQueue.main)
             .sink { [weak self] _ in
                 self?.clickBtnBlock?(.repayment)
             }
@@ -140,7 +140,7 @@ extension MineOrderView {
         
         fourBtn
             .tapPublisher
-            .debounce(for: .seconds(0.2), scheduler: DispatchQueue.main)
+            .debounce(for: .seconds(0.1), scheduler: DispatchQueue.main)
             .sink { [weak self] _ in
                 self?.clickBtnBlock?(.finish)
             }
@@ -148,7 +148,7 @@ extension MineOrderView {
         
         fiveBtn
             .tapPublisher
-            .debounce(for: .seconds(0.2), scheduler: DispatchQueue.main)
+            .debounce(for: .seconds(0.1), scheduler: DispatchQueue.main)
             .sink { [weak self] _ in
                 self?.clickBtnBlock?(.policy)
             }

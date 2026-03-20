@@ -190,7 +190,7 @@ extension ProductView {
     private func bindTap() {
         nextBtn
             .tapPublisher
-            .debounce(for: .seconds(0.2), scheduler: DispatchQueue.main)
+            .debounce(for: .seconds(0.1), scheduler: DispatchQueue.main)
             .sink { [weak self] _ in
                 guard let self = self,
                       let model = model else { return }

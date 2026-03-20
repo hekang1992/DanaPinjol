@@ -101,14 +101,14 @@ class MineLogoutView: BaseView {
     // MARK: - Private Methods
     private func bindClickTap() {
         cancelBtn.tapPublisher
-            .debounce(for: .seconds(0.2), scheduler: DispatchQueue.main)
+            .debounce(for: .seconds(0.1), scheduler: DispatchQueue.main)
             .sink { [weak self] _ in
                 self?.cancelBlock?()
             }
             .store(in: &cancellables)
         
         confirmBtn.tapPublisher
-            .debounce(for: .seconds(0.2), scheduler: DispatchQueue.main)
+            .debounce(for: .seconds(0.1), scheduler: DispatchQueue.main)
             .sink { [weak self] _ in
                 self?.confirmBlock?()
             }

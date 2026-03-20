@@ -87,7 +87,7 @@ class PoorViewController: BaseViewController {
         
         nextBtn
             .tapPublisher
-            .debounce(for: .seconds(0.2), scheduler: DispatchQueue.main)
+            .debounce(for: .seconds(0.1), scheduler: DispatchQueue.main)
             .sink { [weak self] _ in
                 guard let self else { return }
                 let listArray = viewModel.model?.cylind?.lud ?? []

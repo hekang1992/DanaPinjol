@@ -40,3 +40,11 @@
 "Date Selection" = "Date Selection";
 "Please select a certification item" = "Please select a certification item";
 "apc_on_bg_image" = "apc_on_bg_image";
+"en_all_nor_image" = "en_all_nor_image";
+"en_pro_nor_image" = "en_pro_nor_image";
+"en_pay_nor_image" = "en_pay_nor_image";
+"en_coc_nor_image" = "en_coc_nor_image";
+"en_all_sel_image" = "en_all_sel_image";
+"en_pro_sel_image" = "en_pro_sel_image";
+"en_pay_sel_image" = "en_pay_sel_image";
+"en_coc_sel_image" = "en_coc_sel_image";

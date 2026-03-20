@@ -40,3 +40,11 @@
 "Date Selection" = "Pemilihan Tanggal";
 "Please select a certification item" = "Silakan pilih item autentikasi";
 "apc_on_bg_image" = "apdc_on_bg_image";
+"en_all_nor_image" = "end_all_nor_image";
+"en_pro_nor_image" = "end_pro_nor_image";
+"en_pay_nor_image" = "end_pay_nor_image";
+"en_coc_nor_image" = "end_coc_nor_image";
+"en_all_sel_image" = "end_all_sel_image";
+"en_pro_sel_image" = "end_pro_sel_image";
+"en_pay_sel_image" = "end_pay_sel_image";
+"en_coc_sel_image" = "end_coc_sel_image";

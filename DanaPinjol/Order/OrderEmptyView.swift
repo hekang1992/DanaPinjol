@@ -11,7 +11,9 @@ import CombineCocoa
 import SnapKit
 
 class OrderEmptyView: BaseView {
-
+    
+    var emptyBtnBlock: (() -> Void)?
+    
     lazy var emptyBtn: UIButton = {
         let emptyBtn = UIButton(type: .custom)
         emptyBtn.setBackgroundImage(UIImage(named: "apc_on_bg_image".localized), for: .normal)
@@ -31,6 +33,14 @@ class OrderEmptyView: BaseView {
                 make.size.equalTo(CGSize(width: 223.pix(), height: 218.pix()))
             }
         }
+        
+        emptyBtn
+            .tapPublisher
+            .debounce(for: .seconds(0.1), scheduler: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.emptyBtnBlock?()
+            }
+            .store(in: &cancellables)
     }
     
     @MainActor required init?(coder: NSCoder) {

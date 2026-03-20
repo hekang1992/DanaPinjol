@@ -55,6 +55,10 @@
 		735BAB602F6D19E500F31CDE /* ContractViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735BAB5F2F6D19E500F31CDE /* ContractViewCell.swift */; };
 		735BAB622F6D1EDA00F31CDE /* OrderEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735BAB612F6D1EDA00F31CDE /* OrderEmptyView.swift */; };
 		735BAB642F6D251400F31CDE /* ContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735BAB632F6D251400F31CDE /* ContactModel.swift */; };
+		735BAB672F6D35B200F31CDE /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735BAB662F6D35B200F31CDE /* OrderViewModel.swift */; };
+		735BAB682F6D35B200F31CDE /* OrderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735BAB652F6D35B200F31CDE /* OrderService.swift */; };
+		735BAB6A2F6D36D300F31CDE /* OrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735BAB692F6D36D300F31CDE /* OrderTableViewCell.swift */; };
+		735BAB6C2F6D3C3500F31CDE /* OrderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735BAB6B2F6D3C3500F31CDE /* OrderListView.swift */; };
 		73671D522F68E06100160E3B /* MineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73671D512F68E06100160E3B /* MineView.swift */; };
 		73671D542F68E0A500160E3B /* MineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73671D532F68E09F00160E3B /* MineViewModel.swift */; };
 		73671D562F68E0AF00160E3B /* MineService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73671D552F68E0AB00160E3B /* MineService.swift */; };
@@ -148,6 +152,10 @@
 		735BAB5F2F6D19E500F31CDE /* ContractViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractViewCell.swift; sourceTree = "<group>"; };
 		735BAB612F6D1EDA00F31CDE /* OrderEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderEmptyView.swift; sourceTree = "<group>"; };
 		735BAB632F6D251400F31CDE /* ContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModel.swift; sourceTree = "<group>"; };
+		735BAB652F6D35B200F31CDE /* OrderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderService.swift; sourceTree = "<group>"; };
+		735BAB662F6D35B200F31CDE /* OrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
+		735BAB692F6D36D300F31CDE /* OrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTableViewCell.swift; sourceTree = "<group>"; };
+		735BAB6B2F6D3C3500F31CDE /* OrderListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListView.swift; sourceTree = "<group>"; };
 		73671D512F68E06100160E3B /* MineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineView.swift; sourceTree = "<group>"; };
 		73671D532F68E09F00160E3B /* MineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineViewModel.swift; sourceTree = "<group>"; };
 		73671D552F68E0AB00160E3B /* MineService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineService.swift; sourceTree = "<group>"; };
@@ -284,8 +292,12 @@
 		734A46492F67B12800455F6A /* Order */ = {
 			isa = PBXGroup;
 			children = (
+				735BAB652F6D35B200F31CDE /* OrderService.swift */,
+				735BAB662F6D35B200F31CDE /* OrderViewModel.swift */,
 				734A466C2F67D82500455F6A /* OrderViewController.swift */,
 				735BAB612F6D1EDA00F31CDE /* OrderEmptyView.swift */,
+				735BAB692F6D36D300F31CDE /* OrderTableViewCell.swift */,
+				735BAB6B2F6D3C3500F31CDE /* OrderListView.swift */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -711,6 +723,7 @@
 				734A468C2F67FBD700455F6A /* LoginManager.swift in Sources */,
 				73671D6D2F692B1D00160E3B /* MineDeleteView.swift in Sources */,
 				738AEF522F6BBD0D004DDB0D /* PersonalView.swift in Sources */,
+				735BAB6C2F6D3C3500F31CDE /* OrderListView.swift in Sources */,
 				738AEF462F6B9754004DDB0D /* AppInputView.swift in Sources */,
 				738AEF442F6B92E5004DDB0D /* PopSureCardMessageView.swift in Sources */,
 				73671D652F6919E000160E3B /* H5WebViewController.swift in Sources */,
@@ -758,6 +771,7 @@
 				734A46802F67D8E300455F6A /* FaceViewController.swift in Sources */,
 				738AEF502F6BAB85004DDB0D /* PoorViewController.swift in Sources */,
 				736DD1032F6A8F20002E1B50 /* FaceListView.swift in Sources */,
+				735BAB6A2F6D36D300F31CDE /* OrderTableViewCell.swift in Sources */,
 				734A466F2F67D82B00455F6A /* MineViewController.swift in Sources */,
 				73671D5F2F68F01F00160E3B /* MineToolsView.swift in Sources */,
 				73671D792F69419B00160E3B /* HomeViewModel.swift in Sources */,
@@ -766,6 +780,8 @@
 				735BAB512F6CF03400F31CDE /* WorkService.swift in Sources */,
 				735BAB522F6CF03400F31CDE /* WorkViewModel.swift in Sources */,
 				735BAB582F6D0CC600F31CDE /* HomeCardViewCell.swift in Sources */,
+				735BAB672F6D35B200F31CDE /* OrderViewModel.swift in Sources */,
+				735BAB682F6D35B200F31CDE /* OrderService.swift in Sources */,
 				734A465E2F67CBF600455F6A /* LoadingView.swift in Sources */,
 				73CA3F7A2F6A54F70037C057 /* ProductListView.swift in Sources */,
 				734A46672F67CF8B00455F6A /* SplashService.swift in Sources */,
