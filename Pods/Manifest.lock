@@ -21,7 +21,7 @@ DEPENDENCIES:
   - CombineCocoa
   - DeviceKit
   - FBSDKCoreKit
-  - IQKeyboardManagerSwift
+  - IQKeyboardManagerSwift (~> 6.5.16)
   - KeychainSwift
   - Kingfisher
   - MJRefresh
@@ -60,6 +60,6 @@ SPEC CHECKSUMS:
   Toast-Swift: 7a03a532afe3a560d4044bc7c237e2864d295173
   TYAlertController: c121090edb0bea7426f987da94cdddd81eef4231
 
-PODFILE CHECKSUM: 72f9a9036c7160f2ae6570320afd314735b631e0
+PODFILE CHECKSUM: 3e4641b3e737a6087d46ff7fa03e2e1f33b453ba
 
 COCOAPODS: 1.16.2

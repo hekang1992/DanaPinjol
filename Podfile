@@ -7,7 +7,7 @@ target 'DanaPinjol' do
 
   # Pods for DanaPinjol
   pod 'SnapKit'
-  pod 'IQKeyboardManagerSwift'
+  pod 'IQKeyboardManagerSwift', '~> 6.5.16'
   pod 'TYAlertController'
   pod 'FBSDKCoreKit'
   pod 'DeviceKit'
