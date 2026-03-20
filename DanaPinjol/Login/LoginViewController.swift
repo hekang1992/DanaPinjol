@@ -55,7 +55,8 @@ class LoginViewController: BaseViewController {
                 self.loginView.codeTextFiled.resignFirstResponder()
                 
             case .policy_info:
-                ToastWindowManager.showMessage("policy_info")
+                let pageUrl = h5_url + "/callfreewise"
+                self.juduePageToVc(pageUrl)
                 
             case .code_info:
                 self.codeInfo()

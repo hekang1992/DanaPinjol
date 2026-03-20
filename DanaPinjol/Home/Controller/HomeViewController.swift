@@ -50,6 +50,18 @@ class HomeViewController: BaseViewController {
             self.clickProductInfo(with: productId)
         }
         
+        homeView.tapTwoImageViewBlock = { [weak self] in
+            guard let self = self else { return }
+            let pageUrl = h5_url + "/ably"
+            self.juduePageToVc(pageUrl)
+        }
+        
+        homeView.tapFourImageViewBlock = { [weak self] in
+            guard let self = self else { return }
+            let dedcVc = DescViewController()
+            self.navigationController?.pushViewController(dedcVc, animated: true)
+        }
+        
         mainView.tapProductBlock = { [weak self] productId in
             guard let self = self else { return }
             self.clickProductInfo(with: productId)

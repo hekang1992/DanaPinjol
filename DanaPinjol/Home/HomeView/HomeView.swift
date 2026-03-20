@@ -14,6 +14,10 @@ class HomeView: BaseView {
     
     var tapProductBlock: ((String) -> Void)?
     
+    var tapTwoImageViewBlock: (() -> Void)?
+    
+    var tapFourImageViewBlock: (() -> Void)?
+    
     var cardModel: oesophaglessModel? {
         didSet {
             guard let cardModel = cardModel else { return }
@@ -61,6 +65,7 @@ class HomeView: BaseView {
     lazy var twoImageView: UIImageView = {
         let twoImageView = UIImageView()
         twoImageView.image = UIImage(named: "home_two_image".localized)
+        twoImageView.isUserInteractionEnabled = true
         return twoImageView
     }()
     
@@ -73,6 +78,7 @@ class HomeView: BaseView {
     lazy var fourImageView: UIImageView = {
         let fourImageView = UIImageView()
         fourImageView.image = UIImage(named: "home_four_image".localized)
+        fourImageView.isUserInteractionEnabled = true
         return fourImageView
     }()
     
@@ -160,6 +166,11 @@ class HomeView: BaseView {
                 make.centerX.equalToSuperview()
                 make.bottom.equalToSuperview().offset(-20.pix())
             }
+            
+            setupTapGesture(for: twoImageView, action: #selector(handleTwoImageViewTap))
+            setupTapGesture(for: fourImageView, action: #selector(handleFourImageViewTap))
+//            setupTapGesture(for: fourImageView, action: #selector(handleFourImageViewTap))
+            
         }
         
         bindClickTap()
@@ -173,6 +184,12 @@ class HomeView: BaseView {
 
 extension HomeView {
     
+    private func setupTapGesture(for imageView: UIImageView, action: Selector) {
+        imageView.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: action)
+        imageView.addGestureRecognizer(tapGesture)
+    }
+    
     private func bindClickTap() {
         applyClickBtn
             .tapPublisher
@@ -182,6 +199,16 @@ extension HomeView {
                 self.tapProductBlock?(productId)
             }
             .store(in: &cancellables)
+    }
+    
+    @objc private func handleTwoImageViewTap() {
+        print("twoImageView tapped")
+        tapTwoImageViewBlock?()
+    }
+    
+    @objc private func handleFourImageViewTap() {
+        print("fourImageView tapped")
+        tapFourImageViewBlock?()
     }
     
 }
