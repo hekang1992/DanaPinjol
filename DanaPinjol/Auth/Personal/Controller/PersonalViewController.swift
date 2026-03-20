@@ -103,12 +103,51 @@ extension PersonalViewController {
             self.toProductStepPage()
         }
         
+        listView.tapTimeBlock = { [weak self] text, model, cell in
+            guard let self = self else { return }
+            self.showTapAlert(with: text, model: model, cell: cell)
+        }
+        
         bindViewModel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         listInfo()
+    }
+    
+}
+
+extension PersonalViewController {
+    
+    private func showTapAlert(with name: String, model: ludModel, cell: AppTapViewCell) {
+        let popView = PopSelectAuthListView(frame: self.view.bounds)
+        
+        let listArray = model.graphodom ?? []
+        
+        popView.modelArray = listArray
+        
+        popView.nameLabel.text = model.hetercarryar ?? ""
+        
+        if let selectedValue = cell.phoneTextFiled.text,
+           let selectedIndex = listArray.firstIndex(where: { $0.trueacle == selectedValue }) {
+            popView.selectedIndex = selectedIndex
+        }
+        
+        let alertVc = TYAlertController(alert: popView, preferredStyle: .alert)
+        self.present(alertVc!, animated: true)
+        
+        popView.cancelBlock = { [weak self] in
+            self?.dismiss(animated: true)
+        }
+        
+        popView.confirmBlock = { [weak self] listModel in
+            guard let _ = self else { return }
+            self?.dismiss(animated: true)
+            model.irasc = listModel.trueacle ?? ""
+            model.pathyish = listModel.pathyish ?? ""
+            cell.phoneTextFiled.text = listModel.trueacle ?? ""
+        }
     }
     
 }
@@ -124,7 +163,7 @@ extension PersonalViewController {
                 let lentfier = model.lentfier ?? ""
                 if lentfier == "0" || lentfier == "00" {
                     if viewModel.action == .list_Info {
-                        
+                        self.listView.modelArray = model.cylind?.lud ?? []
                     }else {
                         
                     }
@@ -136,8 +175,8 @@ extension PersonalViewController {
         
         viewModel.$errorMsg
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] _ in
-                guard let self else { return }
+            .sink { _ in
+                
             }
             .store(in: &cancellables)
         

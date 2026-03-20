@@ -8,13 +8,33 @@
 import UIKit
 import SnapKit
 import Combine
+import CombineCocoa
 
 class AppInputViewCell: UITableViewCell {
     
+    var model: ludModel? {
+        didSet {
+            guard let model = model else { return }
+            nameLabel.text = model.hetercarryar ?? ""
+            phoneTextFiled.placeholder = model.vetory ?? ""
+            let coveresque = model.coveresque ?? ""
+            phoneTextFiled.keyboardType = coveresque == "1" ? .numberPad : .default
+        }
+    }
+    
+    var onTextChange: ((String) -> Void)?
+    
     var cancellables = Set<AnyCancellable>()
+    
+    var textPublisher: AnyPublisher<String, Never> {
+        return phoneTextFiled.textPublisher
+            .compactMap { $0 }
+            .eraseToAnyPublisher()
+    }
     
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
+        bgImageView.image = UIImage(named: "basicinf_ic")
         return bgImageView
     }()
     
@@ -47,15 +67,24 @@ class AppInputViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = .clear
         selectionStyle = .none
+        
+        setupUI()
+        setupTextFieldListener()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupUI() {
         contentView.addSubview(bgImageView)
         contentView.addSubview(nameLabel)
         contentView.addSubview(bgView)
         bgView.addSubview(phoneTextFiled)
         
-        addSubview(bgImageView)
         bgImageView.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.left.equalToSuperview().offset(25)
+            make.left.equalToSuperview().offset(20.pix())
             make.width.height.equalTo(14)
         }
         nameLabel.snp.makeConstraints { make in
@@ -66,7 +95,7 @@ class AppInputViewCell: UITableViewCell {
         bgView.snp.makeConstraints { make in
             make.top.equalTo(nameLabel.snp.bottom).offset(12.pix())
             make.centerX.equalToSuperview()
-            make.left.equalToSuperview().inset(25)
+            make.left.equalToSuperview().inset(20.pix())
             make.height.equalTo(40.pix())
             make.bottom.equalToSuperview().offset(-20)
         }
@@ -76,8 +105,18 @@ class AppInputViewCell: UITableViewCell {
         }
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    private func setupTextFieldListener() {
+        phoneTextFiled.textPublisher
+            .compactMap { $0 }
+            .sink { [weak self] text in
+                print("输入的文本: \(text)")
+                self?.onTextChange?(text)
+            }
+            .store(in: &cancellables)
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        cancellables.removeAll()
+    }
 }

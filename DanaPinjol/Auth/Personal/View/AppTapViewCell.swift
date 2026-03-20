@@ -12,12 +12,21 @@ import CombineCocoa
 
 class AppTapViewCell: UITableViewCell {
     
+    var model: ludModel? {
+        didSet {
+            guard let model = model else { return }
+            nameLabel.text = model.hetercarryar ?? ""
+            phoneTextFiled.placeholder = model.vetory ?? ""
+        }
+    }
+    
     var cancellables = Set<AnyCancellable>()
     
     var tapTimeBlock: ((String) -> Void)?
     
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
+        bgImageView.image = UIImage(named: "basic_infor_image")
         return bgImageView
     }()
     
@@ -70,7 +79,7 @@ class AppTapViewCell: UITableViewCell {
         
         bgImageView.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.left.equalToSuperview().offset(25)
+            make.left.equalToSuperview().offset(20.pix())
             make.width.height.equalTo(14)
         }
         nameLabel.snp.makeConstraints { make in
@@ -81,7 +90,7 @@ class AppTapViewCell: UITableViewCell {
         bgView.snp.makeConstraints { make in
             make.top.equalTo(nameLabel.snp.bottom).offset(12.pix())
             make.centerX.equalToSuperview()
-            make.left.equalToSuperview().inset(25)
+            make.left.equalToSuperview().inset(20.pix())
             make.height.equalTo(40.pix())
             make.bottom.equalToSuperview().offset(-20)
         }

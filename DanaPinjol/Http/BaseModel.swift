@@ -47,6 +47,7 @@ class cylindModel: Codable {
     var hab: String?
     var trueacle: String?
     var fodment: Int?
+    var lud: [ludModel]?
 }
 
 class discussshipModel: Codable {
@@ -100,4 +101,37 @@ class totalsomeModel: Codable {
 
 class terraeticModel: Codable {
     var thero: String?
+}
+
+class ludModel: Codable {
+    var hetercarryar: String?
+    var vetory: String?
+    var lentfier: String?
+    var blackence: String?
+    var irasc: String?
+    var pathyish: String?
+    var coveresque: String?
+    var graphodom: [graphodomModel]?
+}
+
+class graphodomModel: Codable {
+    var trueacle: String?
+    var pathyish: String?
+    
+    private enum CodingKeys: String, CodingKey {
+        case trueacle, pathyish
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        if let intValue = try? container.decode(Int.self, forKey: .pathyish) {
+            pathyish = String(intValue)
+        } else {
+            pathyish = try? container.decode(String.self, forKey: .pathyish)
+        }
+        
+        trueacle = try? container.decode(String.self, forKey: .trueacle)
+        
+    }
 }

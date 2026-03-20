@@ -23,9 +23,11 @@ class PersonalViewModel: ObservableObject {
     
     func personalInfo(parameters: [String: Any]) {
         
+        action = .list_Info
+        
         Task {
             do {
-                action = .list_Info
+                
                 model = try await PersonalService.personalInfo(parameters: parameters)
                 
             } catch {
@@ -38,9 +40,11 @@ class PersonalViewModel: ObservableObject {
     
     func savePersonalInfo(parameters: [String: Any]) {
         
+        action = .save_Info
+        
         Task {
             do {
-                action = .save_Info
+                
                 model = try await PersonalService.savePersonalInfo(parameters: parameters)
                 
             } catch {
