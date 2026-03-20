@@ -138,7 +138,7 @@ private extension PopSelectAuthListView {
     
     @objc func confirmClick() {
         guard let index = selectedIndex else {
-            ToastWindowManager.showMessage("Please select an authentication item".localized)
+            ToastWindowManager.showMessage("Please select a certification item.".localized)
             return
         }
         confirmBlock?(modelArray[index])

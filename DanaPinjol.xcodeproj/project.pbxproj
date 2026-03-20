@@ -43,7 +43,9 @@
 		734A46982F6845A900455F6A /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734A46972F68459F00455F6A /* LoginService.swift */; };
 		735BAB4A2F6CDA0700F31CDE /* PersonalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735BAB492F6CD9FE00F31CDE /* PersonalViewModel.swift */; };
 		735BAB4C2F6CDA1000F31CDE /* PersonalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735BAB4B2F6CDA0A00F31CDE /* PersonalService.swift */; };
-		735BAB4E2F6CE2CE00F31CDE /* PopSelectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735BAB4D2F6CE2CE00F31CDE /* PopSelectListView.swift */; };
+		735BAB4E2F6CE2CE00F31CDE /* PopSelectAuthListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735BAB4D2F6CE2CE00F31CDE /* PopSelectAuthListView.swift */; };
+		735BAB512F6CF03400F31CDE /* WorkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735BAB4F2F6CF03400F31CDE /* WorkService.swift */; };
+		735BAB522F6CF03400F31CDE /* WorkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735BAB502F6CF03400F31CDE /* WorkViewModel.swift */; };
 		73671D522F68E06100160E3B /* MineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73671D512F68E06100160E3B /* MineView.swift */; };
 		73671D542F68E0A500160E3B /* MineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73671D532F68E09F00160E3B /* MineViewModel.swift */; };
 		73671D562F68E0AF00160E3B /* MineService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73671D552F68E0AB00160E3B /* MineService.swift */; };
@@ -125,7 +127,9 @@
 		734A46972F68459F00455F6A /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		735BAB492F6CD9FE00F31CDE /* PersonalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewModel.swift; sourceTree = "<group>"; };
 		735BAB4B2F6CDA0A00F31CDE /* PersonalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalService.swift; sourceTree = "<group>"; };
-		735BAB4D2F6CE2CE00F31CDE /* PopSelectListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopSelectListView.swift; sourceTree = "<group>"; };
+		735BAB4D2F6CE2CE00F31CDE /* PopSelectAuthListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopSelectAuthListView.swift; sourceTree = "<group>"; };
+		735BAB4F2F6CF03400F31CDE /* WorkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkService.swift; sourceTree = "<group>"; };
+		735BAB502F6CF03400F31CDE /* WorkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkViewModel.swift; sourceTree = "<group>"; };
 		73671D512F68E06100160E3B /* MineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineView.swift; sourceTree = "<group>"; };
 		73671D532F68E09F00160E3B /* MineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineViewModel.swift; sourceTree = "<group>"; };
 		73671D552F68E0AB00160E3B /* MineService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineService.swift; sourceTree = "<group>"; };
@@ -357,6 +361,8 @@
 		734A46742F67D84700455F6A /* Work */ = {
 			isa = PBXGroup;
 			children = (
+				735BAB4F2F6CF03400F31CDE /* WorkService.swift */,
+				735BAB502F6CF03400F31CDE /* WorkViewModel.swift */,
 				738AEF4B2F6BAB21004DDB0D /* HardWorkViewController.swift */,
 			);
 			path = Work;
@@ -406,7 +412,7 @@
 		735BAB482F6CD9D800F31CDE /* View */ = {
 			isa = PBXGroup;
 			children = (
-				735BAB4D2F6CE2CE00F31CDE /* PopSelectListView.swift */,
+				735BAB4D2F6CE2CE00F31CDE /* PopSelectAuthListView.swift */,
 				738AEF512F6BBD0D004DDB0D /* PersonalView.swift */,
 				737E46462F6C4C7700C730F9 /* AppInputViewCell.swift */,
 				737E46482F6C4C8A00C730F9 /* AppTapViewCell.swift */,
@@ -662,7 +668,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				73CA3F762F6A38DF0037C057 /* ProductView.swift in Sources */,
-				735BAB4E2F6CE2CE00F31CDE /* PopSelectListView.swift in Sources */,
+				735BAB4E2F6CE2CE00F31CDE /* PopSelectAuthListView.swift in Sources */,
 				738AEF422F6B8DFA004DDB0D /* PersonalViewController.swift in Sources */,
 				734A46622F67CCBB00455F6A /* NetworkMonitor.swift in Sources */,
 				734A46542F67B41500455F6A /* BaseTabBarController.swift in Sources */,
@@ -722,6 +728,8 @@
 				734A466F2F67D82B00455F6A /* MineViewController.swift in Sources */,
 				73671D5F2F68F01F00160E3B /* MineToolsView.swift in Sources */,
 				73671D792F69419B00160E3B /* HomeViewModel.swift in Sources */,
+				735BAB512F6CF03400F31CDE /* WorkService.swift in Sources */,
+				735BAB522F6CF03400F31CDE /* WorkViewModel.swift in Sources */,
 				734A465E2F67CBF600455F6A /* LoadingView.swift in Sources */,
 				73CA3F7A2F6A54F70037C057 /* ProductListView.swift in Sources */,
 				734A46672F67CF8B00455F6A /* SplashService.swift in Sources */,

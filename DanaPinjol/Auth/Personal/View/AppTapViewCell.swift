@@ -17,6 +17,9 @@ class AppTapViewCell: UITableViewCell {
             guard let model = model else { return }
             nameLabel.text = model.hetercarryar ?? ""
             phoneTextFiled.placeholder = model.vetory ?? ""
+            
+            let value = model.irasc ?? ""
+            phoneTextFiled.text = value
         }
     }
     

@@ -14,7 +14,9 @@ import MJRefresh
 
 class PersonalViewController: BaseViewController {
     
-    private var viewModel = PersonalViewModel()
+    private let viewModel = PersonalViewModel()
+    
+    private let productViewModel = ProductViewModel()
     
     var cylindModel: cylindModel? {
         didSet {
@@ -83,6 +85,22 @@ class PersonalViewController: BaseViewController {
             make.bottom.equalTo(nextBtn.snp.top).offset(-5)
         }
         
+        nextBtn
+            .tapPublisher
+            .debounce(for: .seconds(0.2), scheduler: DispatchQueue.main)
+            .sink { [weak self] _ in
+                guard let self else { return }
+                let listArray = viewModel.model?.cylind?.lud ?? []
+                var parameters = ["allate": cylindModel?.seish?.side ?? ""]
+                for model in listArray {
+                    let key = model.lentfier ?? ""
+                    let value = model.pathyish ?? ""
+                    parameters[key] = value
+                }
+                viewModel.savePersonalInfo(parameters: parameters)
+            }
+            .store(in: &cancellables)
+        
     }
     
 }
@@ -105,6 +123,7 @@ extension PersonalViewController {
         
         listView.tapTimeBlock = { [weak self] text, model, cell in
             guard let self = self else { return }
+            self.view.endEditing(true)
             self.showTapAlert(with: text, model: model, cell: cell)
         }
         
@@ -165,7 +184,7 @@ extension PersonalViewController {
                     if viewModel.action == .list_Info {
                         self.listView.modelArray = model.cylind?.lud ?? []
                     }else {
-                        
+                        self.productDetailInfo()
                     }
                 }else {
                     ToastWindowManager.showMessage(model.plurimon ?? "")
@@ -180,12 +199,31 @@ extension PersonalViewController {
             }
             .store(in: &cancellables)
         
+        productViewModel.$model
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] model in
+                guard let self, let model else { return }
+                let lentfier = model.lentfier ?? ""
+                if lentfier == "0" || lentfier == "00" {
+                    if let cylindModel = model.cylind {
+                        self.toNextVC(with: cylindModel)
+                    }
+                }
+                
+            }
+            .store(in: &cancellables)
+        
     }
     
     private func listInfo() {
         let productId = cylindModel?.seish?.side ?? ""
         let parameters = ["allate": productId]
         viewModel.personalInfo(parameters: parameters)
+    }
+    
+    private func productDetailInfo() {
+        let parameters = ["allate": cylindModel?.seish?.side ?? "", "fell": "1"]
+        productViewModel.detailInfo(parameters: parameters)
     }
     
 }

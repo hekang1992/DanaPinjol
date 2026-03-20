@@ -14,6 +14,10 @@ import MJRefresh
 
 class HardWorkViewController: BaseViewController {
     
+    private let viewModel = WorkViewModel()
+    
+    private let productViewModel = ProductViewModel()
+    
     var cylindModel: cylindModel? {
         didSet {
             guard let cylindModel = cylindModel else { return }
@@ -45,6 +49,11 @@ class HardWorkViewController: BaseViewController {
         return headImageView
     }()
     
+    lazy var listView: PersonalView = {
+        let listView = PersonalView()
+        return listView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -69,6 +78,28 @@ class HardWorkViewController: BaseViewController {
             make.size.equalTo(CGSize(width: 335.pix(), height: 64.pix()))
         }
         
+        view.addSubview(listView)
+        listView.snp.makeConstraints { make in
+            make.top.equalTo(headImageView.snp.bottom).offset(10)
+            make.left.right.equalToSuperview()
+            make.bottom.equalTo(nextBtn.snp.top).offset(-5)
+        }
+        
+        nextBtn
+            .tapPublisher
+            .debounce(for: .seconds(0.2), scheduler: DispatchQueue.main)
+            .sink { [weak self] _ in
+                guard let self else { return }
+                let listArray = viewModel.model?.cylind?.lud ?? []
+                var parameters = ["allate": cylindModel?.seish?.side ?? ""]
+                for model in listArray {
+                    let key = model.lentfier ?? ""
+                    let value = model.pathyish ?? ""
+                    parameters[key] = value
+                }
+                viewModel.saveWorkInfo(parameters: parameters)
+            }
+            .store(in: &cancellables)
         
     }
     
@@ -89,6 +120,110 @@ extension HardWorkViewController {
             guard let self = self else { return }
             self.toProductStepPage()
         }
+        
+        listView.tapTimeBlock = { [weak self] text, model, cell in
+            guard let self = self else { return }
+            self.view.endEditing(true)
+            self.showTapAlert(with: text, model: model, cell: cell)
+        }
+        
+        bindViewModel()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        listInfo()
+    }
+    
+}
+
+extension HardWorkViewController {
+    
+    private func showTapAlert(with name: String, model: ludModel, cell: AppTapViewCell) {
+        let popView = PopSelectAuthListView(frame: self.view.bounds)
+        
+        let listArray = model.graphodom ?? []
+        
+        popView.modelArray = listArray
+        
+        popView.nameLabel.text = model.hetercarryar ?? ""
+        
+        if let selectedValue = cell.phoneTextFiled.text,
+           let selectedIndex = listArray.firstIndex(where: { $0.trueacle == selectedValue }) {
+            popView.selectedIndex = selectedIndex
+        }
+        
+        let alertVc = TYAlertController(alert: popView, preferredStyle: .alert)
+        self.present(alertVc!, animated: true)
+        
+        popView.cancelBlock = { [weak self] in
+            self?.dismiss(animated: true)
+        }
+        
+        popView.confirmBlock = { [weak self] listModel in
+            guard let _ = self else { return }
+            self?.dismiss(animated: true)
+            model.irasc = listModel.trueacle ?? ""
+            model.pathyish = listModel.pathyish ?? ""
+            cell.phoneTextFiled.text = listModel.trueacle ?? ""
+        }
+    }
+    
+}
+
+extension HardWorkViewController {
+    
+    private func bindViewModel() {
+        
+        viewModel.$model
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] model in
+                guard let self, let model else { return }
+                let lentfier = model.lentfier ?? ""
+                if lentfier == "0" || lentfier == "00" {
+                    if viewModel.action == .list_Info {
+                        self.listView.modelArray = model.cylind?.lud ?? []
+                    }else {
+                        self.productDetailInfo()
+                    }
+                }else {
+                    ToastWindowManager.showMessage(model.plurimon ?? "")
+                }
+            }
+            .store(in: &cancellables)
+        
+        viewModel.$errorMsg
+            .receive(on: DispatchQueue.main)
+            .sink { _ in
+                
+            }
+            .store(in: &cancellables)
+        
+        productViewModel.$model
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] model in
+                guard let self, let model else { return }
+                let lentfier = model.lentfier ?? ""
+                if lentfier == "0" || lentfier == "00" {
+                    if let cylindModel = model.cylind {
+                        self.toNextVC(with: cylindModel)
+                    }
+                }
+                
+            }
+            .store(in: &cancellables)
+        
+    }
+    
+    private func listInfo() {
+        let productId = cylindModel?.seish?.side ?? ""
+        let parameters = ["allate": productId]
+        viewModel.workInfo(parameters: parameters)
+    }
+    
+    private func productDetailInfo() {
+        let parameters = ["allate": cylindModel?.seish?.side ?? "", "fell": "1"]
+        productViewModel.detailInfo(parameters: parameters)
     }
     
 }

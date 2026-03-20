@@ -19,6 +19,10 @@ class AppInputViewCell: UITableViewCell {
             phoneTextFiled.placeholder = model.vetory ?? ""
             let coveresque = model.coveresque ?? ""
             phoneTextFiled.keyboardType = coveresque == "1" ? .numberPad : .default
+            
+            let value = model.irasc ?? ""
+            phoneTextFiled.text = value
+            
         }
     }
     
