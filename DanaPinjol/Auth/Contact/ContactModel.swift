@@ -9,9 +9,13 @@ import UIKit
 import Contacts
 import ContactsUI
 
-struct ContactModel {
+class ContactModel: Codable {
     var name: String
     var phones: String
+    init(name: String, phones: String) {
+        self.name = name
+        self.phones = phones
+    }
 }
 
 class ContactManager: NSObject {

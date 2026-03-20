@@ -40,7 +40,7 @@ class H5WebViewController: BaseViewController {
     
     lazy var progressView: UIProgressView = {
         let progressView = UIProgressView(progressViewStyle: .default)
-        progressView.progressTintColor = .blue
+        progressView.progressTintColor = UIColor.init(hexString: "#FAE351")
         progressView.trackTintColor = .clear
         progressView.isHidden = true
         return progressView

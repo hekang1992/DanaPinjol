@@ -41,12 +41,6 @@ class FineMeService {
     
     static func uploadContactInfo(parameters: [String: Any]) async throws -> BaseModel? {
         
-        LoadingView.show()
-        
-        defer {
-            LoadingView.hide()
-        }
-        
         let result: BaseModel = try await NetworkManager.shared.postRequest(
             url: "/prim/figmost",
             parameters: parameters

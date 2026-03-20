@@ -27,6 +27,15 @@ class ContractViewCell: UITableViewCell {
             twoView.phoneTextFiled.placeholder = model.matririseious ?? ""
             
             applyDefaultValue(from: model)
+            
+            let name = model.trueacle ?? ""
+            let phone = model.misoile ?? ""
+            
+            if name.isEmpty || phone.isEmpty {
+                twoView.phoneTextFiled.text = ""
+            }else {
+                twoView.phoneTextFiled.text = String(format: "%@-%@", name, phone)
+            }
         }
     }
     
