@@ -14,11 +14,27 @@ class ProductViewModel: ObservableObject {
     
     @Published var errorMsg: String?
     
+    @Published var orderClickModel: BaseModel?
+    
     func detailInfo(parameters: [String: Any]) {
         
         Task {
             do {
                 model = try await ProductService.detailInfo(parameters: parameters)
+                
+            } catch {
+                
+                errorMsg = error.localizedDescription
+                
+            }
+        }
+    }
+    
+    func orderNumClickInfo(parameters: [String: Any]) {
+        
+        Task {
+            do {
+                orderClickModel = try await ProductService.orderNumClickInfo(parameters: parameters)
                 
             } catch {
                 

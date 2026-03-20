@@ -87,6 +87,24 @@ extension BaseViewController {
             poorVc.cylindModel = cylindModel
             self.navigationController?.pushViewController(poorVc, animated: true)
             
+        case "":
+            let orderViewModel = ProductViewModel()
+            let orderID = cylindModel.seish?.cultural ?? ""
+            let parameters = ["reportard": orderID]
+            orderViewModel.orderNumClickInfo(parameters: parameters)
+            
+            orderViewModel.$orderClickModel
+                .receive(on: DispatchQueue.main)
+                .sink { [weak self] model in
+                    guard let self, let model else { return }
+                    let lentfier = model.lentfier ?? ""
+                    if lentfier == "0" || lentfier == "00" {
+                        let pageUrl = model.cylind?.thero ?? ""
+                        self.juduePageToVc(pageUrl)
+                    }
+                }
+                .store(in: &cancellables)
+            
         default:
             break
         }

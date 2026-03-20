@@ -14,12 +14,10 @@ class WorkViewModel: ObservableObject {
     
     @Published var errorMsg: String?
     
-    @Published var action: PersonalType?
+    @Published var saveModel: BaseModel?
     
     func workInfo(parameters: [String: Any]) {
-        
-        action = .list_Info
-        
+                
         Task {
             do {
                 
@@ -34,13 +32,11 @@ class WorkViewModel: ObservableObject {
     }
     
     func saveWorkInfo(parameters: [String: Any]) {
-        
-        action = .save_Info
-        
+                
         Task {
             do {
                 
-                model = try await WorkService.saveWorkInfo(parameters: parameters)
+                saveModel = try await WorkService.saveWorkInfo(parameters: parameters)
                 
             } catch {
                 

@@ -8,20 +8,20 @@
 import Combine
 import Foundation
 
-class PersonalViewModel: ObservableObject {
+class PoorViewModel: ObservableObject {
     
     @Published var model: BaseModel?
     
     @Published var errorMsg: String?
     
     @Published var saveModel: BaseModel?
-        
-    func personalInfo(parameters: [String: Any]) {
+    
+    func bankInfo(parameters: [String: Any]) {
                 
         Task {
             do {
                 
-                model = try await PersonalService.personalInfo(parameters: parameters)
+                model = try await PoorService.bankInfo(parameters: parameters)
                 
             } catch {
                 
@@ -31,12 +31,12 @@ class PersonalViewModel: ObservableObject {
         }
     }
     
-    func savePersonalInfo(parameters: [String: Any]) {
+    func saveBankInfo(parameters: [String: Any]) {
                 
         Task {
             do {
                 
-                saveModel = try await PersonalService.savePersonalInfo(parameters: parameters)
+                saveModel = try await PoorService.saveBankInfo(parameters: parameters)
                 
             } catch {
                 

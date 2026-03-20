@@ -1,13 +1,13 @@
 //
-//  ProductService.swift
+//  PersonalService.swift
 //  DanaPinjol
 //
-//  Created by hekang on 2026/3/16.
+//  Created by hekang on 2026/3/20.
 //
 
-class ProductService {
+class PoorService {
     
-    static func detailInfo(parameters: [String: Any]) async throws -> BaseModel? {
+    static func bankInfo(parameters: [String: Any]) async throws -> BaseModel? {
         
         LoadingView.show()
         
@@ -16,14 +16,14 @@ class ProductService {
         }
         
         let result: BaseModel = try await NetworkManager.shared.postRequest(
-            url: "/prim/againoon",
+            url: "/prim/oesophagless",
             parameters: parameters
         )
         
         return result
     }
     
-    static func orderNumClickInfo(parameters: [String: Any]) async throws -> BaseModel? {
+    static func saveBankInfo(parameters: [String: Any]) async throws -> BaseModel? {
         
         LoadingView.show()
         
@@ -32,11 +32,12 @@ class ProductService {
         }
         
         let result: BaseModel = try await NetworkManager.shared.postRequest(
-            url: "/prim/cofilman",
+            url: "/prim/side",
             parameters: parameters
         )
         
         return result
     }
+    
     
 }

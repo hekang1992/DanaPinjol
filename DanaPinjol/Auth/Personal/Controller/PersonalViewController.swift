@@ -181,11 +181,20 @@ extension PersonalViewController {
                 guard let self, let model else { return }
                 let lentfier = model.lentfier ?? ""
                 if lentfier == "0" || lentfier == "00" {
-                    if viewModel.action == .list_Info {
-                        self.listView.modelArray = model.cylind?.lud ?? []
-                    }else {
-                        self.productDetailInfo()
-                    }
+                    self.listView.modelArray = model.cylind?.lud ?? []
+                }else {
+                    ToastWindowManager.showMessage(model.plurimon ?? "")
+                }
+            }
+            .store(in: &cancellables)
+        
+        viewModel.$saveModel
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] model in
+                guard let self, let model else { return }
+                let lentfier = model.lentfier ?? ""
+                if lentfier == "0" || lentfier == "00" {
+                    self.productDetailInfo()
                 }else {
                     ToastWindowManager.showMessage(model.plurimon ?? "")
                 }

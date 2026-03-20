@@ -112,6 +112,30 @@ class ludModel: Codable {
     var pathyish: String?
     var coveresque: String?
     var graphodom: [graphodomModel]?
+    
+    private enum CodingKeys: String, CodingKey {
+        case hetercarryar, vetory, lentfier, blackence, irasc, pathyish, coveresque, graphodom
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        hetercarryar = try container.decodeIfPresent(String.self, forKey: .hetercarryar)
+        vetory = try container.decodeIfPresent(String.self, forKey: .vetory)
+        lentfier = try container.decodeIfPresent(String.self, forKey: .lentfier)
+        blackence = try container.decodeIfPresent(String.self, forKey: .blackence)
+        irasc = try container.decodeIfPresent(String.self, forKey: .irasc)
+        pathyish = try container.decodeIfPresent(String.self, forKey: .pathyish)
+        graphodom = try container.decodeIfPresent([graphodomModel].self, forKey: .graphodom)
+        
+        if let stringValue = try? container.decode(String.self, forKey: .coveresque) {
+            coveresque = stringValue
+        } else if let intValue = try? container.decode(Int.self, forKey: .coveresque) {
+            coveresque = String(intValue)
+        } else {
+            coveresque = nil
+        }
+    }
 }
 
 class graphodomModel: Codable {

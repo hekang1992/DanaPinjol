@@ -50,6 +50,16 @@ class HomeViewController: BaseViewController {
             self.clickProductInfo(with: productId)
         }
         
+        mainView.tapProductBlock = { [weak self] productId in
+            guard let self = self else { return }
+            self.clickProductInfo(with: productId)
+        }
+        
+        self.mainView.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
+            guard let self else { return }
+            self.homeInfo()
+        })
+        
         bindViewModel()
         
     }
@@ -71,24 +81,36 @@ extension HomeViewController {
                 let lentfier = model.lentfier ?? ""
                 if lentfier == "0" || lentfier == "00" {
                     if viewModel.action == .home_info {
-                        if let listArray = model.cylind?.actuallyify {
-                            if let targetItem = listArray.first(where: { $0.pathyish == "ficiy" }) {
-                                if let oesophaglessArray = targetItem.oesophagless {
-                                    self.homeView.isHidden = false
-                                    self.mainView.isHidden = true
-                                    self.homeView.cardModel = oesophaglessArray.first
-                                }
-                            } else {
-                                self.homeView.isHidden = true
-                                self.mainView.isHidden = false
+                        var listArray = model.cylind?.actuallyify ?? []
+                        
+                        if let targetItem = listArray.first(where: { $0.pathyish == "ficiy" }) {
+                            if let oesophaglessArray = targetItem.oesophagless {
+                                self.homeView.isHidden = false
+                                self.mainView.isHidden = true
+                                self.homeView.cardModel = oesophaglessArray.first
                             }
+                        } else {
+                            
+                            if let index = listArray.firstIndex(where: { $0.pathyish == "audiness" }) {
+                                listArray.remove(at: index)
+                            }
+                            
+                            if let index = listArray.firstIndex(where: { $0.pathyish == "remainage" }) {
+                                listArray.remove(at: index)
+                            }
+                            
+                            self.mainView.modelArray = listArray
+                            self.homeView.isHidden = true
+                            self.mainView.isHidden = false
                         }
+                        
                     }else {
                         let pageUrl = model.cylind?.thero ?? ""
                         self.juduePageToVc(pageUrl)
                     }
                 }
                 self.homeView.scrollView.mj_header?.endRefreshing()
+                self.mainView.tableView.mj_header?.endRefreshing()
             }
             .store(in: &cancellables)
         
@@ -97,6 +119,7 @@ extension HomeViewController {
             .sink { [weak self] _ in
                 guard let self else { return }
                 self.homeView.scrollView.mj_header?.endRefreshing()
+                self.mainView.tableView.mj_header?.endRefreshing()
             }
             .store(in: &cancellables)
     }

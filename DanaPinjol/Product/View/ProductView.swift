@@ -33,6 +33,14 @@ class ProductView: BaseView {
                     let imageStr = String(format: "en_%@_icon", typeStr)
                     typeImageView.image = UIImage(named: imageStr)
                 }
+            }else {
+                if LanguageManager.shared.getCurrentLanguage() == .indonesian {
+                    let imageStr = String(format: "ind_%@_icon", "dudom")
+                    typeImageView.image = UIImage(named: imageStr)
+                }else {
+                    let imageStr = String(format: "en_%@_icon", "dudom")
+                    typeImageView.image = UIImage(named: imageStr)
+                }
             }
             
             let nextStr = model.seish?.termitmarketative ?? ""
@@ -185,9 +193,8 @@ extension ProductView {
             .debounce(for: .seconds(0.2), scheduler: DispatchQueue.main)
             .sink { [weak self] _ in
                 guard let self = self,
-                      let model = model,
-                      let nextModel = model.priviical else { return }
-                self.tapBlock?(nextModel, model, .next)
+                      let model = model else { return }
+                self.tapBlock?(model.priviical ?? totalsomeModel(), model, .next)
             }
             .store(in: &cancellables)
     }
