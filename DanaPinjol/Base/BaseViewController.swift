@@ -42,6 +42,16 @@ extension BaseViewController {
         }
     }
     
+    func toOrderListPage() {
+        guard let nav = navigationController else { return }
+        
+        if let productVC = nav.viewControllers.first(where: { $0 is OrderListViewController }) {
+            nav.popToViewController(productVC, animated: true)
+        } else {
+            nav.popToRootViewController(animated: true)
+        }
+    }
+    
     func juduePageToVc(_ pageUrl: String) {
         if pageUrl.contains(MorningyRouter.shared.scheme_url) {
             if let navigationController = self.navigationController, let url = URL(string: pageUrl) {

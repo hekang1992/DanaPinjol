@@ -48,3 +48,7 @@
 "en_pro_sel_image" = "end_pro_sel_image";
 "en_pay_sel_image" = "end_pay_sel_image";
 "en_coc_sel_image" = "end_coc_sel_image";
+"All orders" = "Semua pesanan";
+"In progress" = "Dalam proses";
+"Repayment" = "Belum lunas";
+"Finish" = "Lunas";

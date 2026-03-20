@@ -29,7 +29,35 @@ class MineViewController: BaseViewController {
         }
         
         mineView.clickBtnBlock = { [weak self] type in
-            ToastWindowManager.showMessage(type.rawValue)
+            switch type {
+            case .all:
+                let orderListVc = OrderListViewController()
+                orderListVc.name = "All orders"
+                orderListVc.type = type.rawValue
+                self?.navigationController?.pushViewController(orderListVc, animated: true)
+                
+            case .progress:
+                let orderListVc = OrderListViewController()
+                orderListVc.name = "In progress"
+                orderListVc.type = type.rawValue
+                self?.navigationController?.pushViewController(orderListVc, animated: true)
+                
+            case .repayment:
+                let orderListVc = OrderListViewController()
+                orderListVc.name = "Repayment"
+                orderListVc.type = type.rawValue
+                self?.navigationController?.pushViewController(orderListVc, animated: true)
+                
+            case .finish:
+                let orderListVc = OrderListViewController()
+                orderListVc.name = "Finish"
+                orderListVc.type = type.rawValue
+                self?.navigationController?.pushViewController(orderListVc, animated: true)
+                
+            case .policy:
+                break
+            }
+            
         }
         
         mineView.tapBlock = { [weak self] pageUrl in

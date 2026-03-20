@@ -90,7 +90,7 @@ extension H5WebViewController {
             if self?.webView.canGoBack == true {
                 self?.webView.goBack()
             } else {
-                self?.navigationController?.popToRootViewController(animated: true)
+                self?.toOrderListPage()
             }
         }
     }
