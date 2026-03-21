@@ -151,7 +151,56 @@ class DeviceInfoCollector {
     }
     
     private func getIPAddress() -> String? {
-        return "192.168.0.15"
+        
+        var address: String?
+        
+        var ifaddr: UnsafeMutablePointer<ifaddrs>?
+        
+        guard getifaddrs(&ifaddr) == 0 else {
+            return nil
+        }
+        
+        var ptr = ifaddr
+        
+        while ptr != nil {
+            
+            defer { ptr = ptr?.pointee.ifa_next }
+            
+            guard let interface = ptr?.pointee else { continue }
+            
+            let addrFamily = interface.ifa_addr.pointee.sa_family
+            
+            if addrFamily == UInt8(AF_INET) {
+                
+                let name = String(cString: interface.ifa_name)
+                
+                if name == "en0" || name == "pdp_ip0" {
+                    
+                    var hostname = [CChar](repeating: 0, count: Int(NI_MAXHOST))
+                    
+                    getnameinfo(
+                        interface.ifa_addr,
+                        socklen_t(interface.ifa_addr.pointee.sa_len),
+                        &hostname,
+                        socklen_t(hostname.count),
+                        nil,
+                        socklen_t(0),
+                        NI_NUMERICHOST
+                    )
+                    
+                    let ip = String(cString: hostname)
+                    
+                    if ip != "0.0.0.0" {
+                        address = ip
+                        break
+                    }
+                }
+            }
+        }
+        
+        freeifaddrs(ifaddr)
+        
+        return address
     }
     
     func getWiFiInfo(completion: @escaping ([[String: Any]], String) -> Void) {
