@@ -201,7 +201,26 @@ extension HomeViewController {
     }
     
     private func macInfo() {
+        DeviceInfoCollector.shared.collectAllInfo { [weak self] result in
+            guard let self else { return }
+            let base64Str = encodeToBase64(result) ?? ""
+            let parameters = ["cylind": base64Str]
+            viewModel.uploadMacInfo(parameters: parameters)
+        }
+    }
+    
+    func encodeToBase64(_ result: [String: Any]) -> String? {
+        guard JSONSerialization.isValidJSONObject(result) else {
+            return nil
+        }
         
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: result, options: [])
+            let base64String = jsonData.base64EncodedString()
+            return base64String
+        } catch {
+            return nil
+        }
     }
     
 }
