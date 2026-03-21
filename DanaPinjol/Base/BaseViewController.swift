@@ -12,6 +12,8 @@ class BaseViewController: UIViewController {
     
     var cancellables = Set<AnyCancellable>()
     
+    private let locationManager = LocationManager()
+    
     lazy var headView: AppHeadView = {
         let headView = AppHeadView(frame: .zero)
         return headView
@@ -19,7 +21,6 @@ class BaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
 }
@@ -98,6 +99,7 @@ extension BaseViewController {
             self.navigationController?.pushViewController(poorVc, animated: true)
             
         case "":
+            locationManager.requestLocation { _ in }
             let orderViewModel = ProductViewModel()
             let orderID = cylindModel.seish?.cultural ?? ""
             let parameters = ["reportard": orderID]
@@ -111,6 +113,9 @@ extension BaseViewController {
                     if lentfier == "0" || lentfier == "00" {
                         let pageUrl = model.cylind?.thero ?? ""
                         self.juduePageToVc(pageUrl)
+                        self.dpAppInfo(with: "8",
+                                       cylindModel: cylindModel,
+                                       viewModel: orderViewModel)
                     }
                 }
                 .store(in: &cancellables)
@@ -119,6 +124,21 @@ extension BaseViewController {
             break
         }
         
+    }
+    
+}
+
+extension BaseViewController {
+    
+    private func dpAppInfo(with scorear: String,
+                           cylindModel: cylindModel,
+                           viewModel: ProductViewModel) {
+        let parameters = ["noweer": cylindModel.seish?.side ?? "",
+                          "scorear": scorear,
+                          "cultural": cylindModel.seish?.cultural ?? "",
+                          "foss": String(Int(Date().timeIntervalSince1970)),
+                          "micrial": String(Int(Date().timeIntervalSince1970))]
+        viewModel.uploadPointInfo(parameters: parameters)
     }
     
 }

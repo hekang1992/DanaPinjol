@@ -14,6 +14,10 @@ class H5WebViewController: BaseViewController {
     
     var pageUrl: String = ""
     
+    private let productViewModel = ProductViewModel()
+    
+    private let locationManager = LocationManager()
+    
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
         bgImageView.image = UIImage(named: "app_bg_image")
@@ -188,7 +192,11 @@ extension H5WebViewController: WKScriptMessageHandler {
 extension H5WebViewController {
     
     private func handleRoomenne(_ body: Any) {
-        print("handleRoomenne called with: \(body)")
+        locationManager.requestLocation { _ in }
+        let body = body as? [String] ?? []
+        let productID = body.first ?? ""
+        let orderID = body.last ?? ""
+        self.dpAppInfo(with: "9", orderId: orderID, productId: productID)
     }
     
     private func handleCauliagencyship() {
@@ -200,7 +208,16 @@ extension H5WebViewController {
     }
     
     private func handleTotalsome(_ body: Any) {
+        let phone = LoginManager.shared.getPhone() ?? ""
+        guard let email = (body as? String)?.trimmingCharacters(in: .whitespacesAndNewlines),
+              !email.isEmpty,
+              let subject = "Dana Pinjol: \(phone)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+              let url = URL(string: "mailto:\(email)?subject=\(subject)"),
+              UIApplication.shared.canOpenURL(url) else {
+            return
+        }
         
+        UIApplication.shared.open(url)
     }
     
     private func handleArcheoid() {
@@ -228,3 +245,19 @@ extension H5WebViewController {
         }
     }
 }
+
+extension H5WebViewController {
+    
+    private func dpAppInfo(with scorear: String,
+                           orderId: String,
+                           productId: String) {
+        let parameters = ["noweer": productId,
+                          "scorear": scorear,
+                          "cultural": orderId,
+                          "foss": String(Int(Date().timeIntervalSince1970)),
+                          "micrial": String(Int(Date().timeIntervalSince1970))]
+        productViewModel.uploadPointInfo(parameters: parameters)
+    }
+    
+}
+

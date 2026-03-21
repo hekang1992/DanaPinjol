@@ -30,6 +30,12 @@ class FaceViewController: BaseViewController {
     
     private let productViewModel = ProductViewModel()
     
+    private var stime: String = ""
+    
+    private var ftime: String = ""
+    
+    private let locationManager = LocationManager()
+    
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
         bgImageView.image = UIImage(named: "app_bg_image")
@@ -152,6 +158,10 @@ class FaceViewController: BaseViewController {
             guard let self = self else { return }
             findFaceinfo()
         })
+        
+        stime = String(Int(Date().timeIntervalSince1970))
+        
+        locationManager.requestLocation { _ in }
     }
     
 }
@@ -192,6 +202,8 @@ extension FaceViewController {
     
     private func chooseView(type: UploadClickType) {
         
+        locationManager.requestLocation { _ in }
+        
         let oneStr = viewModel.model?.cylind?.terraetic?.thero ?? ""
         
         let twoStr = viewModel.model?.cylind?.rockeur?.thero ?? ""
@@ -221,6 +233,8 @@ extension FaceViewController {
     }
     
     private func alertPopCardView() {
+        stime = String(Int(Date().timeIntervalSince1970))
+        locationManager.requestLocation { _ in }
         let popView = PopAlertCardView(frame: self.view.bounds)
         popView.bgImageView.image = UIImage(named: "pop_ceard_image")
         let alertVc = TYAlertController(alert: popView, preferredStyle: .alert)
@@ -239,6 +253,8 @@ extension FaceViewController {
     }
     
     private func alertPopFaceView() {
+        ftime = String(Int(Date().timeIntervalSince1970))
+        locationManager.requestLocation { _ in }
         let popView = PopAlertCardView(frame: self.view.bounds)
         popView.bgImageView.image = UIImage(named: "pop_cfd_image")
         let alertVc = TYAlertController(alert: popView, preferredStyle: .alert)
@@ -318,11 +334,13 @@ extension FaceViewController {
                 let lentfier = model.lentfier ?? ""
                 if lentfier == "0" || lentfier == "00" {
                     if self.uploadType == "face" {
+                        self.dpAppInfo(with: "3", foss: ftime)
                         self.productDetailInfo()
                     }else {
                         let fodment = model.cylind?.fodment ?? 1
                         if fodment == 0 {
                             self.findFaceinfo()
+                            self.dpAppInfo(with: "2", foss: stime)
                         }else {
                             if let cylindModel = model.cylind {
                                 self.alertPopSureView(with: cylindModel)
@@ -343,6 +361,7 @@ extension FaceViewController {
                 if lentfier == "0" || lentfier == "00" {
                     self.dismiss(animated: true)
                     self.findFaceinfo()
+                    self.dpAppInfo(with: "2", foss: stime)
                 }else {
                     ToastWindowManager.showMessage(model.plurimon ?? "")
                 }
@@ -441,13 +460,13 @@ extension FaceViewController {
 
 extension FaceViewController {
     
-    private func dpAppInfo() {
-        let parameters = ["noweer": "",
-                          "scorear": "1",
-                          "cultural": "",
-                          "foss": stime,
+    private func dpAppInfo(with scorear: String, foss: String) {
+        let parameters = ["noweer": cylindModel?.seish?.side ?? "",
+                          "scorear": scorear,
+                          "cultural": cylindModel?.seish?.cultural ?? "",
+                          "foss": foss,
                           "micrial": String(Int(Date().timeIntervalSince1970))]
-        viewModel.uploadPointInfo(parameters: parameters)
+        productViewModel.uploadPointInfo(parameters: parameters)
     }
     
 }

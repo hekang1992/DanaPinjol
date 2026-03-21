@@ -18,6 +18,10 @@ class PersonalViewController: BaseViewController {
     
     private let productViewModel = ProductViewModel()
     
+    private let locationManager = LocationManager()
+    
+    private var stime: String = ""
+    
     var cylindModel: cylindModel? {
         didSet {
             guard let cylindModel = cylindModel else { return }
@@ -101,6 +105,8 @@ class PersonalViewController: BaseViewController {
             }
             .store(in: &cancellables)
         
+        locationManager.requestLocation { _ in }
+        
     }
     
 }
@@ -128,6 +134,8 @@ extension PersonalViewController {
         }
         
         bindViewModel()
+        
+        stime = String(Int(Date().timeIntervalSince1970))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -194,6 +202,7 @@ extension PersonalViewController {
                 guard let self, let model else { return }
                 let lentfier = model.lentfier ?? ""
                 if lentfier == "0" || lentfier == "00" {
+                    self.dpAppInfo(with: "4", foss: stime)
                     self.productDetailInfo()
                 }else {
                     ToastWindowManager.showMessage(model.plurimon ?? "")
@@ -233,6 +242,19 @@ extension PersonalViewController {
     private func productDetailInfo() {
         let parameters = ["allate": cylindModel?.seish?.side ?? "", "fell": "1"]
         productViewModel.detailInfo(parameters: parameters)
+    }
+    
+}
+
+extension PersonalViewController {
+    
+    private func dpAppInfo(with scorear: String, foss: String) {
+        let parameters = ["noweer": cylindModel?.seish?.side ?? "",
+                          "scorear": scorear,
+                          "cultural": cylindModel?.seish?.cultural ?? "",
+                          "foss": foss,
+                          "micrial": String(Int(Date().timeIntervalSince1970))]
+        productViewModel.uploadPointInfo(parameters: parameters)
     }
     
 }

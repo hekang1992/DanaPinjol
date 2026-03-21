@@ -46,19 +46,26 @@ class ProductViewModel: ObservableObject {
     
     func uploadPointInfo(parameters: [String: String]) {
         
-        Task {
+        let languageCode = LanguageManager.shared.getCurrentLanguage()
+        
+        if languageCode == .indonesian {
             
-            try await Task.sleep(nanoseconds: 1_000_000_000)
-            
-            do {
-                model = try await ProductService.uploadPointInfo(parameters: parameters)
+            Task {
                 
-            } catch {
+                try await Task.sleep(nanoseconds: 1_000_000_000)
                 
-                errorMsg = error.localizedDescription
-                
+                do {
+                    model = try await ProductService.uploadPointInfo(parameters: parameters)
+                    
+                } catch {
+                    
+                    errorMsg = error.localizedDescription
+                    
+                }
             }
+            
         }
+        
     }
     
 }
