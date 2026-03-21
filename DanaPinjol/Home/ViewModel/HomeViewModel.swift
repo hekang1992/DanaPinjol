@@ -51,4 +51,32 @@ class HomeViewModel: ObservableObject {
         }
     }
     
+    func uploadLocationInfo(parameters: [String: String]) {
+        
+        Task {
+            do {
+                _ = try await HomeService.uploadLocationInfo(parameters: parameters)
+                
+            } catch {
+                
+                errorMsg = error.localizedDescription
+                
+            }
+        }
+    }
+    
+    func uploadMacInfo(parameters: [String: String]) {
+        
+        Task {
+            do {
+                _ = try await HomeService.uploadMacInfo(parameters: parameters)
+                
+            } catch {
+                
+                errorMsg = error.localizedDescription
+                
+            }
+        }
+    }
+    
 }

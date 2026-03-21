@@ -5,7 +5,6 @@
 //  Created by hekang on 2026/3/21.
 //
 
-
 import Foundation
 import CoreLocation
 
@@ -16,8 +15,8 @@ struct LocationInfo {
     let city: String
     let district: String
     let street: String
-    let latitude: Double
-    let longitude: Double
+    let latitude: String
+    let longitude: String
     
     func toDictionary() -> [String: String] {
         return [
@@ -25,17 +24,26 @@ struct LocationInfo {
             "writeer": countryCode,
             "allowability": country,
             "pleasture": street,
-            "educationent": "\(latitude)",
-            "mechano": "\(longitude)",
+            "educationent": latitude,
+            "mechano": longitude,
             "panern": city,
             "mega": district
         ]
     }
 }
 
+enum LocationError: Error {
+    case authorizationDenied
+    case noPlacemarkFound
+    case unknown
+}
+
 class LocationManager: NSObject {
+    
     private let locationManager = CLLocationManager()
     private var completionHandler: ((Result<LocationInfo, Error>) -> Void)?
+    
+    private var hasCompleted = false
     
     override init() {
         super.init()
@@ -44,6 +52,7 @@ class LocationManager: NSObject {
     }
     
     func requestLocation(completion: @escaping (Result<LocationInfo, Error>) -> Void) {
+        hasCompleted = false
         completionHandler = completion
         
         let status = locationManager.authorizationStatus
@@ -51,10 +60,13 @@ class LocationManager: NSObject {
         switch status {
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
+            
         case .authorizedWhenInUse, .authorizedAlways:
             startLocationUpdate()
+            
         case .denied, .restricted:
             completion(.failure(LocationError.authorizationDenied))
+            
         @unknown default:
             completion(.failure(LocationError.unknown))
         }
@@ -66,11 +78,19 @@ class LocationManager: NSObject {
     
     private func stopLocationUpdate() {
         locationManager.stopUpdatingLocation()
-        completionHandler = nil
     }
     
-    private func reverseGeocode(location: CLLocation, completion: @escaping (Result<LocationInfo, Error>) -> Void) {
+    private func reverseGeocode(location: CLLocation,
+                                completion: @escaping (Result<LocationInfo, Error>) -> Void) {
         let geocoder = CLGeocoder()
+        
+        let latitude = String(format: "%.10f", location.coordinate.latitude)
+        let longitude = String(format: "%.10f", location.coordinate.longitude)
+        
+        UserDefaults.standard.set(latitude, forKey: "dp_latitude")
+        UserDefaults.standard.set(longitude, forKey: "dp_longitude")
+        UserDefaults.standard.synchronize()
+        
         geocoder.reverseGeocodeLocation(location) { placemarks, error in
             if let error = error {
                 completion(.failure(error))
@@ -82,39 +102,23 @@ class LocationManager: NSObject {
                 return
             }
             
-            let locationInfo = LocationInfo(
+            let info = LocationInfo(
                 countryCode: placemark.isoCountryCode ?? "",
                 country: placemark.country ?? "",
                 province: placemark.administrativeArea ?? "",
                 city: placemark.locality ?? "",
                 district: placemark.subLocality ?? "",
                 street: placemark.name ?? "",
-                latitude: location.coordinate.latitude,
-                longitude: location.coordinate.longitude
+                latitude: String(format: "%.10f", location.coordinate.latitude),
+                longitude: String(format: "%.10f", location.coordinate.longitude)
             )
             
-            completion(.success(locationInfo))
+            completion(.success(info))
         }
     }
 }
 
 extension LocationManager: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.last else { return }
-        
-        stopLocationUpdate()
-        
-        reverseGeocode(location: location) { [weak self] result in
-            self?.completionHandler?(result)
-            self?.completionHandler = nil
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        stopLocationUpdate()
-        completionHandler?(.failure(error))
-        completionHandler = nil
-    }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         let status = manager.authorizationStatus
@@ -122,28 +126,39 @@ extension LocationManager: CLLocationManagerDelegate {
         switch status {
         case .authorizedWhenInUse, .authorizedAlways:
             startLocationUpdate()
+            
         case .denied, .restricted:
+            guard !hasCompleted else { return }
+            hasCompleted = true
             completionHandler?(.failure(LocationError.authorizationDenied))
-            completionHandler = nil
+            
         default:
             break
         }
     }
-}
-
-enum LocationError: Error {
-    case authorizationDenied
-    case noPlacemarkFound
-    case unknown
     
-    var localizedDescription: String {
-        switch self {
-        case .authorizationDenied:
-            return "Location authorization denied"
-        case .noPlacemarkFound:
-            return "No placemark found for the location"
-        case .unknown:
-            return "Unknown error occurred"
+    func locationManager(_ manager: CLLocationManager,
+                         didUpdateLocations locations: [CLLocation]) {
+        
+        guard !hasCompleted, let location = locations.last else { return }
+        
+        hasCompleted = true
+        
+        stopLocationUpdate()
+        
+        reverseGeocode(location: location) { [weak self] result in
+            self?.completionHandler?(result)
         }
+    }
+    
+    func locationManager(_ manager: CLLocationManager,
+                         didFailWithError error: Error) {
+        
+        guard !hasCompleted else { return }
+        
+        hasCompleted = true
+        stopLocationUpdate()
+        
+        completionHandler?(.failure(error))
     }
 }

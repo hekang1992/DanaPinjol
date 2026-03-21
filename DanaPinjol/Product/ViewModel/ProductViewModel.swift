@@ -44,4 +44,21 @@ class ProductViewModel: ObservableObject {
         }
     }
     
+    func uploadPointInfo(parameters: [String: String]) {
+        
+        Task {
+            
+            try await Task.sleep(nanoseconds: 1_000_000_000)
+            
+            do {
+                model = try await ProductService.uploadPointInfo(parameters: parameters)
+                
+            } catch {
+                
+                errorMsg = error.localizedDescription
+                
+            }
+        }
+    }
+    
 }

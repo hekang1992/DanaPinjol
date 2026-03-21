@@ -20,6 +20,12 @@ class LoginViewController: BaseViewController {
     
     private let viewModel = LoginViewModel()
     
+    private let pViewModel = ProductViewModel()
+    
+    private let locationManager = LocationManager()
+    
+    private var stime: String = ""
+    
     lazy var loginView: LoginView = {
         let loginView = LoginView(frame: .zero)
         return loginView
@@ -34,7 +40,7 @@ class LoginViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
         view.addSubview(bgImageView)
         bgImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -68,11 +74,20 @@ class LoginViewController: BaseViewController {
         
         bindViewModel()
         
+        stime = String(Int(Date().timeIntervalSince1970))
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.loginView.phoneTextFiled.becomeFirstResponder()
+        Task {
+            try? await Task.sleep(nanoseconds: 500_000_000)
+            locationInfo()
+        }
+    }
+    
+    private func locationInfo() {
+        locationManager.requestLocation { _ in }
     }
     
 }
@@ -136,8 +151,16 @@ extension LoginViewController {
                         let phone = model.cylind?.relatesion ?? ""
                         let token = model.cylind?.howfier ?? ""
                         LoginManager.shared.saveLoginInfo(phone: phone, token: token)
-                        NotificationCenter.default.post(name: CHANGE_ROOT_VC, object: nil)
+                        
+                        self.dpAppInfo()
+                        
+                        DispatchQueue.main.async {
+                            NotificationCenter.default.post(name: CHANGE_ROOT_VC, object: nil)
+                        }
+                        
                     }
+                    
+                    
                 }
                 
                 ToastWindowManager.showMessage(model.plurimon ?? "")
@@ -179,6 +202,15 @@ extension LoginViewController {
                           "heative": code,
                           "canshe": "1"]
         viewModel.loginInfo(parameters: parameters)
+    }
+    
+    private func dpAppInfo() {
+        let parameters = ["noweer": "",
+                          "scorear": "1",
+                          "cultural": "",
+                          "foss": stime,
+                          "micrial": String(Int(Date().timeIntervalSince1970))]
+        pViewModel.uploadPointInfo(parameters: parameters)
     }
     
 }

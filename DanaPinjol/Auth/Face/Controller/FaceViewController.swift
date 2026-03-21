@@ -438,3 +438,16 @@ extension FaceViewController {
     }
     
 }
+
+extension FaceViewController {
+    
+    private func dpAppInfo() {
+        let parameters = ["noweer": "",
+                          "scorear": "1",
+                          "cultural": "",
+                          "foss": stime,
+                          "micrial": String(Int(Date().timeIntervalSince1970))]
+        viewModel.uploadPointInfo(parameters: parameters)
+    }
+    
+}

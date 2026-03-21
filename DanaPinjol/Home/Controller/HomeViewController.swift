@@ -17,6 +17,8 @@ class HomeViewController: BaseViewController {
     
     private let viewModel = HomeViewModel()
     
+    private let locationManager = LocationManager()
+    
     lazy var homeView: HomeView = {
         let homeView = HomeView(frame: .zero)
         homeView.isHidden = true
@@ -81,6 +83,11 @@ class HomeViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         homeInfo()
+        
+        if LoginManager.shared.isLoggedIn() {
+            self.locationInfo()
+            self.macInfo()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -153,6 +160,10 @@ extension HomeViewController {
     // MARK: - home api
     private func homeInfo() {
         viewModel.homeInfo()
+        if LoginManager.shared.isLoggedIn() {
+            locationInfo()
+            macInfo()
+        }
     }
     
 }
@@ -167,4 +178,30 @@ extension HomeViewController {
         let parameters = ["allate": productId]
         viewModel.homeClickInfo(parameters: parameters)
     }
+    
+    private func uploadLocationInfo(with parameters: [String: String]) {
+        viewModel.uploadLocationInfo(parameters: parameters)
+    }
+}
+
+extension HomeViewController {
+    
+    private func locationInfo() {
+        locationManager.requestLocation { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let locationInfo):
+                let parameters = locationInfo.toDictionary()
+                self.uploadLocationInfo(with: parameters)
+                
+            case .failure(let error):
+                print("location error: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    private func macInfo() {
+        
+    }
+    
 }

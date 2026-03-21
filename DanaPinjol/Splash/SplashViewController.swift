@@ -17,7 +17,7 @@ let CHANGE_ROOT_VC = Notification.Name("CHANGE_ROOT_VC")
 class SplashViewController: BaseViewController {
     
     private let viewModel = SplashViewModel()
-    
+        
     lazy var tryBtn: UIButton = {
         let tryBtn = UIButton(type: .custom)
         tryBtn.setTitle("Try again", for: .normal)
@@ -60,6 +60,7 @@ class SplashViewController: BaseViewController {
             }
             .store(in: &cancellables)
         
+        tryBtn.isHidden = true
     }
     
 }
@@ -108,14 +109,17 @@ extension SplashViewController {
                     LanguageManager.shared.setLanguageFromServerCode(serverLanguageCode)
                     
                     NotificationCenter.default.post(name: CHANGE_ROOT_VC, object: nil)
+                }else {
+                    self.tryBtn.isHidden = false
                 }
             }
             .store(in: &cancellables)
         
         viewModel.$errorMsg
             .receive(on: DispatchQueue.main)
-            .sink { _ in
-                
+            .sink { [weak self] error in
+                guard error != nil else { return }
+                self?.tryBtn.isHidden = false
             }
             .store(in: &cancellables)
         
