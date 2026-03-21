@@ -77,7 +77,7 @@ class PopDpaView: BaseView {
     private func setupConstraints() {
         containerView.snp.makeConstraints { make in
             make.center.equalToSuperview()
-            make.size.equalTo(CGSize(width: 324.pix(), height: 308.pix()))
+            make.size.equalTo(CGSize(width: 324.pix(), height: 376.pix()))
         }
         
         bgImageView.snp.makeConstraints { make in
