@@ -70,9 +70,7 @@ extension SplashViewController {
         
         NetworkMonitor.shared.startListening { [weak self] status in
             guard let self else { return }
-            
             switch status {
-                
             case .notReachable:
                 NetworkUserDefaults.shared.saveNetwotkType(type: "Bad Network")
                 
@@ -124,13 +122,10 @@ extension SplashViewController {
     }
     
     private func splashInfo() {
-        
         let parameters = ["coavailableious": NetworkProxyChecker.getProxyStatus(),
                           "usable": NetworkProxyChecker.getVPNStatus(),
                           "capr": Locale.preferredLanguages.first ?? ""]
-        
         viewModel.splashInfo(parameters: parameters)
-        
     }
     
 }
