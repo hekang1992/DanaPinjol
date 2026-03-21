@@ -8,6 +8,8 @@
 import UIKit
 import DeviceKit
 import NetworkExtension
+import MachO
+import Darwin
 
 class DeviceInfoCollector {
     
@@ -61,7 +63,29 @@ class DeviceInfoCollector {
     }
     
     private func getFreeMemory() -> UInt64 {
-        return ProcessInfo.processInfo.physicalMemory / 2
+        
+        var stats = vm_statistics64()
+        var count = mach_msg_type_number_t(MemoryLayout<vm_statistics64_data_t>.size / MemoryLayout<integer_t>.size)
+        
+        let hostPort: mach_port_t = mach_host_self()
+        
+        let result = withUnsafeMutablePointer(to: &stats) {
+            $0.withMemoryRebound(to: integer_t.self, capacity: Int(count)) {
+                host_statistics64(hostPort, HOST_VM_INFO64, $0, &count)
+            }
+        }
+        
+        guard result == KERN_SUCCESS else {
+            return 0
+        }
+        
+        let pageSize = vm_kernel_page_size
+        
+        let free = UInt64(stats.free_count) * UInt64(pageSize)
+        
+        let inactive = UInt64(stats.inactive_count) * UInt64(pageSize)
+        
+        return free + inactive
     }
     
     private func getBatteryInfo() -> [String: Any] {
