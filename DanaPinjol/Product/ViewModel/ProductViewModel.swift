@@ -55,7 +55,7 @@ class ProductViewModel: ObservableObject {
                 try await Task.sleep(nanoseconds: 1_000_000_000)
                 
                 do {
-                    model = try await ProductService.uploadPointInfo(parameters: parameters)
+                    _ = try await ProductService.uploadPointInfo(parameters: parameters)
                     
                 } catch {
                     
