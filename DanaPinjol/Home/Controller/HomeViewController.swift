@@ -10,6 +10,8 @@ import CombineCocoa
 import Combine
 import SnapKit
 import MJRefresh
+import AppTrackingTransparency
+import AdSupport
 
 class HomeViewController: BaseViewController {
     
@@ -81,9 +83,21 @@ class HomeViewController: BaseViewController {
         homeInfo()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        Task {
+            try? await Task.sleep(nanoseconds: 1_000_000_000)
+            await requestTrackingPermission()
+        }
+    }
+    
 }
 
 extension HomeViewController {
+    
+    private func requestTrackingPermission() async {
+        let _ = await ATTrackingManager.requestTrackingAuthorization()
+    }
     
     private func bindViewModel() {
         viewModel.$model

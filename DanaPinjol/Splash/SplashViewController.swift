@@ -10,12 +10,22 @@ import Alamofire
 import Combine
 import FBSDKCoreKit
 import SnapKit
+import CombineCocoa
 
 let CHANGE_ROOT_VC = Notification.Name("CHANGE_ROOT_VC")
 
 class SplashViewController: BaseViewController {
     
     private let viewModel = SplashViewModel()
+    
+    lazy var tryBtn: UIButton = {
+        let tryBtn = UIButton(type: .custom)
+        tryBtn.setTitle("Try again", for: .normal)
+        tryBtn.setTitleColor(.white, for: .normal)
+        tryBtn.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        tryBtn.setBackgroundImage(UIImage(named: "ap_c_im_age"), for: .normal)
+        return tryBtn
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +44,21 @@ class SplashViewController: BaseViewController {
             try? await Task.sleep(nanoseconds: 250_000_000)
             self?.monitorNetWorkInfo()
         }
+        
+        view.addSubview(tryBtn)
+        tryBtn.snp.makeConstraints { make in
+            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-30.pix())
+            make.centerX.equalToSuperview()
+            make.size.equalTo(CGSize(width: 122, height: 38))
+        }
+        
+        tryBtn
+            .tapPublisher
+            .sink { [weak self] _ in
+                guard let self else { return }
+                self.splashInfo()
+            }
+            .store(in: &cancellables)
         
     }
     
@@ -113,17 +138,14 @@ extension SplashViewController {
 extension SplashViewController {
     
     private func uploadMarket(model: discussshipModel) {
-        
         Settings.shared.displayName = model.naturalably ?? ""
         Settings.shared.appURLSchemeSuffix = model.toughture ?? ""
         Settings.shared.appID = model.myee ?? ""
         Settings.shared.clientToken = model.trialition ?? ""
-        
         ApplicationDelegate.shared.application(
             UIApplication.shared,
             didFinishLaunchingWithOptions: nil
         )
-        
     }
     
 }
