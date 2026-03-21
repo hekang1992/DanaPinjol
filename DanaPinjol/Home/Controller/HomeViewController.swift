@@ -12,6 +12,7 @@ import SnapKit
 import MJRefresh
 import AppTrackingTransparency
 import AdSupport
+import CoreLocation
 
 class HomeViewController: BaseViewController {
     
@@ -78,16 +79,25 @@ class HomeViewController: BaseViewController {
         
         bindViewModel()
         
+        if LanguageManager.shared.getCurrentLanguage() == .indonesian {
+            if LoginManager.shared.isLoggedIn() {
+                let status = CLLocationManager().authorizationStatus
+                if status == .denied || status == .restricted {
+                    self.showPermissionAlert()
+                }
+            }
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         homeInfo()
         
-        if LoginManager.shared.isLoggedIn() {
-            self.locationInfo()
-            self.macInfo()
-        }
+//        if LoginManager.shared.isLoggedIn() {
+//            self.locationInfo()
+//            self.macInfo()
+//        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -96,6 +106,40 @@ class HomeViewController: BaseViewController {
             try? await Task.sleep(nanoseconds: 1_000_000_000)
             await requestTrackingPermission()
         }
+    }
+    
+}
+
+extension HomeViewController {
+    
+    private func showPermissionAlert() {
+        let lastShownDate = UserDefaults.standard.object(forKey: "lastPermissionAlertDate") as? Date
+        let isTodayShown = lastShownDate.map { Calendar.current.isDateInToday($0) } ?? false
+        
+        if isTodayShown {
+            return
+        }
+        
+        let alert = UIAlertController(
+            title: "定位",
+            message: "请在iPhone的\"设置-隐私-定位\"中允许应用访问定位",
+            preferredStyle: .alert
+        )
+        
+        let settingsAction = UIAlertAction(title: "去设置", style: .default) { _ in
+            if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(settingsURL)
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel)
+        
+        alert.addAction(settingsAction)
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true)
+        
+        UserDefaults.standard.set(Date(), forKey: "lastPermissionAlertDate")
     }
     
 }
