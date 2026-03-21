@@ -93,11 +93,6 @@ class HomeViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         homeInfo()
-        
-//        if LoginManager.shared.isLoggedIn() {
-//            self.locationInfo()
-//            self.macInfo()
-//        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -219,6 +214,10 @@ extension HomeViewController {
             toLoginPage()
             return
         }
+        
+        self.locationInfo()
+        self.macInfo()
+        
         let parameters = ["allate": productId]
         viewModel.homeClickInfo(parameters: parameters)
     }
