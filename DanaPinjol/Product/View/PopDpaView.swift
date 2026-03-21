@@ -46,6 +46,11 @@ class PopDpaView: BaseView {
         return button
     }()
     
+    private lazy var cancel1Btn: UIButton = {
+        let button = UIButton(type: .custom)
+        return button
+    }()
+    
     private lazy var confirmBtn: UIButton = {
         let button = UIButton(type: .custom)
         return button
@@ -70,6 +75,8 @@ class PopDpaView: BaseView {
         
         buttonStackView.addArrangedSubview(cancelBtn)
         buttonStackView.addArrangedSubview(confirmBtn)
+        
+        bgImageView.addSubview(cancel1Btn)
         
         setupConstraints()
     }
@@ -96,11 +103,24 @@ class PopDpaView: BaseView {
             make.left.right.equalToSuperview()
             make.bottom.equalToSuperview().offset(-15.pix())
         }
+        
+        cancel1Btn.snp.makeConstraints { make in
+            make.bottom.equalToSuperview()
+            make.centerX.equalToSuperview()
+            make.width.height.equalTo(18.pix())
+        }
     }
     
     // MARK: - Private Methods
     private func bindClickTap() {
         cancelBtn.tapPublisher
+            .debounce(for: .seconds(0.1), scheduler: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.cancelBlock?()
+            }
+            .store(in: &cancellables)
+        
+        cancel1Btn.tapPublisher
             .debounce(for: .seconds(0.1), scheduler: DispatchQueue.main)
             .sink { [weak self] _ in
                 self?.cancelBlock?()
