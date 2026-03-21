@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import TYAlertController
 
 class BaseViewController: UIViewController {
     
@@ -31,6 +32,24 @@ extension BaseViewController {
         let loginVc = BaseNavigationController(rootViewController: LoginViewController())
         loginVc.modalPresentationStyle = .overFullScreen
         self.present(loginVc, animated: true)
+    }
+    
+    func alertDpcView() {
+        let popView = PopDpaView(frame: self.view.bounds)
+        let alertVc = TYAlertController(alert: popView, preferredStyle: .alert)
+        self.present(alertVc!, animated: true)
+        
+        popView.cancelBlock = { [weak self] in
+            guard let self = self else { return }
+            self.dismiss(animated: true)
+        }
+        
+        popView.confirmBlock = { [weak self] in
+            guard let self = self else { return }
+            self.dismiss(animated: true) {
+                self.toProductStepPage()
+            }
+        }
     }
     
     func toProductStepPage() {

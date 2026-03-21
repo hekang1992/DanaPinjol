@@ -179,7 +179,7 @@ extension FaceViewController {
         
         headView.onBackButtonTapped = { [weak self] in
             guard let self = self else { return }
-            self.toProductStepPage()
+            self.alertDpcView()
         }
     }
     
@@ -470,3 +470,4 @@ extension FaceViewController {
     }
     
 }
+

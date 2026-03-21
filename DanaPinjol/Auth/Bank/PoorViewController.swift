@@ -129,7 +129,7 @@ extension PoorViewController {
         
         headView.onBackButtonTapped = { [weak self] in
             guard let self = self else { return }
-            self.toProductStepPage()
+            self.alertDpcView()
         }
         
         listView.tapTimeBlock = { [weak self] text, model, cell in

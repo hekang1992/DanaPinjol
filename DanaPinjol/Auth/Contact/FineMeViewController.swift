@@ -162,7 +162,7 @@ extension FineMeViewController {
         
         headView.onBackButtonTapped = { [weak self] in
             guard let self = self else { return }
-            self.toProductStepPage()
+            self.alertDpcView()
         }
         
         bindViewModel()
