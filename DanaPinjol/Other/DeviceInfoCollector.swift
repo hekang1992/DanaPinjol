@@ -11,49 +11,56 @@ import NetworkExtension
 import MachO
 import Darwin
 
-class DeviceInfoCollector {
+final class DeviceInfoCollector {
     
     static let shared = DeviceInfoCollector()
+    private init() {}
     
     func collectAllInfo(completion: @escaping ([String: Any]) -> Void) {
         
         getWiFiInfo { wifiList, bssid in
             
-            var growality = self.getNetworkInfo()
+            var networkInfo = self.getNetworkInfo()
+            networkInfo["alglet"] = bssid.isEmpty ? "" : bssid
             
-            growality["alglet"] = bssid.isEmpty ? "" : bssid
-            
-            let data: [String: Any] = [
+            let result: [String: Any] = [
                 "quartist": self.getStorageAndMemory(),
                 "computerot": self.getBatteryInfo(),
                 "gemmification": self.getDeviceInfo(),
-                "outsideitor": "",
                 "shoulderably": self.getOtherFlags(),
-                "growality": growality,
+                "growality": networkInfo,
                 "flatance": [
                     "primor": wifiList
                 ]
             ]
             
-            completion(data)
+            completion(result)
         }
     }
+}
+
+// MARK: - Storage & Memory
+private extension DeviceInfoCollector {
     
-    private func getStorageAndMemory() -> [String: Any] {
-        let fileManager = FileManager.default
+    func getStorageAndMemory() -> [String: Any] {
         
-        if let attrs = try? fileManager.attributesOfFileSystem(forPath: NSHomeDirectory()),
-           let total = attrs[.systemSize] as? NSNumber,
-           let free = attrs[.systemFreeSize] as? NSNumber {
-            
-            return [
-                "drapie": free.int64Value,
-                "scissry": total.int64Value,
-                "internationalosity": ProcessInfo.processInfo.physicalMemory,
-                "everyone": self.getFreeMemory()
-            ]
+        guard
+            let attrs = try? FileManager.default.attributesOfFileSystem(forPath: NSHomeDirectory()),
+            let total = attrs[.systemSize] as? NSNumber,
+            let free = attrs[.systemFreeSize] as? NSNumber
+        else {
+            return emptyStorage()
         }
         
+        return [
+            "drapie": free.int64Value,
+            "scissry": total.int64Value,
+            "internationalosity": ProcessInfo.processInfo.physicalMemory,
+            "everyone": getFreeMemory()
+        ]
+    }
+    
+    func emptyStorage() -> [String: Any] {
         return [
             "drapie": 0,
             "scissry": 0,
@@ -62,33 +69,35 @@ class DeviceInfoCollector {
         ]
     }
     
-    private func getFreeMemory() -> UInt64 {
+    func getFreeMemory() -> UInt64 {
         
         var stats = vm_statistics64()
-        var count = mach_msg_type_number_t(MemoryLayout<vm_statistics64_data_t>.size / MemoryLayout<integer_t>.size)
-        
-        let hostPort: mach_port_t = mach_host_self()
+        var count = mach_msg_type_number_t(
+            MemoryLayout<vm_statistics64_data_t>.size /
+            MemoryLayout<integer_t>.size
+        )
         
         let result = withUnsafeMutablePointer(to: &stats) {
             $0.withMemoryRebound(to: integer_t.self, capacity: Int(count)) {
-                host_statistics64(hostPort, HOST_VM_INFO64, $0, &count)
+                host_statistics64(mach_host_self(), HOST_VM_INFO64, $0, &count)
             }
         }
         
-        guard result == KERN_SUCCESS else {
-            return 0
-        }
+        guard result == KERN_SUCCESS else { return 0 }
         
         let pageSize = vm_kernel_page_size
         
         let free = UInt64(stats.free_count) * UInt64(pageSize)
-        
         let inactive = UInt64(stats.inactive_count) * UInt64(pageSize)
         
         return free + inactive
     }
+}
+
+private extension DeviceInfoCollector {
     
-    private func getBatteryInfo() -> [String: Any] {
+    func getBatteryInfo() -> [String: Any] {
+        
         UIDevice.current.isBatteryMonitoringEnabled = true
         
         let level = UIDevice.current.batteryLevel
@@ -97,68 +106,77 @@ class DeviceInfoCollector {
         return [
             "noneette": Int(level * 100),
             "lookance": 0,
-            "andia": state == .charging || state == .full ? 1 : 0
+            "andia": (state == .charging || state == .full) ? 1 : 0
         ]
     }
+}
+
+private extension DeviceInfoCollector {
     
-    private func getDeviceInfo() -> [String: Any] {
+    func getDeviceInfo() -> [String: Any] {
         return [
             "biomost": UIDevice.current.systemVersion,
             "terminize": "iPhone",
-            "centuryarium": self.getMachineModel(),
+            "centuryarium": getMachineModel(),
             "anyonefication": Device.current.description,
             "pachorium": Int(UIScreen.main.bounds.height),
             "priceaire": Int(UIScreen.main.bounds.width),
-            "indeedible": self.getScreenSize()
+            "indeedible": getScreenSize()
         ]
     }
     
-    private func getMachineModel() -> String {
-        return Device.identifier
+    func getMachineModel() -> String {
+        Device.identifier
     }
     
-    private func getScreenSize() -> String {
-        return String(Device.current.diagonal)
+    func getScreenSize() -> String {
+        String(Device.current.diagonal)
     }
+}
+
+private extension DeviceInfoCollector {
     
-    private func getOtherFlags() -> [String: Any] {
+    func getOtherFlags() -> [String: Any] {
         return [
             "lyst": 100,
             "fornicfier": "0",
             "pollin": Device.current.isSimulator ? "1" : "0",
-            "viscoquicklyian": self.isJailbroken() ? 1 : 0,
+            "viscoquicklyian": isJailbroken() ? 1 : 0
         ]
     }
     
-    private func isJailbroken() -> Bool {
-        return FileManager.default.fileExists(atPath: "/Applications/Cydia.app")
+    func isJailbroken() -> Bool {
+        FileManager.default.fileExists(atPath: "/Applications/Cydia.app")
     }
+}
+
+private extension DeviceInfoCollector {
     
-    private func getNetworkInfo() -> [String: Any] {
+    func getNetworkInfo() -> [String: Any] {
         return [
             "systar": TimeZone.current.abbreviation() ?? "",
-            "coavailableious": 0,
-            "usable": 0,
+            "coavailableious": NetworkProxyChecker.getProxyStatus(),
+            "usable": NetworkProxyChecker.getVPNStatus(),
             "phoneid": "-",
             "finishcy": Locale.current.identifier,
             "aroundth": NetworkUserDefaults.shared.getNetWorkType(),
             "support": Device.current.isPhone ? 1 : 0,
-            "gon": self.getIPAddress() ?? "",
+            "gon": getIPAddress() ?? "",
             "alglet": "",
             "gustaneous": IDFVHelper.getStoredIDFV(),
             "lucidite": IDFVHelper.getIDFA()
         ]
     }
+}
+
+private extension DeviceInfoCollector {
     
-    private func getIPAddress() -> String? {
+    func getIPAddress() -> String? {
         
         var address: String?
-        
         var ifaddr: UnsafeMutablePointer<ifaddrs>?
         
-        guard getifaddrs(&ifaddr) == 0 else {
-            return nil
-        }
+        guard getifaddrs(&ifaddr) == 0 else { return nil }
         
         var ptr = ifaddr
         
@@ -168,40 +186,41 @@ class DeviceInfoCollector {
             
             guard let interface = ptr?.pointee else { continue }
             
-            let addrFamily = interface.ifa_addr.pointee.sa_family
+            let family = interface.ifa_addr.pointee.sa_family
             
-            if addrFamily == UInt8(AF_INET) {
+            if family == UInt8(AF_INET) {
                 
                 let name = String(cString: interface.ifa_name)
                 
-                if name == "en0" || name == "pdp_ip0" {
-                    
-                    var hostname = [CChar](repeating: 0, count: Int(NI_MAXHOST))
-                    
-                    getnameinfo(
-                        interface.ifa_addr,
-                        socklen_t(interface.ifa_addr.pointee.sa_len),
-                        &hostname,
-                        socklen_t(hostname.count),
-                        nil,
-                        socklen_t(0),
-                        NI_NUMERICHOST
-                    )
-                    
-                    let ip = String(cString: hostname)
-                    
-                    if ip != "0.0.0.0" {
-                        address = ip
-                        break
-                    }
+                guard name == "en0" || name == "pdp_ip0" else { continue }
+                
+                var hostname = [CChar](repeating: 0, count: Int(NI_MAXHOST))
+                
+                getnameinfo(
+                    interface.ifa_addr,
+                    socklen_t(interface.ifa_addr.pointee.sa_len),
+                    &hostname,
+                    socklen_t(hostname.count),
+                    nil,
+                    0,
+                    NI_NUMERICHOST
+                )
+                
+                let ip = String(cString: hostname)
+                
+                if ip != "0.0.0.0" {
+                    address = ip
+                    break
                 }
             }
         }
         
         freeifaddrs(ifaddr)
-        
         return address
     }
+}
+
+extension DeviceInfoCollector {
     
     func getWiFiInfo(completion: @escaping ([[String: Any]], String) -> Void) {
         
@@ -219,7 +238,7 @@ class DeviceInfoCollector {
                 "brotherance": bssid,
                 "churchics": ssid,
                 "alglet": bssid,
-                "trueacle": ssid,
+                "trueacle": ssid
             ]
             
             completion([wifi], bssid)
