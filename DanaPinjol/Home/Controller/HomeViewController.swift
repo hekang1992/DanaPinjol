@@ -98,7 +98,7 @@ class HomeViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         Task {
-            try? await Task.sleep(nanoseconds: 1_000_000_000)
+            try? await Task.sleep(nanoseconds: 500_000_000)
             await requestTrackingPermission()
         }
     }
@@ -179,6 +179,13 @@ extension HomeViewController {
                     }else {
                         let pageUrl = model.cylind?.thero ?? ""
                         self.juduePageToVc(pageUrl)
+                    }
+                }else {
+                    if lentfier == "-2" {
+                        LoginManager.shared.clearLoginInfo()
+                        self.toLoginPage()
+                    }else {
+                        ToastWindowManager.showMessage(model.plurimon ?? "")
                     }
                 }
                 self.homeView.scrollView.mj_header?.endRefreshing()

@@ -50,6 +50,12 @@ class HomeProductListViewCell: UITableViewCell {
         return nameLabel
     }()
     
+    lazy var hotImageView: UIImageView = {
+        let hotImageView = UIImageView()
+        hotImageView.image = UIImage(named: "loan_super_image")
+        return hotImageView
+    }()
+    
     lazy var descLabel: UILabel = {
         let descLabel = UILabel()
         descLabel.textAlignment = .center
@@ -90,6 +96,7 @@ class HomeProductListViewCell: UITableViewCell {
         contentView.addSubview(bgImageView)
         bgImageView.addSubview(logoImageView)
         bgImageView.addSubview(nameLabel)
+        bgImageView.addSubview(hotImageView)
         bgImageView.addSubview(descLabel)
         bgImageView.addSubview(moneyLabel)
         bgImageView.addSubview(tcImageView)
@@ -111,6 +118,11 @@ class HomeProductListViewCell: UITableViewCell {
             make.centerY.equalTo(logoImageView)
             make.left.equalTo(logoImageView.snp.right).offset(5)
             make.height.equalTo(20)
+        }
+        hotImageView.snp.makeConstraints { make in
+            make.centerY.equalTo(logoImageView)
+            make.left.equalTo(nameLabel.snp.right).offset(8.pix())
+            make.width.height.equalTo(14)
         }
         
         descLabel.snp.makeConstraints { make in

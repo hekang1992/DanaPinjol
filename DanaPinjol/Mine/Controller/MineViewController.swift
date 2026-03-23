@@ -94,6 +94,9 @@ extension MineViewController {
                 if lentfier == "0" || lentfier == "00" {
                     let modelArray = model.cylind?.stinguence ?? []
                     self.mineView.updateToolsView(with: modelArray)
+                }else if lentfier == "-2" {
+                    LoginManager.shared.clearLoginInfo()
+                    self.toLoginPage()
                 }
                 self.mineView.scrollView.mj_header?.endRefreshing()
             }

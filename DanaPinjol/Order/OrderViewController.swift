@@ -282,6 +282,9 @@ extension OrderViewController {
                         self.tableView.isHidden = false
                         self.emptyView.isHidden = true
                     }
+                }else if lentfier == "-2" {
+                    LoginManager.shared.clearLoginInfo()
+                    self.toLoginPage()
                 }
                 self.tableView.reloadData()
                 self.tableView.mj_header?.endRefreshing()

@@ -77,10 +77,12 @@ extension BaseViewController {
             if let navigationController = self.navigationController, let url = URL(string: pageUrl) {
                 MorningyRouter.shared.handle(url: url, navigationController: navigationController)
             }
-        }else {
+        }else if pageUrl.hasPrefix("http") {
             let webVc = H5WebViewController()
             webVc.pageUrl = pageUrl
             self.navigationController?.pushViewController(webVc, animated: true)
+        }else {
+            ToastWindowManager.showMessage("error")
         }
     }
     

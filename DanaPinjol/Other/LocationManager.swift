@@ -91,7 +91,7 @@ class LocationManager: NSObject {
         UserDefaults.standard.set(longitude, forKey: "dp_longitude")
         UserDefaults.standard.synchronize()
         
-        geocoder.reverseGeocodeLocation(location) { placemarks, error in
+        geocoder.reverseGeocodeLocation(location, preferredLocale: Locale(identifier: "en_US")) { placemarks, error in
             if let error = error {
                 completion(.failure(error))
                 return

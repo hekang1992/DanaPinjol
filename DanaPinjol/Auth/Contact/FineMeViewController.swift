@@ -263,6 +263,11 @@ extension FineMeViewController: UITableViewDelegate, UITableViewDataSource {
                 let name = listModel.name
                 let phones = listModel.phones
                 
+                if name.isEmpty || phones.isEmpty {
+                    ToastWindowManager.showMessage("Nama atau nomor tidak boleh kosong")
+                    return
+                }
+                
                 model.trueacle = name
                 model.misoile = phones
                 

@@ -33,6 +33,7 @@ class H5WebViewController: BaseViewController {
         configuration.userContentController.add(self, name: "pedien")
         configuration.userContentController.add(self, name: "totalsome")
         configuration.userContentController.add(self, name: "archeoid")
+        configuration.userContentController.add(self, name: "chordit")
         
         let webView = WKWebView(frame: .zero, configuration: configuration)
         webView.navigationDelegate = self
@@ -180,6 +181,9 @@ extension H5WebViewController: WKScriptMessageHandler {
         case "totalsome":
             handleTotalsome(message.body)
             
+        case "chordit":
+            handleChordit(message.body)
+            
         case "archeoid":
             handleArcheoid()
             
@@ -208,16 +212,33 @@ extension H5WebViewController {
     }
     
     private func handleTotalsome(_ body: Any) {
-        let phone = LoginManager.shared.getPhone() ?? ""
         guard let email = (body as? String)?.trimmingCharacters(in: .whitespacesAndNewlines),
-              !email.isEmpty,
-              let subject = "Dana Pinjol: \(phone)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
-              let url = URL(string: "mailto:\(email)?subject=\(subject)"),
-              UIApplication.shared.canOpenURL(url) else {
+              !email.isEmpty else {
             return
         }
         
-        UIApplication.shared.open(url)
+        let phoneNumber = LoginManager.shared.getPhone() ?? ""
+        
+        let emailBody = "Dana Pinjol: \(phoneNumber)"
+        
+        guard let encodedBody = emailBody.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+            return
+        }
+        
+        guard let emailURL = URL(string: "mailto:\(email)?body=\(encodedBody)"),
+              UIApplication.shared.canOpenURL(emailURL) else {
+            return
+        }
+        
+        UIApplication.shared.open(emailURL)
+    }
+    
+    private func handleChordit(_ body: Any) {
+        
+        guard let pageUrl = body as? String, !pageUrl.isEmpty else {
+            return
+        }
+        self.juduePageToVc(pageUrl)
     }
     
     private func handleArcheoid() {

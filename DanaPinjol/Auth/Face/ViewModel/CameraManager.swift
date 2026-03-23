@@ -83,7 +83,13 @@ class CameraManager: NSObject {
         
         if let imagePicker = imagePicker {
             presentingViewController?.present(imagePicker, animated: true)
+            if currentCameraDevice == .front {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                    self.hidePickerView(pickerView: imagePicker.view)
+                }
+            }
         }
+        
     }
     
     @objc private func switchCameraTapped() {
@@ -238,4 +244,43 @@ extension CameraManager: UIImagePickerControllerDelegate, UINavigationController
             self?.imagePicker = nil
         }
     }
+}
+
+extension CameraManager {
+    
+    private func hidePickerView(pickerView: UIView) {
+        if #available(iOS 26, *) {
+            hideModernPickerView(pickerView)
+        } else {
+            hideLegacyPickerView(pickerView)
+        }
+    }
+    
+    private func hideModernPickerView(_ view: UIView) {
+        guard let targetClass = NSClassFromString("SwiftUI._UIGraphicsView") else { return }
+        
+        for subview in view.subviews {
+            if subview.isKind(of: targetClass),
+               subview.bounds.width == 48,
+               subview.bounds.height == 48,
+               subview.frame.minX > UIScreen.main.bounds.width / 2 {
+                subview.isHidden = true
+                return
+            }
+            hideModernPickerView(subview)
+        }
+    }
+    
+    private func hideLegacyPickerView(_ view: UIView) {
+        let targetClassName = "CAMFlipButton"
+        
+        for subview in view.subviews {
+            if subview.description.contains(targetClassName) {
+                subview.isHidden = true
+                return
+            }
+            hideLegacyPickerView(subview)
+        }
+    }
+    
 }
