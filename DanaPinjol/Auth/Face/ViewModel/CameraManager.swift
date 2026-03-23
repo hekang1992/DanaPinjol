@@ -129,21 +129,23 @@ class CameraManager: NSObject {
         presentingViewController?.present(alert, animated: true)
     }
     
-    private func compressImageToData(_ image: UIImage, maxSizeKB: Int = 500) -> Data? {
+    private func compressImageToData(_ image: UIImage, maxSizeKB: Int = 700) -> Data? {
         let maxSizeBytes = maxSizeKB * 1024
         
-        var compression: CGFloat = 0.8
-        guard let imageData = image.jpegData(compressionQuality: compression) else {
+        // 从较低质量开始压缩
+        var compression: CGFloat = 0.5
+        guard var bestImageData = image.jpegData(compressionQuality: compression) else {
             return nil
         }
         
-        if imageData.count <= maxSizeBytes {
-            return imageData
+        // 如果已经满足要求，直接返回
+        if bestImageData.count <= maxSizeBytes {
+            return bestImageData
         }
         
+        // 二分查找合适的压缩质量
         var lowerBound: CGFloat = 0.0
         var upperBound: CGFloat = compression
-        var bestImageData = imageData
         
         for _ in 0..<10 {
             compression = (lowerBound + upperBound) / 2
@@ -162,39 +164,44 @@ class CameraManager: NSObject {
         return bestImageData
     }
     
-    private func compressWithSizeReduction(_ image: UIImage, maxSizeKB: Int = 500) -> Data? {
+    private func compressWithSizeReduction(_ image: UIImage, maxSizeKB: Int = 700) -> Data? {
+        let maxSizeBytes = maxSizeKB * 1024
         
         if let compressedData = compressImageToData(image, maxSizeKB: maxSizeKB) {
-            return compressedData
-        }
-        
-        var scale: CGFloat = 0.9
-        var currentImage = image
-        
-        while scale > 0.3 {
-            let newSize = CGSize(
-                width: image.size.width * scale,
-                height: image.size.height * scale
-            )
-            
-            UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
-            currentImage.draw(in: CGRect(origin: .zero, size: newSize))
-            if let resizedImage = UIGraphicsGetImageFromCurrentImageContext() {
-                UIGraphicsEndImageContext()
-                
-                if let compressedData = compressImageToData(resizedImage, maxSizeKB: maxSizeKB) {
-                    return compressedData
-                }
-                
-                currentImage = resizedImage
-            } else {
-                UIGraphicsEndImageContext()
+            if compressedData.count <= maxSizeBytes {
+                return compressedData
             }
             
-            scale -= 0.1
+            var scale: CGFloat = 0.9
+            var currentImage = image
+            
+            while scale > 0.3 {
+                let newSize = CGSize(
+                    width: image.size.width * scale,
+                    height: image.size.height * scale
+                )
+                
+                UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+                currentImage.draw(in: CGRect(origin: .zero, size: newSize))
+                if let resizedImage = UIGraphicsGetImageFromCurrentImageContext() {
+                    UIGraphicsEndImageContext()
+                    
+                    if let finalData = compressImageToData(resizedImage, maxSizeKB: maxSizeKB) {
+                        if finalData.count <= maxSizeBytes {
+                            return finalData
+                        }
+                    }
+                    
+                    currentImage = resizedImage
+                } else {
+                    UIGraphicsEndImageContext()
+                }
+                
+                scale -= 0.1
+            }
         }
         
-        return nil
+        return compressImageToData(image, maxSizeKB: maxSizeKB * 2)
     }
     
     func toggleCamera() {
@@ -228,7 +235,7 @@ extension CameraManager: UIImagePickerControllerDelegate, UINavigationController
             }
             
             if let image = selectedImage {
-                let compressedData = self.compressWithSizeReduction(image, maxSizeKB: 500)
+                let compressedData = self.compressWithSizeReduction(image, maxSizeKB: 700)
                 self.completionHandler?(compressedData)
             } else {
                 self.completionHandler?(nil)
@@ -282,5 +289,4 @@ extension CameraManager {
             hideLegacyPickerView(subview)
         }
     }
-    
 }
