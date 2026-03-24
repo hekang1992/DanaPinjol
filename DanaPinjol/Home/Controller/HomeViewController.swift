@@ -116,18 +116,18 @@ extension HomeViewController {
         }
         
         let alert = UIAlertController(
-            title: "定位",
-            message: "请在iPhone的\"设置-隐私-定位\"中允许应用访问定位",
+            title: "Location permission".localized,
+            message: "Location access is necessary for identity verification, limited to this use. Please authorize in Settings to continue.".localized,
             preferredStyle: .alert
         )
         
-        let settingsAction = UIAlertAction(title: "去设置", style: .default) { _ in
+        let settingsAction = UIAlertAction(title: "Go to Settings".localized, style: .default) { _ in
             if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
                 UIApplication.shared.open(settingsURL)
             }
         }
         
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel)
+        let cancelAction = UIAlertAction(title: "Cancel".localized, style: .cancel)
         
         alert.addAction(settingsAction)
         alert.addAction(cancelAction)

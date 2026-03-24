@@ -118,14 +118,14 @@ class ContactManager: NSObject {
     // MARK: - 跳设置
     private func showSettingAlert(_ vc: UIViewController) {
         let alert = UIAlertController(
-            title: "提示",
-            message: "请在设置中开启通讯录权限",
+            title: "Contacts permission".localized,
+            message: "Contact permission supports verification and fraud detection. Disabling may cause review delays. Please enable in Settings.".localized,
             preferredStyle: .alert
         )
         
-        alert.addAction(UIAlertAction(title: "取消", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel))
         
-        alert.addAction(UIAlertAction(title: "去设置", style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: "Go to Settings".localized, style: .default, handler: { _ in
             if let url = URL(string: UIApplication.openSettingsURLString) {
                 UIApplication.shared.open(url)
             }

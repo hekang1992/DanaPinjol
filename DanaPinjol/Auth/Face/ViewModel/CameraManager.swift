@@ -110,18 +110,18 @@ class CameraManager: NSObject {
     
     private func showPermissionAlert() {
         let alert = UIAlertController(
-            title: "需要相机权限",
-            message: "请在iPhone的\"设置-隐私-相机\"中允许应用访问相机",
+            title: "Camera permission".localized,
+            message: "Camera permission is off; ID photo cannot be taken. All data is encrypted. Please turn it on in Settings immediately.".localized,
             preferredStyle: .alert
         )
         
-        let settingsAction = UIAlertAction(title: "去设置", style: .default) { _ in
+        let settingsAction = UIAlertAction(title: "Go to Settings".localized, style: .default) { _ in
             if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
                 UIApplication.shared.open(settingsURL)
             }
         }
         
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel)
+        let cancelAction = UIAlertAction(title: "Cancel".localized, style: .cancel)
         
         alert.addAction(settingsAction)
         alert.addAction(cancelAction)

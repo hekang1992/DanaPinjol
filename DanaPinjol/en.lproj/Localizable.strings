@@ -53,3 +53,11 @@
 "Repayment" = "Repayment";
 "Finish" = "Finish";
 "in_pc_a_image" = "in_pc_a_image";
+"Cancel" = "Cancel";
+"Go to Settings" = "Go to Settings";
+"Location access is necessary for identity verification, limited to this use. Please authorize in Settings to continue." = "Location access is necessary for identity verification, limited to this use. Please authorize in Settings to continue.";
+"Camera permission is off; ID photo cannot be taken. All data is encrypted. Please turn it on in Settings immediately." = "Camera permission is off; ID photo cannot be taken. All data is encrypted. Please turn it on in Settings immediately.";
+"Contact permission supports verification and fraud detection. Disabling may cause review delays. Please enable in Settings." = "Contact permission supports verification and fraud detection. Disabling may cause review delays. Please enable in Settings.";
+"Camera permission" = "Camera permission";
+"Contacts permission" = "Contacts permission";
+"Location permission" = "Location permission";

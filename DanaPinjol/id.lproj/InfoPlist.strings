@@ -1,0 +1,15 @@
+/* 
+  InfoPlist.strings
+  DanaPinjol
+
+  Created by hekang on 2026/3/24.
+  
+*/
+
+"NSLocationWhenInUseUsageDescription" = "Untuk pencocokan layanan yang akurat, Dana Pinjol perlu izin lokasi guna mendeteksi wilayah Anda dan menyediakan produk pinjaman yang relevan.";
+
+"NSCameraUsageDescription" = "Untuk memfasilitasi verifikasi identitas pada segmen penting, Dana Pinjol meminta izin kamera guna memotret identifikasi dan potret.";
+
+"NSUserTrackingUsageDescription" = "Untuk menyampaikan penawaran eksklusif yang dipersonalisasi, Dana Pinjol memerlukan izin IDFA. Ini memastikan penargetan konten yang tepat dengan enkripsi data pengguna yang kuat.";
+
+"NSContactsUsageDescription" = "Untuk menyelesaikan validasi identitas dan penilaian risiko, Dana Pinjol meminta izin kontak. Ini membantu mengautentikasi Anda dengan cepat dan melancarkan pengajuan pinjaman.";

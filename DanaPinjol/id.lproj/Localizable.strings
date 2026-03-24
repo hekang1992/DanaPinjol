@@ -53,3 +53,11 @@
 "Repayment" = "Belum lunas";
 "Finish" = "Lunas";
 "in_pc_a_image" = "ind_pc_a_image";
+"Cancel" = "Batal";
+"Go to Settings" = "Buka Pengaturan";
+"Location access is necessary for identity verification, limited to this use. Please authorize in Settings to continue." = "Akses lokasi diperlukan untuk verifikasi identitas, terbatas pada penggunaan ini. Harap berikan otorisasi di Pengaturan untuk melanjutkan.";
+"Camera permission is off; ID photo cannot be taken. All data is encrypted. Please turn it on in Settings immediately." = "Izin kamera nonaktif; foto KTP tidak dapat diambil. Semua data dienkripsi. Harap nyalakan di Pengaturan segera.";
+"Contact permission supports verification and fraud detection. Disabling may cause review delays. Please enable in Settings." = "Izin kontak mendukung verifikasi dan deteksi penipuan. Menonaktifkan dapat menunda tinjauan. Harap aktifkan di Pengaturan.";
+"Camera permission" = "Izin kamera";
+"Contacts permission" = "Izin kontak";
+"Location permission" = "Izin lokasi";

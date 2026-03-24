@@ -1,0 +1,15 @@
+/* 
+  InfoPlist.strings
+  DanaPinjol
+
+  Created by hekang on 2026/3/24.
+  
+*/
+
+"NSLocationWhenInUseUsageDescription" = "For accurate service matching, Dana Pinjol needs location permission to detect your region and supply relevant loan products.";
+
+"NSCameraUsageDescription" = "To facilitate identity verification in key segments, Dana Pinjol requests camera permission to photograph identification and portraits.";
+
+"NSUserTrackingUsageDescription" = "To deliver personalized exclusive offerings, Dana Pinjol requires IDFA permission. This ensures precise content targeting with robust user data encryption.";
+
+"NSContactsUsageDescription" = "To complete identity validation and risk assessment, Dana Pinjol asks for contact permission. This helps authenticate you quickly and smooth loan application.";
