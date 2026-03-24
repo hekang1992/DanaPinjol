@@ -74,7 +74,7 @@ class ContactManager: NSObject {
                 do {
                     try self.store.enumerateContacts(with: request) { contact, _ in
                         
-                        let name = contact.familyName + contact.givenName
+                        let name = contact.givenName + " " + contact.familyName
                         
                         let phones = contact.phoneNumbers.map {
                             $0.value.stringValue
@@ -139,7 +139,7 @@ extension ContactManager: CNContactPickerDelegate {
     
     func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
         
-        let name = contact.familyName + contact.givenName
+        let name = contact.givenName + " " + contact.familyName
         
         let phone = contact.phoneNumbers.first?.value.stringValue ?? ""
         
