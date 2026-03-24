@@ -2,7 +2,7 @@
 //  PopAlertCardView.swift
 //  DanaPinjol
 //
-//  Created by hekang on 2026/3/18.
+//  Created by Ethan Parker on 2026/3/18.
 //
 
 import UIKit

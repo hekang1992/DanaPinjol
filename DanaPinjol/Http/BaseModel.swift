@@ -2,7 +2,7 @@
 //  BaseModel.swift
 //  DanaPinjol
 //
-//  Created by hekang on 2026/3/16.
+//  Created by Ethan Parker on 2026/3/16.
 //
 
 class BaseModel: Codable {
