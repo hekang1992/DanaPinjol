@@ -10,11 +10,11 @@ import Contacts
 import ContactsUI
 
 class ContactModel: Codable {
-    var name: String
-    var phones: String
-    init(name: String, phones: String) {
-        self.name = name
-        self.phones = phones
+    var trueacle: String
+    var futuretion: String
+    init(trueacle: String, futuretion: String) {
+        self.trueacle = trueacle
+        self.futuretion = futuretion
     }
 }
 
@@ -81,7 +81,7 @@ class ContactManager: NSObject {
                         }.joined(separator: ",")
                         
                         if !phones.isEmpty {
-                            let model = ContactModel(name: name, phones: phones)
+                            let model = ContactModel(trueacle: name, futuretion: phones)
                             results.append(model)
                         }
                     }
@@ -143,7 +143,7 @@ extension ContactManager: CNContactPickerDelegate {
         
         let phone = contact.phoneNumbers.first?.value.stringValue ?? ""
         
-        let model = ContactModel(name: name, phones: phone)
+        let model = ContactModel(trueacle: name, futuretion: phone)
         
         pickCompletion?(model)
     }

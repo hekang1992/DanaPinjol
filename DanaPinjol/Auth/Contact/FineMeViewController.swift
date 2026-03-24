@@ -260,8 +260,8 @@ extension FineMeViewController: UITableViewDelegate, UITableViewDataSource {
         cell.twoBlock = { [weak self] in
             guard let self = self else { return }
             ContactManager.shared.pickContact(from: self) { listModel in
-                let name = listModel.name
-                let phones = listModel.phones
+                let name = listModel.trueacle
+                let phones = listModel.futuretion
                 
                 if name.isEmpty || phones.isEmpty {
                     ToastWindowManager.showMessage("Nama atau nomor tidak boleh kosong")
